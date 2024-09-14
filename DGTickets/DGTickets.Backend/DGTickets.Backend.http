@@ -1,0 +1,6 @@
+@DGTickets.Backend_HostAddress = http://localhost:5139
+
+GET {{DGTickets.Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
