@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# In future Delete appsetings.json from gitignore
+appsetings.json
+/DGTickets/DGTickets.Backend/appsettings.json
