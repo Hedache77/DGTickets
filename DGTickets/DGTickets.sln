@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGTickets.Backend", "DGTickets.Backend\DGTickets.Backend.csproj", "{3250045F-010B-4C0E-8D7B-DB4DEC435EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGTickets.Backend", "DGTickets.Backend\DGTickets.Backend.csproj", "{3250045F-010B-4C0E-8D7B-DB4DEC435EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGTickets.Frontend", "DGTickets.Frontend\DGTickets.Frontend.csproj", "{3FD41AAF-0B63-4BF4-ABB3-04862661A3BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGTickets.Frontend", "DGTickets.Frontend\DGTickets.Frontend.csproj", "{3FD41AAF-0B63-4BF4-ABB3-04862661A3BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGTickets.Shared", "DGTickets.Shared\DGTickets.Shared.csproj", "{6A927FEE-E646-48D9-A172-C61235C29249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGTickets.Shared", "DGTickets.Shared\DGTickets.Shared.csproj", "{6A927FEE-E646-48D9-A172-C61235C29249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGTickets.Tests", "DGTickets.Tests\DGTickets.Tests.csproj", "{FD8629D4-8FA8-4C64-88FE-5BC04647A75D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGTickets.Tests", "DGTickets.Tests\DGTickets.Tests.csproj", "{FD8629D4-8FA8-4C64-88FE-5BC04647A75D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
