@@ -1,5 +1,5 @@
 using DGTickets.Frontend;
-using Fantasy.Frontend.Repositories;
+using DGTickets.Frontend.Repositories;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
