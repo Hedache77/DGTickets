@@ -14,6 +14,8 @@ public class DataContext : DbContext
 
     public DbSet<Country> Countries { get; set; }
 
+    public DbSet<Role> Roles { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
