@@ -20,13 +20,13 @@ public class RoleController: ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-        return Ok(await _context.Role.ToListAsync());
+        return Ok(await _context.Roles.ToListAsync());
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAsync(int id)
     {
-        var role = await _context.Role.FindAsync(id);
+        var role = await _context.Roles.FindAsync(id);
         if (role == null)
         {
             return NotFound();
@@ -45,7 +45,7 @@ public class RoleController: ControllerBase
     [HttpPut]
     public async Task<IActionResult> PutAsync(Role role)
     {
-        var currentRole = await _context.Role.FindAsync(role.Id);
+        var currentRole = await _context.Roles.FindAsync(role.Id);
         if (currentRole == null)
         {
             return NotFound();
@@ -59,7 +59,7 @@ public class RoleController: ControllerBase
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var role = await _context.Role.FindAsync(id);
+        var role = await _context.Roles.FindAsync(id);
         if (role == null)
         {
             return NotFound();
