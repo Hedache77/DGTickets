@@ -16,9 +16,13 @@ public class DataContext : DbContext
 
     public DbSet<Role> Roles { get; set; }
 
+    public DbSet<MedicineStock> MedicineStocks { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
+        modelBuilder.Entity<MedicineStock>().HasIndex(x => x.Name);
         DisableCascadingDelete(modelBuilder);
     }
 
@@ -29,6 +33,5 @@ public class DataContext : DbContext
         {
             relationship.DeleteBehavior = DeleteBehavior.Restrict;
         }
-        modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
     }
 }
