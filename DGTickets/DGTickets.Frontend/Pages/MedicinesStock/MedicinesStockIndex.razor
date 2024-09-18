@@ -1,0 +1,54 @@
+﻿@page "/medicines"
+
+<h3>@Localizer["MedicineStock"]</h3>
+
+<div class="mb-3">
+    <a class="btn btn-primary" href="/medicines/create">@Localizer["New"] @Localizer["Medicine"]</a>
+</div>
+
+<GenericList MyList="MedicinesStock">
+    <Body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Localizer["Medicine"]</th>
+                    <th>@Localizer["Image"]</th>
+                    <th>@Localizer["Quantity"]</th>
+                    <th>@Localizer["Manufacturer"]</th>
+                    <th>@Localizer["UnitOfMeasure"]</th>
+                    <th>@Localizer["QuantityPerUnit"]</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var medicine in MedicinesStock!)
+                {
+                    <tr>
+                        <td>
+                            @medicine.Name
+                        </td>
+                        <td>
+                            <img src="@medicine.Image" style="width:80px;" />
+                        </td>
+                        <td>
+                            @medicine.Quantity
+                        </td>
+                        <td>
+                            @medicine.Manufacturer
+                        </td>
+                        <td>
+                            @medicine.UnitOfMeasure
+                        </td>
+                        <td>
+                            @medicine.QuantityPerUnit
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="/medicines/edit/@medicine.Id">@Localizer["Edit"]</a>
+                            <button class="btn btn-danger" @onclick=@(() => DeleteAsync(medicine))>@Localizer["Delete"]</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenericList>

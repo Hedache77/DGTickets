@@ -192,4 +192,13 @@
   <data name="ERR003" xml:space="preserve">
     <value>The record you are trying to create already exists.</value>
   </data>
+  <data name="MedicineStock" xml:space="preserve">
+    <value>Medicine Stock</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
 </root>

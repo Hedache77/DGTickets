@@ -192,4 +192,25 @@
   <data name="ERR003" xml:space="preserve">
     <value>Ya existe el registro que estas intentando crear.</value>
   </data>
+  <data name="MedicineStock" xml:space="preserve">
+    <value>Medicamentos</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="UnitOfMeasure" xml:space="preserve">
+    <value>Unidad de medida</value>
+  </data>
+  <data name="QuantityPerUnit" xml:space="preserve">
+    <value>Cantidad por unidad</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
 </root>
