@@ -219,4 +219,7 @@
   <data name="ERR004" xml:space="preserve">
     <value>The medicine Id is not valid.</value>
   </data>
+  <data name="RecordCreatedOk" xml:space="preserve">
+    <value>Record created successfully.</value>
+  </data>
 </root>

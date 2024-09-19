@@ -23,7 +23,7 @@ public partial class MedicinesStockIndex
 
     private async Task LoadAsync()
     {
-        var responseHttp = await Repository.GetAsync<List<MedicineStock>>("api/medicinesStock");
+        var responseHttp = await Repository.GetAsync<List<MedicineStock>>("api/MedicinesStock");
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();
@@ -51,7 +51,7 @@ public partial class MedicinesStockIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"api/medicinesStock/{medicineStock.Id}");
+        var responseHttp = await Repository.DeleteAsync($"api/MedicinesStock/{medicineStock.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)

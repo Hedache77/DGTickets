@@ -1,0 +1,5 @@
+﻿@page "/medicines/create"
+
+<h3>@Localizer["Create"] @Localizer["Medicine"]</h3>
+
+<MedicineStockForm @ref="medicineStockForm" MedicineStock="medicineStock" OnValidSubmit="CreateAsync" ReturnAction="Return" />

@@ -219,4 +219,7 @@
   <data name="ERR004" xml:space="preserve">
     <value>El código del medicamento no es válido.</value>
   </data>
+  <data name="RecordCreatedOk" xml:space="preserve">
+    <value>Registro creado con éxito.</value>
+  </data>
 </root>

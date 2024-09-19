@@ -34,4 +34,6 @@ public class MedicineStock
     [Range(0.01, 1000, ErrorMessageResourceName = "Range", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public float QuantityPerUnit { get; set; }
+
+    public string ImageFull => string.IsNullOrEmpty(Image) ? "/images/noImage.png" : Image;
 }

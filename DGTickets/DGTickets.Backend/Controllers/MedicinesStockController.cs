@@ -15,7 +15,7 @@ public class MedicinesStockController : GenericController<MedicineStock>
         _medicinesStockUnitOfWork = medicinesStockUnitOfWork;
     }
 
-    [HttpPost]
+    [HttpPost("full")]
     public override async Task<IActionResult> PostAsync(MedicineStock medicineStock)
     {
         var action = await _medicinesStockUnitOfWork.AddAsync(medicineStock);
@@ -26,7 +26,7 @@ public class MedicinesStockController : GenericController<MedicineStock>
         return BadRequest(action.Message);
     }
 
-    [HttpPut]
+    [HttpPut("full")]
     public override async Task<IActionResult> PutAsync(MedicineStock medicineStock)
     {
         var action = await _medicinesStockUnitOfWork.UpdateAsync(medicineStock);
