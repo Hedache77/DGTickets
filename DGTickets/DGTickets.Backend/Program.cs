@@ -18,10 +18,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnection"));
 
+builder.Services.AddScoped<IFileStorage, FileStorage>();
+
 builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-builder.Services.AddScoped<IFileStorage, FileStorage>();
+builder.Services.AddScoped<IMedicinesStockRepository, MedicinesStockRepository>();
+builder.Services.AddScoped<IMedicinesStockUnitOfWork, MedicinesStockUnitOfWork>();
 
 var app = builder.Build();
 

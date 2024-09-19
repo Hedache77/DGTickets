@@ -16,7 +16,7 @@ public class DataContext : DbContext
 
     public DbSet<Role> Roles { get; set; }
 
-    public DbSet<MedicineStock> MedicineStocks { get; set; }
+    public DbSet<MedicineStock> MedicinesStock { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

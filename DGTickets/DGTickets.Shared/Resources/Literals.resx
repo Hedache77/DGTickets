@@ -201,4 +201,22 @@
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="QuantityPerUnit" xml:space="preserve">
+    <value>Quantity per unit</value>
+  </data>
+  <data name="UnitOfMeasure" xml:space="preserve">
+    <value>Unit of measure</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>Field {0} must be between {1} and {2} characters.</value>
+  </data>
+  <data name="ERR004" xml:space="preserve">
+    <value>The medicine Id is not valid.</value>
+  </data>
 </root>

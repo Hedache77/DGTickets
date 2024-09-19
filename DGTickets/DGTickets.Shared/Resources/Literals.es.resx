@@ -201,16 +201,22 @@
   <data name="Quantity" xml:space="preserve">
     <value>Cantidad</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
   <data name="Manufacturer" xml:space="preserve">
     <value>Fabricante</value>
-  </data>
-  <data name="UnitOfMeasure" xml:space="preserve">
-    <value>Unidad de medida</value>
   </data>
   <data name="QuantityPerUnit" xml:space="preserve">
     <value>Cantidad por unidad</value>
   </data>
-  <data name="About" xml:space="preserve">
-    <value>Acerca de</value>
+  <data name="UnitOfMeasure" xml:space="preserve">
+    <value>Unidad de medida</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>El campo {0} debe estar entre {1} y {2} caracteres.</value>
+  </data>
+  <data name="ERR004" xml:space="preserve">
+    <value>El código del medicamento no es válido.</value>
   </data>
 </root>
