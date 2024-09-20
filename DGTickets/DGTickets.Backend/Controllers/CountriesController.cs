@@ -68,6 +68,19 @@ public class CountriesController : ControllerBase
         return NoContent();
     }
 
+    [HttpPatch]
+    public async Task<IActionResult> Example(int id)
+    {
+        var country = await _context.Countries.FindAsync(id);
+        if (country == null)
+        {
+            return NotFound();
+        }
+        _context.Remove(country);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
     //[HttpDelete]
     //public async Task<IActionResult> DeleteAsync(int id)
     //{
