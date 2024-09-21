@@ -26,6 +26,9 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IMedicinesStockRepository, MedicinesStockRepository>();
 builder.Services.AddScoped<IMedicinesStockUnitOfWork, MedicinesStockUnitOfWork>();
 
+builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
+builder.Services.AddScoped<ICountriesUnitOfWork, CountriesUnitOfWork>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

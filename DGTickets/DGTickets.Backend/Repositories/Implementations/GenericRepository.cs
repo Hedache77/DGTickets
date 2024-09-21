@@ -1,5 +1,7 @@
 ﻿using DGTickets.Backend.Data;
+using DGTickets.Backend.Helpers;
 using DGTickets.Backend.Repositories.Interfaces;
+using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,9 +52,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             };
         }
 
+        _entity.Remove(row);
         try
         {
-            _entity.Remove(row);
             await _context.SaveChangesAsync();
             return new ActionResponse<T>
             {
@@ -72,18 +74,18 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public virtual async Task<ActionResponse<T>> GetAsync(int id)
     {
         var row = await _entity.FindAsync(id);
-        if (row != null)
+        if (row == null)
         {
             return new ActionResponse<T>
             {
-                WasSuccess = true,
-                Result = row
+                WasSuccess = false,
+                Message = "ERR001"
             };
         }
         return new ActionResponse<T>
         {
-            WasSuccess = false,
-            Message = "ERR001"
+            WasSuccess = true,
+            Result = row
         };
     }
 
@@ -98,9 +100,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T entity)
     {
+        _context.Update(entity);
         try
         {
-            _context.Update(entity);
             await _context.SaveChangesAsync();
             return new ActionResponse<T>
             {
@@ -133,6 +135,30 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         {
             WasSuccess = false,
             Message = "ERR003"
+        };
+    }
+
+    public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+
+        return new ActionResponse<IEnumerable<T>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .Paginate(pagination)
+                .ToListAsync()
+        };
+    }
+
+    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync()
+    {
+        var queryable = _entity.AsQueryable();
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
         };
     }
 }
