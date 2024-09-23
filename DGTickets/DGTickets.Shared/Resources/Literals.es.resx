@@ -222,4 +222,7 @@
   <data name="RecordCreatedOk" xml:space="preserve">
     <value>Registro creado con éxito.</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Por favor espera...</value>
+  </data>
 </root>
