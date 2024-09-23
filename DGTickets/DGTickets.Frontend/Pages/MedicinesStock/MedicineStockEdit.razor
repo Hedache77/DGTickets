@@ -1,12 +1,12 @@
-﻿@page "/medicines/edit/{Id:int}"
-
-<h3>@Localizer["Edit"] @Localizer["Medicine"]</h3>
-
-@if (medicineStock is null)
+﻿@if(medicineStock is null)
 {
-    <Loading />
+    <Loading/>
 }
 else
 {
-    <MedicineStockForm @ref="medicineStockForm" MedicineStock="medicineStock" OnValidSubmit="EditAsync" ReturnAction="Return" />
+    <MudDialog>
+        <DialogContent>
+            <MedicineStockForm @ref="medicineStockForm" MedicineStock="medicineStock" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
 }

@@ -36,4 +36,6 @@ public class MedicineStock
     public float QuantityPerUnit { get; set; }
 
     public string ImageFull => string.IsNullOrEmpty(Image) ? "/images/noImage.png" : Image;
+
+    public bool IsImageSquare { get; set; }
 }

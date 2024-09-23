@@ -1,10 +1,9 @@
-using CurrieTechnologies.Razor.SweetAlert2;
 using DGTickets.Frontend.Repositories;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
-using static MudBlazor.Colors;
+using MudBlazor;
 
 namespace DGTickets.Frontend.Pages.MedicinesStock;
 
@@ -15,7 +14,7 @@ public partial class MedicineStockEdit
 
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
-    [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+    [Inject] private ISnackbar Snackbar { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
 
     [Parameter] public int Id { get; set; }
@@ -33,7 +32,7 @@ public partial class MedicineStockEdit
             else
             {
                 var messageError = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync(Localizer["Error"], messageError, SweetAlertIcon.Error);
+                Snackbar.Add(messageError!, Severity.Error);
             }
         }
         else
@@ -42,12 +41,13 @@ public partial class MedicineStockEdit
             medicineStock = new MedicineStock()
             {
                 Id = medicine!.Id,
-                Name = medicine!.Name,
+                Name = medicine.Name,
                 Image = medicine.Image,
+                IsImageSquare = medicine.IsImageSquare,
                 Quantity = medicine.Quantity,
                 Manufacturer = medicine.Manufacturer,
                 UnitOfMeasure = medicine.UnitOfMeasure,
-                QuantityPerUnit = medicine.QuantityPerUnit,
+                QuantityPerUnit = medicine.QuantityPerUnit
             };
         }
     }
@@ -58,20 +58,13 @@ public partial class MedicineStockEdit
 
         if (responseHttp.Error)
         {
-            var mensajeError = await responseHttp.GetErrorMessageAsync();
-            await SweetAlertService.FireAsync(Localizer["Error"], Localizer[mensajeError!], SweetAlertIcon.Error);
+            var messajeError = await responseHttp.GetErrorMessageAsync();
+            Snackbar.Add(Localizer[messajeError!], Severity.Error);
             return;
         }
 
         Return();
-        var toast = SweetAlertService.Mixin(new SweetAlertOptions
-        {
-            Toast = true,
-            Position = SweetAlertPosition.BottomEnd,
-            ShowConfirmButton = true,
-            Timer = 3000
-        });
-        await toast.FireAsync(icon: SweetAlertIcon.Success, message: Localizer["RecordSavedOk"]);
+        Snackbar.Add(Localizer["RecordSavedOk"], Severity.Success);
     }
 
     private void Return()
