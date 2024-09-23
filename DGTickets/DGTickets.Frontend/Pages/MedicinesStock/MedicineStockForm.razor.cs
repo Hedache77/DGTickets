@@ -12,12 +12,14 @@ namespace DGTickets.Frontend.Pages.MedicinesStock;
 public partial class MedicineStockForm
 {
     private EditContext editContext = null!;
+    private Country selectedMedicine = new();
+    private List<MedicineStock>? medicinesStock;
     private string? imageUrl;
+    private string? shapeImageMessage;
 
-    protected override void OnInitialized()
-    {
-        editContext = new(MedicineStock);
-    }
+    [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+    [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+    [Inject] private IRepository Repository { get; set; } = null!;
 
     [EditorRequired, Parameter] public MedicineStock MedicineStock { get; set; } = null!;
     [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
@@ -25,8 +27,10 @@ public partial class MedicineStockForm
 
     public bool FormPostedSuccessfully { get; set; } = false;
 
-    [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
-    [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+    protected override void OnInitialized()
+    {
+        editContext = new(MedicineStock);
+    }
 
     protected override void OnParametersSet()
     {
@@ -36,6 +40,13 @@ public partial class MedicineStockForm
             imageUrl = MedicineStock.Image;
             MedicineStock.Image = null;
         }
+        shapeImageMessage = MedicineStock.IsImageSquare ? Localizer["ImageIsSquare"] : Localizer["ImageIsRectangular"];
+    }
+
+    private void OnToggledChanged(bool toggled)
+    {
+        MedicineStock.IsImageSquare = toggled;
+        shapeImageMessage = MedicineStock.IsImageSquare ? Localizer["ImageIsSquare"] : Localizer["ImageIsRectangular"];
     }
 
     private void ImageSelected(string imagenBase64)
@@ -69,5 +80,18 @@ public partial class MedicineStockForm
         }
 
         context.PreventNavigation();
+    }
+
+    private async Task<IEnumerable<MedicineStock>> SearchMedicine(string searchText, CancellationToken cancellationToken)
+    {
+        await Task.Delay(5);
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            return medicinesStock!;
+        }
+
+        return medicinesStock!
+            .Where(x => x.Name.Contains(searchText, StringComparison.InvariantCultureIgnoreCase))
+            .ToList();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DGTickets.Backend.Data;
 using DGTickets.Backend.Helpers;
 using DGTickets.Backend.Repositories.Interfaces;
+using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
@@ -113,5 +114,42 @@ public class MedicinesStockRepository : GenericRepository<MedicineStock>, IMedic
                 Message = exception.Message
             };
         }
+    }
+
+    public override async Task<ActionResponse<IEnumerable<MedicineStock>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _context.MedicinesStock
+            .AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(pagination.Filter))
+        {
+            queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+        }
+
+        return new ActionResponse<IEnumerable<MedicineStock>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .OrderBy(x => x.Name)
+                .Paginate(pagination)
+                .ToListAsync()
+        };
+    }
+
+    public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination)
+    {
+        var queryable = _context.MedicinesStock.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(pagination.Filter))
+        {
+            queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+        }
+
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
+        };
     }
 }
