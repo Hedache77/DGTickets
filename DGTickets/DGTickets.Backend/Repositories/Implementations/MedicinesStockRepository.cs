@@ -27,7 +27,8 @@ public class MedicinesStockRepository : GenericRepository<MedicineStock>, IMedic
             Quantity = medicineStock.Quantity,
             Manufacturer = medicineStock.Manufacturer,
             UnitOfMeasure = medicineStock.UnitOfMeasure,
-            QuantityPerUnit = medicineStock.QuantityPerUnit
+            QuantityPerUnit = medicineStock.QuantityPerUnit,
+            IsImageSquare = medicineStock.IsImageSquare
         };
 
         if (!string.IsNullOrEmpty(medicineStock.Image))
@@ -87,6 +88,7 @@ public class MedicinesStockRepository : GenericRepository<MedicineStock>, IMedic
         currentMedicine.Manufacturer = medicineStock.Manufacturer;
         currentMedicine.UnitOfMeasure = medicineStock.UnitOfMeasure;
         currentMedicine.QuantityPerUnit = medicineStock.QuantityPerUnit;
+        currentMedicine.IsImageSquare = medicineStock.IsImageSquare;
 
         _context.Update(currentMedicine);
         try
