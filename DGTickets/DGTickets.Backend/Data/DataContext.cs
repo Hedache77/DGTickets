@@ -13,6 +13,7 @@ public class DataContext : DbContext
     }
 
     public DbSet<Country> Countries { get; set; }
+    public DbSet<State> States { get; set; }
 
     public DbSet<Role> Roles { get; set; }
 
@@ -23,6 +24,7 @@ public class DataContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
         modelBuilder.Entity<MedicineStock>().HasIndex(x => x.Name);
+        modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
         DisableCascadingDelete(modelBuilder);
     }
 

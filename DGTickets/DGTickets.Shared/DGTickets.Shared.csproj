@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Resources\Literals.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

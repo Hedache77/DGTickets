@@ -258,4 +258,10 @@
   <data name="IsImageSquare" xml:space="preserve">
     <value>¿La imagen es cuadrada?</value>
   </data>
+  <data name="State" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
 </root>

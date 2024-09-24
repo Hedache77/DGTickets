@@ -14,4 +14,8 @@ public class Country
     [MaxLength(100)]
     [Required]
     public string Name { get; set; } = null!;
+
+    public ICollection<State>? States { get; set; }
+
+    public int StatesCount => States == null ? 0 : States.Count;
 }
