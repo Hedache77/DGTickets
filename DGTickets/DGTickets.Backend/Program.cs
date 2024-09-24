@@ -29,6 +29,9 @@ builder.Services.AddScoped<IMedicinesStockUnitOfWork, MedicinesStockUnitOfWork>(
 builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
 builder.Services.AddScoped<ICountriesUnitOfWork, CountriesUnitOfWork>();
 
+builder.Services.AddScoped<IStatesRepository, StatesRepository>();
+builder.Services.AddScoped<IStatesUnitOfWork, StatesUnitOfWork>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
