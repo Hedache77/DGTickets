@@ -264,4 +264,7 @@
   <data name="Country" xml:space="preserve">
     <value>País</value>
   </data>
+  <data name="States" xml:space="preserve">
+    <value>Departamentos</value>
+  </data>
 </root>

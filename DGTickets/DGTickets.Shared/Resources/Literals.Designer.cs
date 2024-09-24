@@ -466,6 +466,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to States.
+        /// </summary>
+        public static string States {
+            get {
+                return ResourceManager.GetString("States", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tickets Aplication.
         /// </summary>
         public static string Subtitle {
