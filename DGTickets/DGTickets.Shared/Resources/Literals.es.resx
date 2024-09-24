@@ -270,6 +270,24 @@
   <data name="City" xml:space="preserve">
     <value>Ciudad</value>
   </data>
+  <data name="Headquarter" xml:space="preserve">
+    <value>Sede</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Número de teléfono invalido</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Correo electrónico inválido</value>
+  </data>
   <data name="Cities" xml:space="preserve">
     <value>Ciudades</value>
   </data>

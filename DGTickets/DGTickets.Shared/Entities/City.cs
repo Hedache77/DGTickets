@@ -18,4 +18,8 @@ public class City
     public int StateId { get; set; }
 
     public string ImageFull => string.IsNullOrEmpty(Image) ? "/images/NoImage.png" : Image;
+
+    public ICollection<Headquarter>? Headquarters { get; set; }
+
+    public int HeadquartersCount => Headquarters == null ? 0 : Headquarters.Count;
 }
