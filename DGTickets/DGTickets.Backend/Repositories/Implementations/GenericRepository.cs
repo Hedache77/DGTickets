@@ -120,24 +120,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         }
     }
 
-    private ActionResponse<T> ExceptionActionResponse(Exception exception)
-    {
-        return new ActionResponse<T>
-        {
-            WasSuccess = false,
-            Message = exception.Message
-        };
-    }
-
-    private ActionResponse<T> DbUpdateExceptionActionResponse()
-    {
-        return new ActionResponse<T>
-        {
-            WasSuccess = false,
-            Message = "ERR003"
-        };
-    }
-
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
     {
         var queryable = _entity.AsQueryable();
@@ -159,6 +141,24 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         {
             WasSuccess = true,
             Result = (int)count
+        };
+    }
+
+    private ActionResponse<T> ExceptionActionResponse(Exception exception)
+    {
+        return new ActionResponse<T>
+        {
+            WasSuccess = false,
+            Message = exception.Message
+        };
+    }
+
+    private ActionResponse<T> DbUpdateExceptionActionResponse()
+    {
+        return new ActionResponse<T>
+        {
+            WasSuccess = false,
+            Message = "ERR003"
         };
     }
 }
