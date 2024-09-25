@@ -270,4 +270,7 @@
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
 </root>

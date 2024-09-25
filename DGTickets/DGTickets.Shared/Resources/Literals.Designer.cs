@@ -97,6 +97,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cities.
+        /// </summary>
+        public static string Cities {
+            get {
+                return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         public static string City {
