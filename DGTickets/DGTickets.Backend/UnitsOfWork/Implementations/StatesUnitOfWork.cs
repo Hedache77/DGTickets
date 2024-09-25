@@ -1,4 +1,5 @@
-﻿using DGTickets.Backend.Repositories.Interfaces;
+﻿using DGTickets.Backend.Repositories.Implementations;
+using DGTickets.Backend.Repositories.Interfaces;
 using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
@@ -28,4 +29,6 @@ public class StatesUnitOfWork : GenericUnitOfWork<State>, IStatesUnitOfWork
     public async Task<IEnumerable<State>> GetComboAsync(int countryId) => await _statesRepository.GetComboAsync(countryId);
 
     public async Task<ActionResponse<State>> UpdateAsync(StateDTO stateDTO) => await _statesRepository.UpdateAsync(stateDTO);
+
+    public async Task<IEnumerable<State>> GetComboAsync() => await _statesRepository.GetComboAsync();
 }

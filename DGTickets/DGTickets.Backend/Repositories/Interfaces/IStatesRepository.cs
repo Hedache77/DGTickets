@@ -8,6 +8,8 @@ public interface IStatesRepository
 {
     Task<IEnumerable<State>> GetComboAsync(int countryId);
 
+    Task<IEnumerable<State>> GetComboAsync();
+
     Task<ActionResponse<State>> AddAsync(StateDTO stateDTO);
 
     Task<ActionResponse<State>> UpdateAsync(StateDTO stateDTO);
