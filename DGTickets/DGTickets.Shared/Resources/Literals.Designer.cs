@@ -277,6 +277,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Headquarters.
+        /// </summary>
+        public static string Headquarters {
+            get {
+                return ResourceManager.GetString("Headquarters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -534,6 +543,15 @@ namespace DGTickets.Shared.Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a City ---.
+        /// </summary>
+        public static string SelectACity {
+            get {
+                return ResourceManager.GetString("SelectACity", resourceCulture);
             }
         }
         

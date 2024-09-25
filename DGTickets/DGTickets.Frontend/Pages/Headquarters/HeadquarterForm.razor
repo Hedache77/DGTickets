@@ -1,0 +1,36 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudTextField Label="@Localizer["Headquarter"]"
+                  @bind-Value="@HeadquarterDTO.Name"
+                  For="@(() => HeadquarterDTO.Name)"
+                  Class="mb-4" />
+
+    <MudAutocomplete T="City"
+                     Label=@Localizer["City"]
+                     Placeholder=@Localizer["SelectACity"]
+                     SearchFunc="SearchCity"
+                     Value="selectedCity"
+                     ValueChanged="CityChanged"
+                     ToStringFunc="@(e=> e==null?null : $"{e.Name}")">
+        <ItemTemplate Context="itemContext">
+            @itemContext.Name
+        </ItemTemplate>
+    </MudAutocomplete>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>
