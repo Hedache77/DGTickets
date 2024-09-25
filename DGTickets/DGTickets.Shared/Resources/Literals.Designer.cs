@@ -232,6 +232,24 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city id is not valid..
+        /// </summary>
+        public static string ERR005 {
+            get {
+                return ResourceManager.GetString("ERR005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The headquarter id is not valid..
+        /// </summary>
+        public static string ERR006 {
+            get {
+                return ResourceManager.GetString("ERR006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {

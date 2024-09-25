@@ -288,7 +288,15 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid email</value>
   </data>
+<<<<<<< HEAD
   <data name="Cities" xml:space="preserve">
     <value>Cities</value>
+=======
+  <data name="ERR005" xml:space="preserve">
+    <value>The city id is not valid.</value>
+  </data>
+  <data name="ERR006" xml:space="preserve">
+    <value>The headquarter id is not valid.</value>
+>>>>>>> 9289344 (feature: :sparkles: Added Headquarters Entity to Repository Pattern)
   </data>
 </root>
