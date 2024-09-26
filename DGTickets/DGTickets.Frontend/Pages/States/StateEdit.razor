@@ -1,0 +1,12 @@
+﻿@if (stateDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <StateForm @ref="stateForm" StateDTO="stateDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

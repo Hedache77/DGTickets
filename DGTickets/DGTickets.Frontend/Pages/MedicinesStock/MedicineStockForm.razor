@@ -1,0 +1,57 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudTextField Label="@Localizer["Medicine"]"
+                  @bind-Value="@MedicineStock.Name"
+                  For="@(() => MedicineStock.Name)"
+                  Class="mb-4" />
+
+    <MudToggleIconButton Toggled="MedicineStock.IsImageSquare"
+                         ToggledChanged="OnToggledChanged"
+                         Icon="@Icons.Material.Filled.Square"
+                         Color="@Color.Primary"
+                         ToggledIcon="@Icons.Material.Filled.Rectangle"
+                         ToggledColor="@Color.Secondary"
+                         title="@(MedicineStock.IsImageSquare ? @Localizer["Rectangular"] : @Localizer["Square"])" />
+    <span>@shapeImageMessage</span>
+
+    <div class="my-2">
+        <InputImg Label=@Localizer["Image"] ImageSelected="ImageSelected" ImageURL="@imageUrl" />
+    </div>
+
+    <MudTextField Label="@Localizer["Quantity"]"
+                  @bind-Value="@MedicineStock.Quantity"
+                  For="@(() => MedicineStock.Quantity)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Manufacturer"]"
+                  @bind-Value="@MedicineStock.Manufacturer"
+                  For="@(() => MedicineStock.Manufacturer)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["UnitOfMeasure"]"
+                  @bind-Value="@MedicineStock.UnitOfMeasure"
+                  For="@(() => MedicineStock.UnitOfMeasure)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["QuantityPerUnit"]"
+                  @bind-Value="@MedicineStock.QuantityPerUnit"
+                  For="@(() => MedicineStock.QuantityPerUnit)"
+                  Class="mb-4" />
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>

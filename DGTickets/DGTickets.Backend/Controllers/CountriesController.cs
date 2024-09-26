@@ -1,4 +1,7 @@
-﻿using DGTickets.Backend.Data;
+﻿using DGTickets.Backend.Controllers;
+using DGTickets.Backend.Data;
+using DGTickets.Backend.UnitsOfWork.Interfaces;
+using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,64 +10,62 @@ namespace Fantasy.Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CountriesController : ControllerBase
+public class CountriesController : GenericController<Country>
 {
-    private readonly DataContext _context;
+    private readonly ICountriesUnitOfWork _countriesUnitOfWork;
 
-    public CountriesController(DataContext context)
+    public CountriesController(IGenericUnitOfWork<Country> unitOfWork, ICountriesUnitOfWork countriesUnitOfWork) : base(unitOfWork)
     {
-        _context = context;
+        _countriesUnitOfWork = countriesUnitOfWork;
+    }
+
+    [HttpGet("paginated")]
+    public override async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+    {
+        var response = await _countriesUnitOfWork.GetAsync(pagination);
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return BadRequest();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAsync()
+    public override async Task<IActionResult> GetAsync()
     {
-        return Ok(await _context.Countries.ToListAsync());
+        var response = await _countriesUnitOfWork.GetAsync();
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return BadRequest();
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAsync(int id)
+    public override async Task<IActionResult> GetAsync(int id)
     {
-        var country = await _context.Countries.FindAsync(id);
-        if (country == null)
+        var response = await _countriesUnitOfWork.GetAsync(id);
+        if (response.WasSuccess)
         {
-            return NotFound();
+            return Ok(response.Result);
         }
-        return Ok(country);
+        return NotFound(response.Message);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> PostAsync(Country country)
+    [HttpGet("totalRecordsPaginated")]
+    public async Task<IActionResult> GetTotalRecordsAsync([FromQuery] PaginationDTO pagination)
     {
-        _context.Add(country);
-        await _context.SaveChangesAsync();
-        return Ok(country);
+        var action = await _countriesUnitOfWork.GetTotalRecordsAsync(pagination);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest();
     }
 
-    [HttpPut]
-    public async Task<IActionResult> PutAsync(Country country)
+    [HttpGet("combo")]
+    public async Task<IActionResult> GetComboAsync()
     {
-        var currentCountry = await _context.Countries.FindAsync(country.Id);
-        if (currentCountry == null)
-        {
-            return NotFound();
-        }
-        currentCountry.Name = country.Name;
-        _context.Update(currentCountry);
-        await _context.SaveChangesAsync();
-        return NoContent();
-    }
-
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync(int id)
-    {
-        var country = await _context.Countries.FindAsync(id);
-        if (country == null)
-        {
-            return NotFound();
-        }
-        _context.Remove(country);
-        await _context.SaveChangesAsync();
-        return NoContent();
+        return Ok(await _countriesUnitOfWork.GetComboAsync());
     }
 }

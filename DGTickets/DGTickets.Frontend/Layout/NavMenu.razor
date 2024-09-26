@@ -1,29 +1,15 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">DGTickets.Frontend</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+﻿<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Rounded.Home">@Localizer["Home"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/medicines" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">@Localizer["MedicineStock"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Map">@Localizer["Countries"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/states" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocationCity">@Localizer["States"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/cities" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ReduceCapacity">@Localizer["Cities"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/headquarters" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.HomeWork">@Localizer["Headquarters"]</MudNavLink>
+    <MudDivider />
+    <MudNavLink Href="/about" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Info">@Localizer["About"]</MudNavLink>
+</MudNavMenu>

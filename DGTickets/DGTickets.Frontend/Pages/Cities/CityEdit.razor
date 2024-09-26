@@ -1,0 +1,12 @@
+﻿@if (cityDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <CityForm @ref="cityForm" CityDTO="cityDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

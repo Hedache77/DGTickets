@@ -1,0 +1,12 @@
+﻿@if(medicineStock is null)
+{
+    <Loading/>
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <MedicineStockForm @ref="medicineStockForm" MedicineStock="medicineStock" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}
