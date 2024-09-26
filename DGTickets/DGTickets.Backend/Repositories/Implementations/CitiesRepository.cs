@@ -152,9 +152,9 @@ public class CitiesRepository : GenericRepository<City>, ICitiesRepository
         .ToListAsync();
     }
 
-    public async Task<IEnumerable<State>> GetComboAsync()
+    public async Task<IEnumerable<City>> GetComboAsync()
     {
-        return await _context.States
+        return await _context.Cities
         .OrderBy(x => x.Name)
         .ToListAsync();
     }

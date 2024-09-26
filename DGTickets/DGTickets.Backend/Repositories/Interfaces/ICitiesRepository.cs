@@ -8,7 +8,7 @@ public interface ICitiesRepository
 {
     Task<IEnumerable<City>> GetComboAsync(int stateId);
 
-    Task<IEnumerable<State>> GetComboAsync();
+    Task<IEnumerable<City>> GetComboAsync();
 
     Task<ActionResponse<City>> AddAsync(CityDTO cityDTO);
 
