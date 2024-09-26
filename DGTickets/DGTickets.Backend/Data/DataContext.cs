@@ -18,8 +18,6 @@ public class DataContext : DbContext
 
     public DbSet<Headquarter> Headquarters { get; set; }
 
-    public DbSet<Role> Roles { get; set; }
-
     public DbSet<MedicineStock> MedicinesStock { get; set; }
 
     public DbSet<Pqr> Pqrs { get; set; }
