@@ -20,6 +20,21 @@
         </ItemTemplate>
     </MudAutocomplete>
 
+    <MudTextField Label="@Localizer["Address"]"
+                  @bind-Value="@HeadquarterDTO.Address"
+                  For="@(() => HeadquarterDTO.Address)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["PhoneNumber"]"
+                  @bind-Value="@HeadquarterDTO.PhoneNumber"
+                  For="@(() => HeadquarterDTO.PhoneNumber)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Email"]"
+                  @bind-Value="@HeadquarterDTO.Email"
+                  For="@(() => HeadquarterDTO.Email)"
+                  Class="mb-4" />
+
     <MudButton Variant="Variant.Outlined"
                StartIcon="@Icons.Material.Filled.ArrowBack"
                Color="Color.Info"

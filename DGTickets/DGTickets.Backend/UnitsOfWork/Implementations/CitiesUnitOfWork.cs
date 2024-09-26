@@ -30,5 +30,5 @@ public class CitiesUnitOfWork : GenericUnitOfWork<City>, ICitiesUnitOfWork
 
     public async Task<ActionResponse<City>> UpdateAsync(CityDTO cityDTO) => await _citiesRepository.UpdateAsync(cityDTO);
 
-    public async Task<IEnumerable<State>> GetComboAsync() => await _citiesRepository.GetComboAsync();
+    public async Task<IEnumerable<City>> GetComboAsync() => await _citiesRepository.GetComboAsync();
 }

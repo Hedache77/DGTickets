@@ -31,6 +31,11 @@ public partial class HeadquarterForm
         editContext = new(HeadquarterDTO);
     }
 
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+
     protected override async Task OnInitializedAsync()
     {
         await LoadCitiesAsync();
