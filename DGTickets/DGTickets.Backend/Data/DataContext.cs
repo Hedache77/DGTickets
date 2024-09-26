@@ -16,6 +16,8 @@ public class DataContext : DbContext
 
     public DbSet<Role> Roles { get; set; }
 
+    public DbSet<Pqr> Pqrs { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
