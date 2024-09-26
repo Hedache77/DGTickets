@@ -79,6 +79,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         public static string All {
@@ -178,6 +187,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record not found..
         /// </summary>
         public static string ERR001 {
@@ -214,6 +232,24 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city id is not valid..
+        /// </summary>
+        public static string ERR005 {
+            get {
+                return ResourceManager.GetString("ERR005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The headquarter id is not valid..
+        /// </summary>
+        public static string ERR006 {
+            get {
+                return ResourceManager.GetString("ERR006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -228,6 +264,24 @@ namespace DGTickets.Shared.Resources {
         public static string Filter {
             get {
                 return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headquarter.
+        /// </summary>
+        public static string Headquarter {
+            get {
+                return ResourceManager.GetString("Headquarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headquarters.
+        /// </summary>
+        public static string Headquarters {
+            get {
+                return ResourceManager.GetString("Headquarters", resourceCulture);
             }
         }
         
@@ -264,6 +318,24 @@ namespace DGTickets.Shared.Resources {
         public static string ImageIsSquare {
             get {
                 return ResourceManager.GetString("ImageIsSquare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid email.
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid phone number.
+        /// </summary>
+        public static string InvalidPhoneNumber {
+            get {
+                return ResourceManager.GetString("InvalidPhoneNumber", resourceCulture);
             }
         }
         
@@ -345,6 +417,15 @@ namespace DGTickets.Shared.Resources {
         public static string NoRecords {
             get {
                 return ResourceManager.GetString("NoRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
             }
         }
         
@@ -462,6 +543,15 @@ namespace DGTickets.Shared.Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a City ---.
+        /// </summary>
+        public static string SelectACity {
+            get {
+                return ResourceManager.GetString("SelectACity", resourceCulture);
             }
         }
         

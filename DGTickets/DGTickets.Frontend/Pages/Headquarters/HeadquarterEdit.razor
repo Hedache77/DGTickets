@@ -1,0 +1,12 @@
+﻿@if(headquarterDTO is null)
+{
+    <Loading/>
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <HeadquarterForm @ref="headquarterForm" HeadquarterDTO="headquarterDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

@@ -1,16 +1,19 @@
 using DGTickets.Frontend.Repositories;
+using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
+using static MudBlazor.Colors;
 
-namespace DGTickets.Frontend.Pages.MedicinesStock;
+namespace DGTickets.Frontend.Pages.Headquarters;
 
-public partial class MedicineStockEdit
+public partial class HeadquarterEdit
 {
-    private MedicineStock? medicineStock;
-    private MedicineStockForm? medicineStockForm;
+    private HeadquarterDTO? headquarterDTO;
+    private HeadquarterForm? headquarterForm;
+    private City selectedCity = new();
 
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
@@ -21,13 +24,13 @@ public partial class MedicineStockEdit
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHttp = await Repository.GetAsync<MedicineStock>($"api/MedicinesStock/{Id}");
+        var responseHttp = await Repository.GetAsync<Headquarter>($"api/Headquarters/{Id}");
 
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                NavigationManager.NavigateTo("medicines");
+                NavigationManager.NavigateTo("headquarters");
             }
             else
             {
@@ -37,24 +40,23 @@ public partial class MedicineStockEdit
         }
         else
         {
-            var medicine = responseHttp.Response;
-            medicineStock = new MedicineStock()
+            var headquarter = responseHttp.Response;
+            headquarterDTO = new HeadquarterDTO()
             {
-                Id = medicine!.Id,
-                Name = medicine.Name,
-                Image = medicine.Image,
-                IsImageSquare = medicine.IsImageSquare,
-                Quantity = medicine.Quantity,
-                Manufacturer = medicine.Manufacturer,
-                UnitOfMeasure = medicine.UnitOfMeasure,
-                QuantityPerUnit = medicine.QuantityPerUnit
+                Id = headquarter!.Id,
+                Name = headquarter!.Name,
+                CityId = headquarter.CityId,
+                Address = headquarter.Address,
+                PhoneNumber = headquarter.PhoneNumber,
+                Email = headquarter.Email
             };
+            selectedCity = headquarter.City!;
         }
     }
 
     private async Task EditAsync()
     {
-        var responseHttp = await Repository.PutAsync("api/MedicinesStock/full", medicineStock);
+        var responseHttp = await Repository.PutAsync("api/Headquarters/full", headquarterDTO);
 
         if (responseHttp.Error)
         {
@@ -69,7 +71,7 @@ public partial class MedicineStockEdit
 
     private void Return()
     {
-        medicineStockForm!.FormPostedSuccessfully = true;
-        NavigationManager.NavigateTo("medicines");
+        headquarterForm!.FormPostedSuccessfully = true;
+        NavigationManager.NavigateTo("headquarters");
     }
 }
