@@ -1,4 +1,5 @@
-﻿using DGTickets.Backend.UnitsOfWork.Interfaces;
+﻿using DGTickets.Backend.UnitsOfWork.Implementations;
+using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -64,6 +65,12 @@ public class CitiesController : GenericController<City>
     public async Task<IActionResult> GetComboAsync(int stateId)
     {
         return Ok(await _citiesUnitOfWork.GetComboAsync(stateId));
+    }
+
+    [HttpGet("combo")]
+    public async Task<IActionResult> GetComboAsync()
+    {
+        return Ok(await _citiesUnitOfWork.GetComboAsync());
     }
 
     [HttpPost("full")]

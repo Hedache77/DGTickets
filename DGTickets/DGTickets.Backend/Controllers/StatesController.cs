@@ -67,6 +67,12 @@ public class StatesController : GenericController<State>
         return Ok(await _statesUnitOfWork.GetComboAsync(countryId));
     }
 
+    [HttpGet("combo")]
+    public async Task<IActionResult> GetComboAsync()
+    {
+        return Ok(await _statesUnitOfWork.GetComboAsync());
+    }
+
     [HttpPost("full")]
     public async Task<IActionResult> PostAsync(StateDTO stateDTO)
     {
@@ -76,12 +82,6 @@ public class StatesController : GenericController<State>
             return Ok(action.Result);
         }
         return BadRequest(action.Message);
-    }
-
-    [HttpGet("combo")]
-    public async Task<IActionResult> GetComboAsync()
-    {
-        return Ok(await _statesUnitOfWork.GetComboAsync());
     }
 
     [HttpPut("full")]

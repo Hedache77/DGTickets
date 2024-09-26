@@ -152,6 +152,13 @@ public class CitiesRepository : GenericRepository<City>, ICitiesRepository
         .ToListAsync();
     }
 
+    public async Task<IEnumerable<State>> GetComboAsync()
+    {
+        return await _context.States
+        .OrderBy(x => x.Name)
+        .ToListAsync();
+    }
+
     public async Task<ActionResponse<City>> UpdateAsync(CityDTO cityDTO)
     {
         var currentCity = await _context.Cities.FindAsync(cityDTO.Id);
