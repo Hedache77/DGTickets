@@ -27,5 +27,6 @@ public class HeadquarterDTO
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Email { get; set; } = null!;
 
+    [Display(Name = "City", ResourceType = typeof(Literals))]
     public int CityId { get; set; }
 }
