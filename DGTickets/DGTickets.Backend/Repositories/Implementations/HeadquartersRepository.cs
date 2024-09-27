@@ -130,6 +130,13 @@ public class HeadquartersRepository : GenericRepository<Headquarter>, IHeadquart
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Headquarter>> GetComboAsync()
+    {
+        return await _context.Headquarters
+        .OrderBy(x => x.Name)
+        .ToListAsync();
+    }
+
     public async Task<ActionResponse<Headquarter>> UpdateAsync(HeadquarterDTO headquarterDTO)
     {
         var currentHeadquarter = await _context.Headquarters.FindAsync(headquarterDTO.Id);
