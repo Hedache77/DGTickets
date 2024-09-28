@@ -1,0 +1,12 @@
+﻿@if(moduleDTO is null)
+{
+    <Loading/>
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <ModuleForm @ref="moduleForm" ModuleDTO="moduleDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

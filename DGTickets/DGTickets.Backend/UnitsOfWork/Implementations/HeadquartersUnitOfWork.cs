@@ -26,6 +26,8 @@ public class HeadquartersUnitOfWork : GenericUnitOfWork<Headquarter>, IHeadquart
 
     public async Task<IEnumerable<Headquarter>> GetComboAsync(int cityId) => await _headquartersRepository.GetComboAsync(cityId);
 
+    public async Task<IEnumerable<Headquarter>> GetComboAsync() => await _headquartersRepository.GetComboAsync();
+
     public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _headquartersRepository.GetTotalRecordsAsync(pagination);
 
     public async Task<ActionResponse<Headquarter>> UpdateAsync(HeadquarterDTO headquarterDTO) => await _headquartersRepository.UpdateAsync(headquarterDTO);

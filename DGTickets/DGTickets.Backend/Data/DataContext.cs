@@ -18,6 +18,8 @@ public class DataContext : DbContext
 
     public DbSet<Headquarter> Headquarters { get; set; }
 
+    public DbSet<Module> Modules { get; set; }
+
     public DbSet<Role> Roles { get; set; }
 
     public DbSet<MedicineStock> MedicinesStock { get; set; }
@@ -30,6 +32,7 @@ public class DataContext : DbContext
         modelBuilder.Entity<State>().HasIndex(x => new { x.CountryId, x.Name }).IsUnique();
         modelBuilder.Entity<City>().HasIndex(x => new { x.StateId, x.Name }).IsUnique();
         modelBuilder.Entity<Headquarter>().HasIndex(x => new { x.CityId, x.Name }).IsUnique();
+        modelBuilder.Entity<Module>().HasIndex(x => new { x.HeadquarterId, x.Name }).IsUnique();
 
         DisableCascadingDelete(modelBuilder);
     }
