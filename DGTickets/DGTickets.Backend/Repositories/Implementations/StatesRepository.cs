@@ -100,7 +100,7 @@ public class StatesRepository : GenericRepository<State>, IStatesRepository
             return new ActionResponse<State>
             {
                 WasSuccess = false,
-                Message = "ERR004"
+                Message = "ERR009"
             };
         }
 

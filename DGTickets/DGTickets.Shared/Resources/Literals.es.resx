@@ -315,4 +315,19 @@
   <data name="SelectAHeadquarter" xml:space="preserve">
     <value>-- Selecciona un Módulo ---</value>
   </data>
+  <data name="SelectACountry" xml:space="preserve">
+    <value>-- Seleccione un país --</value>
+  </data>
+  <data name="SelectAState" xml:space="preserve">
+    <value>-- Seleccione un Departamento --</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Países</value>
+  </data>
+  <data name="ERR008" xml:space="preserve">
+    <value>El departamento es obligatorio</value>
+  </data>
+  <data name="ERR009" xml:space="preserve">
+    <value>El País es obligatorio</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGTickets.Shared.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,8 +12,9 @@ public class Country
 {
     public int Id { get; set; }
 
-    [MaxLength(100)]
-    [Required]
+    [Display(Name = "Country", ResourceType = typeof(Literals))]
+    [MaxLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
 
     public ICollection<State>? States { get; set; }

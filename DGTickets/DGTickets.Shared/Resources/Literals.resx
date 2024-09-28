@@ -315,4 +315,19 @@
   <data name="SelectAHeadquarter" xml:space="preserve">
     <value>-- Select a Headquarter ---</value>
   </data>
+  <data name="SelectACountry" xml:space="preserve">
+    <value>-- Select a Country --</value>
+  </data>
+  <data name="SelectAState" xml:space="preserve">
+    <value>-- Select a State --</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="ERR008" xml:space="preserve">
+    <value>The State is required</value>
+  </data>
+  <data name="ERR009" xml:space="preserve">
+    <value>The Country is required</value>
+  </data>
 </root>
