@@ -6,6 +6,8 @@ namespace DGTickets.Backend.Repositories.Interfaces;
 
 public interface IHeadquartersRepository
 {
+    Task<IEnumerable<Headquarter>> GetComboAsync();
+
     Task<IEnumerable<Headquarter>> GetComboAsync(int cityId);
 
     Task<ActionResponse<Headquarter>> AddAsync(HeadquarterDTO headquarterDTO);

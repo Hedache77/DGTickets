@@ -38,6 +38,9 @@ builder.Services.AddScoped<ICitiesUnitOfWork, CitiesUnitOfWork>();
 builder.Services.AddScoped<IHeadquartersRepository, HeadquartersRepository>();
 builder.Services.AddScoped<IHeadquartersUnitOfWork, HeadquartersUnitOfWork>();
 
+builder.Services.AddScoped<IModulesRepository, ModulesRepository>();
+builder.Services.AddScoped<IModulesUnitOfWork, ModulesUnitOfWork>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

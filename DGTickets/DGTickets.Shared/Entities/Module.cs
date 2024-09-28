@@ -1,23 +1,18 @@
 ﻿using DGTickets.Shared.Resources;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DGTickets.Shared.Entities;
 
-public class Country
+public class Module
 {
     public int Id { get; set; }
 
-    [Display(Name = "Country", ResourceType = typeof(Literals))]
+    [Display(Name = "Module", ResourceType = typeof(Literals))]
     [MaxLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
 
-    public ICollection<State>? States { get; set; }
+    public Headquarter? Headquarter { get; set; }
 
-    public int StatesCount => States == null ? 0 : States.Count;
+    public int HeadquarterId { get; set; }
 }

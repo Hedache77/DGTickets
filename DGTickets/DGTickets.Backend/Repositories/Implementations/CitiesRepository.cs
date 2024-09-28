@@ -100,7 +100,7 @@ public class CitiesRepository : GenericRepository<City>, ICitiesRepository
             return new ActionResponse<City>
             {
                 WasSuccess = false,
-                Message = "ERR004"
+                Message = "ERR008"
             };
         }
 
@@ -177,7 +177,7 @@ public class CitiesRepository : GenericRepository<City>, ICitiesRepository
             return new ActionResponse<City>
             {
                 WasSuccess = false,
-                Message = "ERR004"
+                Message = "ERR008"
             };
         }
 
