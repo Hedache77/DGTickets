@@ -24,6 +24,8 @@ public class DataContext : DbContext
 
     public DbSet<MedicineStock> MedicinesStock { get; set; }
 
+    public DbSet<Rating> Ratings { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -33,6 +35,7 @@ public class DataContext : DbContext
         modelBuilder.Entity<City>().HasIndex(x => new { x.StateId, x.Name }).IsUnique();
         modelBuilder.Entity<Headquarter>().HasIndex(x => new { x.CityId, x.Name }).IsUnique();
         modelBuilder.Entity<Module>().HasIndex(x => new { x.HeadquarterId, x.Name }).IsUnique();
+        modelBuilder.Entity<Rating>().HasIndex(x => x.Code).IsUnique();
 
         DisableCascadingDelete(modelBuilder);
     }

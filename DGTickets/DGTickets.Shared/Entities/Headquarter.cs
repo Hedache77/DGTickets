@@ -30,4 +30,8 @@ public class Headquarter
     public City? City { get; set; }
 
     public int CityId { get; set; }
+
+    public ICollection<Module>? Modules { get; set; }
+
+    public int ModulesCount => Modules == null ? 0 : Modules.Count;
 }
