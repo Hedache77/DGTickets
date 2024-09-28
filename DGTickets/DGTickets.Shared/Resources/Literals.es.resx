@@ -339,4 +339,7 @@
   <data name="Code" xml:space="preserve">
     <value>Código</value>
   </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>Calificaciones</value>
+  </data>
 </root>

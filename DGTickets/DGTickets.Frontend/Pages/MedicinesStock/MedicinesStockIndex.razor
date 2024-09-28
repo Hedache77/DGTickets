@@ -8,6 +8,7 @@ else
 {
     <MudTable Items="@MedicinesStock"
               @ref="table"
+              Height="500px"
               ServerData="LoadListAsync"
               Dense="true"
               Hover="true"
@@ -35,10 +36,11 @@ else
             <MudTh>@Localizer["UnitOfMeasure"]</MudTh>
             <MudTh>@Localizer["QuantityPerUnit"]</MudTh>
             <MudTh>@Localizer["Actions"]</MudTh>
+            <MudTh/>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Name</MudTd>
-            <MudTd>
+            <MudTd Style="text-align:center">
                 @if (context.IsImageSquare)
                 {
                     <MudImage Src="@context.ImageFull" Width="60" Height="60" />
@@ -48,7 +50,7 @@ else
                     <MudImage Src="@context.ImageFull" Width="90" Height="60" />
                 }
             </MudTd>
-            <MudTd>
+            <MudTd Style="text-align:center">
                 @if (context.IsImageSquare)
                 {
                     <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" />
@@ -70,6 +72,8 @@ else
                         <MudIcon Icon="@Icons.Material.Filled.Edit" />
                     </MudButton>
                 </MudTooltip>
+            </MudTd>
+            <MudTd>
                 <MudTooltip Text="@Localizer["Delete"]">
                     <MudButton Variant="Variant.Filled"
                                Color="Color.Error"

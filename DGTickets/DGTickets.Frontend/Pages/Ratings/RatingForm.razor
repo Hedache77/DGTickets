@@ -1,0 +1,33 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <MudTextField Label="@Localizer["Code"]"
+                  @bind-Value="@Rating.Code"
+                  For="@(() => Rating.Code)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Rating"]"
+                  @bind-Value="@Rating.Value"
+                  For="@(() => Rating.Value)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Description"]"
+                  @bind-Value="@Rating.Description"
+                  For="@(() => Rating.Description)"
+                  Class="mb-4" />
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>

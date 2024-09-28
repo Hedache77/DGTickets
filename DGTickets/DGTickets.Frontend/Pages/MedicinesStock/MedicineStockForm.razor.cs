@@ -12,7 +12,6 @@ namespace DGTickets.Frontend.Pages.MedicinesStock;
 public partial class MedicineStockForm
 {
     private EditContext editContext = null!;
-    private Country selectedMedicine = new();
     private List<MedicineStock>? medicinesStock;
     private string? imageUrl;
     private string? shapeImageMessage;
@@ -80,18 +79,5 @@ public partial class MedicineStockForm
         }
 
         context.PreventNavigation();
-    }
-
-    private async Task<IEnumerable<MedicineStock>> SearchMedicine(string searchText, CancellationToken cancellationToken)
-    {
-        await Task.Delay(5);
-        if (string.IsNullOrWhiteSpace(searchText))
-        {
-            return medicinesStock!;
-        }
-
-        return medicinesStock!
-            .Where(x => x.Name.Contains(searchText, StringComparison.InvariantCultureIgnoreCase))
-            .ToList();
     }
 }
