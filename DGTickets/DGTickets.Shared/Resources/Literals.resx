@@ -315,6 +315,12 @@
   <data name="SelectAHeadquarter" xml:space="preserve">
     <value>-- Select a Headquarter ---</value>
   </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="SelectACountry" xml:space="preserve">
     <value>-- Select a Country --</value>
   </data>
@@ -329,5 +335,8 @@
   </data>
   <data name="ERR009" xml:space="preserve">
     <value>The Country is required</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
   </data>
 </root>
