@@ -1,4 +1,5 @@
-﻿@page "/cities"
+﻿@page "/ratings"
+
 
 @if (loading)
 {
@@ -6,7 +7,7 @@
 }
 else
 {
-    <MudTable Items="@Cities"
+    <MudTable Items="@Ratings"
               @ref="table"
               ServerData="LoadListAsync"
               Dense="true"
@@ -16,7 +17,7 @@ else
               FixedFooter="true">
         <ToolBarContent>
             <div class="d-flex justify-content-between">
-                <MudText Typo="Typo.h6" Class="me-4"> @Localizer["Cities"]</MudText>
+                <MudText Typo="Typo.h6" Class="me-4"> @Localizer["Ratings"]</MudText>
                 <MudButton Variant="Variant.Outlined"
                            EndIcon="@Icons.Material.Filled.Add"
                            Color="Color.Info" OnClick="@(() => ShowModalAsync())">
@@ -27,17 +28,17 @@ else
             <FilterComponent ApplyFilter="SetFilterValue" />
         </ToolBarContent>
         <HeaderContent>
-            <MudTh>@Localizer["City"]</MudTh>
-            <MudTh>@Localizer["Image"]</MudTh>
-            <MudTh>@Localizer["State"]</MudTh>
+            <MudTh>@Localizer["Code"]</MudTh>
+            <MudTh>@Localizer["Rating"]</MudTh>
+            <MudTh>@Localizer["Description"]</MudTh>
             <MudTh>@Localizer["Actions"]</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd>@context.Name</MudTd>
+            <MudTd>@context.Code</MudTd>
             <MudTd>
-                <MudImage Fluid="true" Src="@context.ImageFull" Width="90" Height="60" Class="rounded-lg" />
+                <MudRating SelectedValue="@context.Value" ReadOnly="true" Size="Size.Small" />
             </MudTd>
-            <MudTd>@context.State!.Name</MudTd>
+            <MudTd>@context.Description</MudTd>
             <MudTd>
                 <MudTooltip Text="@Localizer["Edit"]">
                     <MudButton Variant="Variant.Filled"

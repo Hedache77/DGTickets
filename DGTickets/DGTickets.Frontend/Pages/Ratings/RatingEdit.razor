@@ -1,0 +1,12 @@
+﻿@if (rating is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <RatingForm @ref="ratingForm" Rating="rating" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}
