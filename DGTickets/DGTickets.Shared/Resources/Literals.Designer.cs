@@ -142,6 +142,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Countries.
+        /// </summary>
+        public static string Countries {
+            get {
+                return ResourceManager.GetString("Countries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
@@ -246,6 +255,33 @@ namespace DGTickets.Shared.Resources {
         public static string ERR006 {
             get {
                 return ResourceManager.GetString("ERR006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The module id is not valid..
+        /// </summary>
+        public static string ERR007 {
+            get {
+                return ResourceManager.GetString("ERR007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The State is required.
+        /// </summary>
+        public static string ERR008 {
+            get {
+                return ResourceManager.GetString("ERR008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Country is required.
+        /// </summary>
+        public static string ERR009 {
+            get {
+                return ResourceManager.GetString("ERR009", resourceCulture);
             }
         }
         
@@ -390,6 +426,24 @@ namespace DGTickets.Shared.Resources {
         public static string MedicineStock {
             get {
                 return ResourceManager.GetString("MedicineStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Module.
+        /// </summary>
+        public static string Module {
+            get {
+                return ResourceManager.GetString("Module", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modules.
+        /// </summary>
+        public static string Modules {
+            get {
+                return ResourceManager.GetString("Modules", resourceCulture);
             }
         }
         
@@ -552,6 +606,33 @@ namespace DGTickets.Shared.Resources {
         public static string SelectACity {
             get {
                 return ResourceManager.GetString("SelectACity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a Country --.
+        /// </summary>
+        public static string SelectACountry {
+            get {
+                return ResourceManager.GetString("SelectACountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a Headquarter ---.
+        /// </summary>
+        public static string SelectAHeadquarter {
+            get {
+                return ResourceManager.GetString("SelectAHeadquarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a State --.
+        /// </summary>
+        public static string SelectAState {
+            get {
+                return ResourceManager.GetString("SelectAState", resourceCulture);
             }
         }
         

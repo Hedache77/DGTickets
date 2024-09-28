@@ -1,5 +1,4 @@
-﻿using DGTickets.Backend.UnitsOfWork.Implementations;
-using DGTickets.Backend.UnitsOfWork.Interfaces;
+﻿using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -8,19 +7,19 @@ namespace DGTickets.Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class HeadquartersController : GenericController<Headquarter>
+public class ModulesController : GenericController<Module>
 {
-    private readonly IHeadquartersUnitOfWork _headquartersUnitOfWork;
+    private readonly IModulesUnitOfWork _modulesUnitOfWork;
 
-    public HeadquartersController(IGenericUnitOfWork<Headquarter> unitOfWork, IHeadquartersUnitOfWork headquartersUnitOfWork) : base(unitOfWork)
+    public ModulesController(IGenericUnitOfWork<Module> unitOfWork, IModulesUnitOfWork modulesUnitOfWork) : base(unitOfWork)
     {
-        _headquartersUnitOfWork = headquartersUnitOfWork;
+        _modulesUnitOfWork = modulesUnitOfWork;
     }
 
     [HttpGet]
     public override async Task<IActionResult> GetAsync()
     {
-        var response = await _headquartersUnitOfWork.GetAsync();
+        var response = await _modulesUnitOfWork.GetAsync();
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -31,7 +30,7 @@ public class HeadquartersController : GenericController<Headquarter>
     [HttpGet("{id}")]
     public override async Task<IActionResult> GetAsync(int id)
     {
-        var response = await _headquartersUnitOfWork.GetAsync(id);
+        var response = await _modulesUnitOfWork.GetAsync(id);
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -42,7 +41,7 @@ public class HeadquartersController : GenericController<Headquarter>
     [HttpGet("paginated")]
     public override async Task<IActionResult> GetAsync(PaginationDTO pagination)
     {
-        var response = await _headquartersUnitOfWork.GetAsync(pagination);
+        var response = await _modulesUnitOfWork.GetAsync(pagination);
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -53,7 +52,7 @@ public class HeadquartersController : GenericController<Headquarter>
     [HttpGet("totalRecordsPaginated")]
     public async Task<IActionResult> GetTotalRecordsAsync([FromQuery] PaginationDTO pagination)
     {
-        var action = await _headquartersUnitOfWork.GetTotalRecordsAsync(pagination);
+        var action = await _modulesUnitOfWork.GetTotalRecordsAsync(pagination);
         if (action.WasSuccess)
         {
             return Ok(action.Result);
@@ -61,22 +60,22 @@ public class HeadquartersController : GenericController<Headquarter>
         return BadRequest();
     }
 
-    [HttpGet("combo/{cityId:int}")]
-    public async Task<IActionResult> GetComboAsync(int cityId)
+    [HttpGet("combo/{headquarterId:int}")]
+    public async Task<IActionResult> GetComboAsync(int headquarterId)
     {
-        return Ok(await _headquartersUnitOfWork.GetComboAsync(cityId));
+        return Ok(await _modulesUnitOfWork.GetComboAsync(headquarterId));
     }
 
     [HttpGet("combo")]
     public async Task<IActionResult> GetComboAsync()
     {
-        return Ok(await _headquartersUnitOfWork.GetComboAsync());
+        return Ok(await _modulesUnitOfWork.GetComboAsync());
     }
 
     [HttpPost("full")]
-    public async Task<IActionResult> PostAsync(HeadquarterDTO headquarterDTO)
+    public async Task<IActionResult> PostAsync(ModuleDTO moduleDTO)
     {
-        var action = await _headquartersUnitOfWork.AddAsync(headquarterDTO);
+        var action = await _modulesUnitOfWork.AddAsync(moduleDTO);
         if (action.WasSuccess)
         {
             return Ok(action.Result);
@@ -85,9 +84,9 @@ public class HeadquartersController : GenericController<Headquarter>
     }
 
     [HttpPut("full")]
-    public async Task<IActionResult> PutAsync(HeadquarterDTO headquarterDTO)
+    public async Task<IActionResult> PutAsync(ModuleDTO moduleDTO)
     {
-        var action = await _headquartersUnitOfWork.UpdateAsync(headquarterDTO);
+        var action = await _modulesUnitOfWork.UpdateAsync(moduleDTO);
         if (action.WasSuccess)
         {
             return Ok(action.Result);
