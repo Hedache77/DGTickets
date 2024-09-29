@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DGTickets.Shared.Entities;
 
@@ -16,6 +17,10 @@ public class Country
     [MaxLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
+
+    public string? Image { get; set; }
+
+    public string ImageFull => string.IsNullOrEmpty(Image) ? "/images/NoImage.png" : Image;
 
     public ICollection<State>? States { get; set; }
 

@@ -19,7 +19,7 @@ public partial class CountryCreate
 
     private async Task CreateAsync()
     {
-        var responseHttp = await Repository.PostAsync("/api/countries", country);
+        var responseHttp = await Repository.PostAsync("/api/countries/full", country);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();

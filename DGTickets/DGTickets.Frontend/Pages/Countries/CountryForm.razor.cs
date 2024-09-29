@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using DGTickets.Shared.DTOs;
 
 namespace DGTickets.Frontend.Pages.Countries;
 
 public partial class CountryForm
 {
     private EditContext editContext = null!;
+    private string? imageUrl;
 
     protected override void OnInitialized()
     {
@@ -25,6 +27,22 @@ public partial class CountryForm
 
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (!string.IsNullOrEmpty(Country.Image))
+        {
+            imageUrl = Country.Image;
+            Country.Image = null;
+        }
+    }
+
+    private void ImageSelected(string imagenBase64)
+    {
+        Country.Image = imagenBase64;
+        imageUrl = null;
+    }
 
     private async Task OnBeforeInternalNavigation(LocationChangingContext context)
     {

@@ -11,10 +11,101 @@ namespace DGTickets.Backend.Repositories.Implementations;
 public class CountriesRepository : GenericRepository<Country>, ICountriesRepository
 {
     private readonly DataContext _context;
+    private readonly IFileStorage _fileStorage;
 
-    public CountriesRepository(DataContext context) : base(context)
+    public CountriesRepository(DataContext context, IFileStorage fileStorage) : base(context)
     {
         _context = context;
+        _fileStorage = fileStorage;
+    }
+
+    public override async Task<ActionResponse<Country>> AddAsync(Country country)
+    {
+        var countryNew = new Country
+        {
+            Name = country.Name,
+        };
+
+        if (!string.IsNullOrEmpty(country.Image))
+        {
+            var imageBase64 = Convert.FromBase64String(country.Image!);
+            countryNew.Image = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "countries");
+        }
+
+        _context.Add(countryNew);
+        try
+        {
+            await _context.SaveChangesAsync();
+            return new ActionResponse<Country>
+            {
+                WasSuccess = true,
+                Result = countryNew
+            };
+        }
+        catch (DbUpdateException)
+        {
+            return new ActionResponse<Country>
+            {
+                WasSuccess = false,
+                Message = "ERR003"
+            };
+        }
+        catch (Exception exception)
+        {
+            return new ActionResponse<Country>
+            {
+                WasSuccess = false,
+                Message = exception.Message
+            };
+        }
+    }
+
+    public override async Task<ActionResponse<Country>> UpdateAsync(Country country)
+    {
+        var currentCountry = await _context.Countries.FindAsync(country.Id);
+        if (currentCountry == null)
+        {
+            return new ActionResponse<Country>
+            {
+                WasSuccess = false,
+                Message = "ERR004"
+            };
+        }
+
+        if (!string.IsNullOrEmpty(country.Image))
+        {
+            var imageBase64 = Convert.FromBase64String(country.Image!);
+            currentCountry.Image = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "countries");
+        }
+
+        currentCountry.Name = country.Name;
+
+        _context.Update(currentCountry);
+        try
+        {
+            await _context.SaveChangesAsync();
+            return new ActionResponse<Country>
+            {
+                WasSuccess = true,
+                Result = currentCountry
+            };
+        }
+        catch (DbUpdateException)
+        {
+            return new ActionResponse<Country>
+            {
+                WasSuccess = false,
+                Message = "ERR003"
+            };
+        }
+        catch (Exception exception)
+        {
+            return new ActionResponse<Country>
+            {
+                WasSuccess = false,
+                Message = exception.Message
+            };
+        }
     }
 
     public override async Task<ActionResponse<Country>> GetAsync(int id)
