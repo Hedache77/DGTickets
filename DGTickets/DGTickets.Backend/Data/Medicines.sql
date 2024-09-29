@@ -1,3 +1,18 @@
 ﻿SET IDENTITY_INSERT [dbo].[MedicinesStock] ON 
 INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (1, N'ACETAMINOFEN', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (2, N'Acetaminofén2', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (3, N'Acetaminofén3', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (4, N'Acetaminofén4', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (5, N'Acetaminofén5', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (6, N'Acetaminofén6', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (7, N'Acetaminofén7', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (8, N'Acetaminofén8', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (9, N'Acetaminofén9', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (10, N'Acetaminofén10', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (11, N'Acetaminofén11', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (12, N'Acetaminofén12', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (13, N'Acetaminofén13', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (14, N'Acetaminofén14', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (15, N'Acetaminofén15', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
+INSERT [dbo].[MedicinesStock] ([Id], [Name], [Quantity], [Manufacturer], [UnitOfMeasure], [QuantityPerUnit], [Image], [IsImageSquare]) VALUES (16, N'Acetaminofén16', 2, N'Genfar', 'mg', 2, N'/images/NoImage.png', '0');
 SET IDENTITY_INSERT [dbo].[MedicinesStock] OFF
