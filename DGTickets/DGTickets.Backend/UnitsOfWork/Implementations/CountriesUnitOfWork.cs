@@ -1,4 +1,5 @@
-﻿using DGTickets.Backend.Repositories.Interfaces;
+﻿using DGTickets.Backend.Repositories.Implementations;
+using DGTickets.Backend.Repositories.Interfaces;
 using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
@@ -14,6 +15,10 @@ public class CountriesUnitOfWork : GenericUnitOfWork<Country>, ICountriesUnitOfW
     {
         _countriesRepository = countriesRepository;
     }
+
+    public override async Task<ActionResponse<Country>> AddAsync(Country country) => await _countriesRepository.AddAsync(country);
+
+    public override async Task<ActionResponse<Country>> UpdateAsync(Country country) => await _countriesRepository.UpdateAsync(country);
 
     public override async Task<ActionResponse<IEnumerable<Country>>> GetAsync() => await _countriesRepository.GetAsync();
 

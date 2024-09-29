@@ -8,6 +8,10 @@ public interface ICountriesRepository
 {
     Task<ActionResponse<Country>> GetAsync(int id);
 
+    Task<ActionResponse<Country>> AddAsync(Country country);
+
+    Task<ActionResponse<Country>> UpdateAsync(Country country);
+
     Task<ActionResponse<IEnumerable<Country>>> GetAsync();
 
     Task<IEnumerable<Country>> GetComboAsync();

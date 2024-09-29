@@ -1,5 +1,6 @@
 ﻿using DGTickets.Backend.Controllers;
 using DGTickets.Backend.Data;
+using DGTickets.Backend.UnitsOfWork.Implementations;
 using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
@@ -17,6 +18,17 @@ public class CountriesController : GenericController<Country>
     public CountriesController(IGenericUnitOfWork<Country> unitOfWork, ICountriesUnitOfWork countriesUnitOfWork) : base(unitOfWork)
     {
         _countriesUnitOfWork = countriesUnitOfWork;
+    }
+
+    [HttpPost("full")]
+    public override async Task<IActionResult> PostAsync(Country country)
+    {
+        var action = await _countriesUnitOfWork.AddAsync(country);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest(action.Message);
     }
 
     [HttpGet("paginated")]
