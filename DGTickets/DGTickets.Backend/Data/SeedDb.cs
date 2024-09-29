@@ -23,6 +23,7 @@ public class SeedDb
         await CheckMedicinesAsync();
         await CheckHeadquartersAsync();
         await CheckRatingsAsync();
+        await CheckModulesAsync();
     }
 
     private async Task CheckCountriesAsync()
@@ -51,6 +52,7 @@ public class SeedDb
         {
             var citiesSQLScript = File.ReadAllText("Data\\Cities.sql");
             await _context.Database.ExecuteSqlRawAsync(citiesSQLScript);
+            await CheckImagesCitiesAsync();
         }
     }
 
@@ -60,6 +62,7 @@ public class SeedDb
         {
             var medicinesSQLScript = File.ReadAllText("Data\\Medicines.sql");
             await _context.Database.ExecuteSqlRawAsync(medicinesSQLScript);
+            await CheckImagesMedicineAsync();
         }
     }
 
@@ -78,6 +81,15 @@ public class SeedDb
         {
             var ratingsSQLScript = File.ReadAllText("Data\\Ratings.sql");
             await _context.Database.ExecuteSqlRawAsync(ratingsSQLScript);
+        }
+    }
+
+    private async Task CheckModulesAsync()
+    {
+        if (!_context.Modules.Any())
+        {
+            var modulesSQLScript = File.ReadAllText("Data\\Modules.sql");
+            await _context.Database.ExecuteSqlRawAsync(modulesSQLScript);
         }
     }
 
@@ -114,6 +126,44 @@ public class SeedDb
 
             state.Image = imagePath;
             _context.Entry(state).Property(c => c.Image).IsModified = true;
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    private async Task CheckImagesMedicineAsync()
+    {
+        foreach (var medicine in _context.MedicinesStock)
+        {
+            var imagePath = string.Empty;
+            var filePath = $"{Environment.CurrentDirectory}\\Images\\Medicines\\{medicine.Name}.png";
+            if (File.Exists(filePath))
+            {
+                var fileBytes = File.ReadAllBytes(filePath);
+                imagePath = await _fileStorage.SaveFileAsync(fileBytes, "jpg", "medicines");
+            }
+
+            medicine.Image = imagePath;
+            _context.Entry(medicine).Property(c => c.Image).IsModified = true;
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    private async Task CheckImagesCitiesAsync()
+    {
+        foreach (var cities in _context.Cities)
+        {
+            var imagePath = string.Empty;
+            var filePath = $"{Environment.CurrentDirectory}\\Images\\Cities\\{cities.Name}.png";
+            if (File.Exists(filePath))
+            {
+                var fileBytes = File.ReadAllBytes(filePath);
+                imagePath = await _fileStorage.SaveFileAsync(fileBytes, "jpg", "cities");
+            }
+
+            cities.Image = imagePath;
+            _context.Entry(cities).Property(c => c.Image).IsModified = true;
         }
 
         await _context.SaveChangesAsync();
