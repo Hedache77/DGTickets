@@ -1,19 +1,24 @@
 ﻿<MudNavMenu>
     <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Rounded.Home">@Localizer["Home"]</MudNavLink>
     <MudDivider />
-    <MudNavLink Href="/medicines" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">@Localizer["MedicineStock"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Map">@Localizer["Countries"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/states" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocationCity">@Localizer["States"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/cities" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ReduceCapacity">@Localizer["Cities"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/headquarters" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.HomeWork">@Localizer["Headquarters"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/modules" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.AssignmentInd">@Localizer["Modules"]</MudNavLink>
-    <MudDivider />
-    <MudNavLink Href="/ratings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ThumbsUpDown">@Localizer["Ratings"]</MudNavLink>
-    <MudDivider />
+    <AuthorizeView Roles="Admin">
+        <Authorized>
+            <MudNavLink Href="/medicines" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">@Localizer["MedicineStock"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Map">@Localizer["Countries"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/states" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocationCity">@Localizer["States"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/cities" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ReduceCapacity">@Localizer["Cities"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/headquarters" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.HomeWork">@Localizer["Headquarters"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/modules" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.AssignmentInd">@Localizer["Modules"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/ratings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ThumbsUpDown">@Localizer["Ratings"]</MudNavLink>
+            <MudDivider />
+        </Authorized>
+    </AuthorizeView>
+
     <MudNavLink Href="/about" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Info">@Localizer["About"]</MudNavLink>
 </MudNavMenu>

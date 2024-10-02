@@ -1,10 +1,15 @@
-﻿using DGTickets.Shared.Entities;
+﻿using DGTickets.Shared.DTOs;
+using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace DGTickets.Backend.Repositories.Interfaces;
 
 public interface IUsersRepository
 {
+    Task<SignInResult> LoginAsync(LoginDTO model);
+
+    Task LogoutAsync();
+
     Task<User> GetUserAsync(string email);
 
     Task<IdentityResult> AddUserAsync(User user, string password);

@@ -357,4 +357,37 @@
   <data name="UserType" xml:space="preserve">
     <value>Tipo de Usuario</value>
   </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>No Encontrado</value>
+  </data>
+  <data name="NothingInRoute" xml:space="preserve">
+    <value>Lo sentimos no hay nada en esta ruta.</value>
+  </data>
+  <data name="Authorizing" xml:space="preserve">
+    <value>Autorizando...</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>No estas autorizado para ver este contenido...</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="LengthField" xml:space="preserve">
+    <value>El campo {0} debe tener entre {2} y {1} carácteres.</value>
+  </data>
+  <data name="PasswordAndConfirmationDifferent" xml:space="preserve">
+    <value>La contraseña y la confirmación no son iguales.</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Confirmación de contraseña</value>
+  </data>
+  <data name="ValidEmail" xml:space="preserve">
+    <value>Debes ingresar un correo válido.</value>
+  </data>
+  <data name="MinLength" xml:space="preserve">
+    <value>El campo {0} debe tener al menos {1} carácteres.</value>
+  </data>
+  <data name="ERR010" xml:space="preserve">
+    <value>Email o contraseña incorrectos.</value>
+  </data>
 </root>
