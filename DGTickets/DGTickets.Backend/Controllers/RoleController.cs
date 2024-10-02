@@ -1,14 +1,16 @@
 ﻿using DGTickets.Backend.Data;
 using DGTickets.Shared.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DGTickets.Backend.Controllers;
 
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
-
-public class RoleController: ControllerBase
+public class RoleController : ControllerBase
 {
     private readonly DataContext _context;
 
