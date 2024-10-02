@@ -4,6 +4,8 @@ using DGTickets.Backend.Repositories.Implementations;
 using DGTickets.Backend.Repositories.Interfaces;
 using DGTickets.Backend.UnitsOfWork.Implementations;
 using DGTickets.Backend.UnitsOfWork.Interfaces;
+using DGTickets.Shared.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -44,6 +46,21 @@ builder.Services.AddScoped<IModulesUnitOfWork, ModulesUnitOfWork>();
 
 builder.Services.AddScoped<IRatingsRepository, RatingsRepository>();
 builder.Services.AddScoped<IRatingsUnitOfWork, RatingsUnitOfWork>();
+
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
+
+builder.Services.AddIdentity<User, IdentityRole>(x =>
+{
+    x.User.RequireUniqueEmail = true;
+    x.Password.RequireDigit = false;
+    x.Password.RequiredUniqueChars = 0;
+    x.Password.RequireLowercase = false;
+    x.Password.RequireNonAlphanumeric = false;
+    x.Password.RequireUppercase = false;
+})
+    .AddEntityFrameworkStores<DataContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
