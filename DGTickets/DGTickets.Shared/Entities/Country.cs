@@ -25,4 +25,7 @@ public class Country
     public ICollection<State>? States { get; set; }
 
     public int StatesCount => States == null ? 0 : States.Count;
+    public ICollection<User>? Users { get; set; }
+
+    public int UsersCount => Users == null ? 0 : Users.Count;
 }

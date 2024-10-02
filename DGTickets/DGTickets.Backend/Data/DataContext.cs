@@ -1,9 +1,10 @@
 ﻿using DGTickets.Shared.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DGTickets.Backend.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext<User>
 {
     private readonly DbContextOptions<DataContext> _options;
 
