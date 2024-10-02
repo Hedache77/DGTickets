@@ -34,4 +34,8 @@ public class Headquarter
     public ICollection<Module>? Modules { get; set; }
 
     public int ModulesCount => Modules == null ? 0 : Modules.Count;
+
+    public ICollection<HeadquarterMedicine>? HeadquarterMedicines { get; set; }
+
+    public int MedicinesCount => HeadquarterMedicines == null ? 0 : HeadquarterMedicines.Count;
 }
