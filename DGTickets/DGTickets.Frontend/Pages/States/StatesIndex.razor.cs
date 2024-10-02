@@ -7,9 +7,11 @@ using MudBlazor;
 using static MudBlazor.Colors;
 using System.Net;
 using DGTickets.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DGTickets.Frontend.Pages.States;
 
+[Authorize(Roles = "Admin")]
 public partial class StatesIndex
 {
     private List<State>? States { get; set; }

@@ -3,6 +3,7 @@ using DGTickets.Frontend.Repositories;
 using DGTickets.Frontend.Shared;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
@@ -10,6 +11,7 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.Ratings;
 
+[Authorize(Roles = "Admin")]
 public partial class RatingsIndex
 {
     private List<Rating>? Ratings { get; set; }
