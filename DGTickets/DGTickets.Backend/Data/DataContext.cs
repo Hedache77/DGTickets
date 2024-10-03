@@ -16,16 +16,11 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<Country> Countries { get; set; }
     public DbSet<State> States { get; set; }
     public DbSet<City> Cities { get; set; }
-
     public DbSet<Headquarter> Headquarters { get; set; }
-
     public DbSet<Module> Modules { get; set; }
-
-    public DbSet<Role> Roles { get; set; }
-
     public DbSet<MedicineStock> MedicinesStock { get; set; }
-
     public DbSet<Rating> Ratings { get; set; }
+    public DbSet<HeadquarterMedicine> HeadquarterMedicines { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,6 +32,7 @@ public class DataContext : IdentityDbContext<User>
         modelBuilder.Entity<Headquarter>().HasIndex(x => new { x.CityId, x.Name }).IsUnique();
         modelBuilder.Entity<Module>().HasIndex(x => new { x.HeadquarterId, x.Name }).IsUnique();
         modelBuilder.Entity<Rating>().HasIndex(x => x.Code).IsUnique();
+        modelBuilder.Entity<HeadquarterMedicine>().HasIndex(x => new { x.HeadquarterId, x.MedicineId }).IsUnique();
 
         DisableCascadingDelete(modelBuilder);
     }

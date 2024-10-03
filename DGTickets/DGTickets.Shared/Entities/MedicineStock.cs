@@ -38,4 +38,8 @@ public class MedicineStock
     public string ImageFull => string.IsNullOrEmpty(Image) ? "/images/noImage.png" : Image;
 
     public bool IsImageSquare { get; set; }
+
+    public ICollection<HeadquarterMedicine>? HeadquarterMedicines { get; set; }
+
+    public int HeadquartersCount => HeadquarterMedicines == null ? 0 : HeadquarterMedicines.Count;
 }
