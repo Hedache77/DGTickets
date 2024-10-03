@@ -76,10 +76,66 @@ public class SeedDb
 
     private async Task CheckHeadquartersAsync()
     {
-        if (!_context.Headquarters.Any())
+        if (!_context.HeadquarterMedicines.Any())
         {
-            var headquartersSQLScript = File.ReadAllText("Data\\Headquarters.sql");
-            await _context.Database.ExecuteSqlRawAsync(headquartersSQLScript);
+            var acetaminofen = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "ACETAMINOFEN")!;
+            var dolex = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Dolex");
+            var ibuprofeno = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Ibuprofeno");
+            var sevedol = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Sevedol");
+            var electrolit = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Electrolit");
+            var tramadol = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Tramadol");
+            var naproxeno = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Naproxeno");
+            var loratadina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Loratadina");
+            var amoxicilina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Amoxicilina");
+            var buscapina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Buscapina");
+            var minoxidil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Minoxidil");
+            var advil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Advil");
+
+            var centro = new Headquarter
+            {
+                Name = "Centro",
+                Address = "Avenida Princial",
+                PhoneNumber = "3100000000",
+                Email = "centro@yopmail.com",
+                CityId = 1,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = sevedol! },
+                    new HeadquarterMedicine { Medicine = electrolit! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = minoxidil! },
+                ]
+            };
+
+            var plaza = new Headquarter
+            {
+                Name = "Plaza",
+                Address = "Plaza Mayor",
+                PhoneNumber = "3000000000",
+                Email = "plaza@yopmail.com",
+                CityId = 2,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = ibuprofeno! },
+                    new HeadquarterMedicine { Medicine = naproxeno! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = advil! },
+                ]
+            };
+
+            _context.Headquarters.Add(centro);
+            _context.Headquarters.Add(plaza);
+            await _context.SaveChangesAsync();
         }
     }
 

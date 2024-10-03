@@ -21,6 +21,8 @@ public class HeadquartersRepository : GenericRepository<Headquarter>, IHeadquart
     {
         var headquarters = await _context.Headquarters
             .Include(x => x.City)
+            .Include(x => x.HeadquarterMedicines!)
+            .ThenInclude(x => x.Medicine)
             .OrderBy(x => x.Name)
             .ToListAsync();
         return new ActionResponse<IEnumerable<Headquarter>>
@@ -34,6 +36,8 @@ public class HeadquartersRepository : GenericRepository<Headquarter>, IHeadquart
     {
         var headquarter = await _context.Headquarters
              .Include(x => x.City)
+             .Include(x => x.HeadquarterMedicines!)
+             .ThenInclude(x => x.Medicine)
              .FirstOrDefaultAsync(c => c.Id == id);
 
         if (headquarter == null)
@@ -56,6 +60,7 @@ public class HeadquartersRepository : GenericRepository<Headquarter>, IHeadquart
     {
         var queryable = _context.Headquarters
             .Include(x => x.City)
+            .Include(x => x.HeadquarterMedicines)
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(pagination.Filter))
@@ -91,7 +96,8 @@ public class HeadquartersRepository : GenericRepository<Headquarter>, IHeadquart
             Name = headquarterDTO.Name,
             Address = headquarterDTO.Address,
             PhoneNumber = headquarterDTO.PhoneNumber,
-            Email = headquarterDTO.Email
+            Email = headquarterDTO.Email,
+            HeadquarterMedicines = new List<HeadquarterMedicine>()
         };
 
         _context.Add(headquarter);

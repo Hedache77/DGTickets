@@ -77,6 +77,9 @@ builder.Services.AddScoped<ICitiesUnitOfWork, CitiesUnitOfWork>();
 builder.Services.AddScoped<IHeadquartersRepository, HeadquartersRepository>();
 builder.Services.AddScoped<IHeadquartersUnitOfWork, HeadquartersUnitOfWork>();
 
+builder.Services.AddScoped<IHeadquarterMedicinesRepository, HeadquarterMedicinesRepository>();
+builder.Services.AddScoped<IHeadquarterMedicinesUnitOfWork, HeadquarterMedicinesUnitOfWork>();
+
 builder.Services.AddScoped<IModulesRepository, ModulesRepository>();
 builder.Services.AddScoped<IModulesUnitOfWork, ModulesUnitOfWork>();
 
