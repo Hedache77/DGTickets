@@ -12,7 +12,6 @@ namespace DGTickets.Frontend.Pages.MedicinesStock;
 public partial class MedicineStockForm
 {
     private EditContext editContext = null!;
-    private List<MedicineStock>? medicinesStock;
     private string? imageUrl;
     private string? shapeImageMessage;
 

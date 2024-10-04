@@ -78,6 +78,7 @@ public class CountriesController : GenericController<Country>
         return BadRequest();
     }
 
+    [AllowAnonymous]
     [HttpGet("combo")]
     public async Task<IActionResult> GetComboAsync()
     {

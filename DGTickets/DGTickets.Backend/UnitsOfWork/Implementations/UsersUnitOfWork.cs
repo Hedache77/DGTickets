@@ -15,6 +15,12 @@ public class UsersUnitOfWork : IUsersUnitOfWork
         _usersRepository = usersRepository;
     }
 
+    public async Task<User> GetUserAsync(Guid userId) => await _usersRepository.GetUserAsync(userId);
+
+    public async Task<string> GenerateEmailConfirmationTokenAsync(User user) => await _usersRepository.GenerateEmailConfirmationTokenAsync(user);
+
+    public async Task<IdentityResult> ConfirmEmailAsync(User user, string token) => await _usersRepository.ConfirmEmailAsync(user, token);
+
     public async Task<SignInResult> LoginAsync(LoginDTO model) => await _usersRepository.LoginAsync(model);
 
     public async Task LogoutAsync() => await _usersRepository.LogoutAsync();

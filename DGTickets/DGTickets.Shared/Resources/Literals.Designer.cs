@@ -97,6 +97,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrator Registration.
+        /// </summary>
+        public static string AdminRegister {
+            get {
+                return ResourceManager.GetString("AdminRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         public static string All {
@@ -106,7 +115,7 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authorizing… .
+        ///   Looks up a localized string similar to Authorizing....
         /// </summary>
         public static string Authorizing {
             get {
@@ -165,6 +174,33 @@ namespace DGTickets.Shared.Resources {
         public static string Confirmation {
             get {
                 return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you for confirming your email, you can now log in to the system..
+        /// </summary>
+        public static string ConfirmedEmailMessage {
+            get {
+                return ResourceManager.GetString("ConfirmedEmailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email confirmation.
+        /// </summary>
+        public static string ConfirmEmail {
+            get {
+                return ResourceManager.GetString("ConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press the button to confirm your account..
+        /// </summary>
+        public static string ConfirmEmailMessage {
+            get {
+                return ResourceManager.GetString("ConfirmEmailMessage", resourceCulture);
             }
         }
         
@@ -232,11 +268,29 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit User Profile.
+        /// </summary>
+        public static string EditUserProfile {
+            get {
+                return ResourceManager.GetString("EditUserProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EmailAlreadyExists {
+            get {
+                return ResourceManager.GetString("EmailAlreadyExists", resourceCulture);
             }
         }
         
@@ -331,6 +385,33 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have exceeded the maximum number of attempts, your account is blocked, please try again in 5 minutes..
+        /// </summary>
+        public static string ERR011 {
+            get {
+                return ResourceManager.GetString("ERR011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user has not been enabled, you must follow the instructions in the email sent to enable the user..
+        /// </summary>
+        public static string ERR012 {
+            get {
+                return ResourceManager.GetString("ERR012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The country Id is not valid..
+        /// </summary>
+        public static string ERR013 {
+            get {
+                return ResourceManager.GetString("ERR013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -372,6 +453,15 @@ namespace DGTickets.Shared.Resources {
         public static string Headquarters {
             get {
                 return ResourceManager.GetString("Headquarters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
             }
         }
         
@@ -462,6 +552,42 @@ namespace DGTickets.Shared.Resources {
         public static string LengthField {
             get {
                 return ResourceManager.GetString("LengthField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to logout?.
+        /// </summary>
+        public static string LogoutConfirm {
+            get {
+                return ResourceManager.GetString("LogoutConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you log out, you will need to log back in to access your account..
+        /// </summary>
+        public static string LogoutMessage {
+            get {
+                return ResourceManager.GetString("LogoutMessage", resourceCulture);
             }
         }
         
@@ -579,6 +705,15 @@ namespace DGTickets.Shared.Resources {
         public static string NothingInRoute {
             get {
                 return ResourceManager.GetString("NothingInRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a user yet? Register here.
+        /// </summary>
+        public static string NotUserYet {
+            get {
+                return ResourceManager.GetString("NotUserYet", resourceCulture);
             }
         }
         
@@ -718,6 +853,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register as new user.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field {0} is required..
         /// </summary>
         public static string RequiredField {
@@ -790,6 +934,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SendEmailConfirmationMessage {
+            get {
+                return ResourceManager.GetString("SendEmailConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Square.
         /// </summary>
         public static string Square {
@@ -849,6 +1002,15 @@ namespace DGTickets.Shared.Resources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Registration.
+        /// </summary>
+        public static string UserRegister {
+            get {
+                return ResourceManager.GetString("UserRegister", resourceCulture);
             }
         }
         
