@@ -364,7 +364,7 @@
     <value>Sorry, there is nothing on this route.</value>
   </data>
   <data name="Authorizing" xml:space="preserve">
-    <value>Authorizing…</value>
+    <value>Authorizing...</value>
   </data>
   <data name="NotAuthorized" xml:space="preserve">
     <value>You are not authorized to view this content...</value>
@@ -431,5 +431,17 @@
   </data>
   <data name="ERR013" xml:space="preserve">
     <value>The country Id is not valid.</value>
+  </data>
+  <data name="AdminRegister" xml:space="preserve">
+    <value>Administrator Registration</value>
+  </data>
+  <data name="UserRegister" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="SendEmailConfirmationMessage" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="EmailAlreadyExists" xml:space="preserve">
+    <value></value>
   </data>
 </root>

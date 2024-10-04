@@ -97,6 +97,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrator Registration.
+        /// </summary>
+        public static string AdminRegister {
+            get {
+                return ResourceManager.GetString("AdminRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         public static string All {
@@ -106,7 +115,7 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authorizing….
+        ///   Looks up a localized string similar to Authorizing....
         /// </summary>
         public static string Authorizing {
             get {
@@ -273,6 +282,15 @@ namespace DGTickets.Shared.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EmailAlreadyExists {
+            get {
+                return ResourceManager.GetString("EmailAlreadyExists", resourceCulture);
             }
         }
         
@@ -916,6 +934,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SendEmailConfirmationMessage {
+            get {
+                return ResourceManager.GetString("SendEmailConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Square.
         /// </summary>
         public static string Square {
@@ -975,6 +1002,15 @@ namespace DGTickets.Shared.Resources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Registration.
+        /// </summary>
+        public static string UserRegister {
+            get {
+                return ResourceManager.GetString("UserRegister", resourceCulture);
             }
         }
         

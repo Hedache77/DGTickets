@@ -432,4 +432,10 @@
   <data name="ERR013" xml:space="preserve">
     <value>El código del país no es válido.</value>
   </data>
+  <data name="AdminRegister" xml:space="preserve">
+    <value>Registro de Administrador</value>
+  </data>
+  <data name="UserRegister" xml:space="preserve">
+    <value>Registro de Usuario</value>
+  </data>
 </root>
