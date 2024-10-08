@@ -439,9 +439,9 @@
     <value>User Registration</value>
   </data>
   <data name="SendEmailConfirmationMessage" xml:space="preserve">
-    <value></value>
+    <value>Your account has been created successfully. An email has been sent to you with instructions on how to activate your account.</value>
   </data>
   <data name="EmailAlreadyExists" xml:space="preserve">
-    <value></value>
+    <value>The email you entered already exists.</value>
   </data>
 </root>

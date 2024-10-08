@@ -286,7 +286,7 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The email you entered already exists..
         /// </summary>
         public static string EmailAlreadyExists {
             get {
@@ -934,7 +934,7 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Your account has been created successfully. An email has been sent to you with instructions on how to activate your account..
         /// </summary>
         public static string SendEmailConfirmationMessage {
             get {
