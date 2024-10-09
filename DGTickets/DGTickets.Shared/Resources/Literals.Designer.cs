@@ -79,6 +79,24 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Medicine.
+        /// </summary>
+        public static string AddMedicine {
+            get {
+                return ResourceManager.GetString("AddMedicine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Medicine to Headquarter.
+        /// </summary>
+        public static string AddMedicineToHeadquarter {
+            get {
+                return ResourceManager.GetString("AddMedicineToHeadquarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string Address {
@@ -921,6 +939,15 @@ namespace DGTickets.Shared.Resources {
         public static string SelectAHeadquarter {
             get {
                 return ResourceManager.GetString("SelectAHeadquarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a Medicine ---.
+        /// </summary>
+        public static string SelectAMedicine {
+            get {
+                return ResourceManager.GetString("SelectAMedicine", resourceCulture);
             }
         }
         

@@ -154,4 +154,11 @@ public class MedicinesStockRepository : GenericRepository<MedicineStock>, IMedic
             Result = (int)count
         };
     }
+
+    public async Task<IEnumerable<MedicineStock>> GetComboAsync()
+    {
+        return await _context.MedicinesStock
+        .OrderBy(x => x.Name)
+        .ToListAsync();
+    }
 }

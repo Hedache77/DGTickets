@@ -25,6 +25,17 @@ public class HeadquarterMedicinesController : GenericController<HeadquarterMedic
         return Ok(await _headquarterMedicinesUnitOfWork.GetComboAsync(headquarterId));
     }
 
+    [HttpPost("full")]
+    public async Task<IActionResult> PostAsync(HeadquarterMedicineDTO headquarterMedicineDTO)
+    {
+        var action = await _headquarterMedicinesUnitOfWork.AddAsync(headquarterMedicineDTO);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest(action.Message);
+    }
+
     [HttpGet("paginated")]
     public override async Task<IActionResult> GetAsync(PaginationDTO pagination)
     {

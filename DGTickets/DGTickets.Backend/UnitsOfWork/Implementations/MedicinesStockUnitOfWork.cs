@@ -22,4 +22,6 @@ public class MedicinesStockUnitOfWork : GenericUnitOfWork<MedicineStock>, IMedic
     public override async Task<ActionResponse<IEnumerable<MedicineStock>>> GetAsync(PaginationDTO pagination) => await _medicinesStockRepository.GetAsync(pagination);
 
     public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _medicinesStockRepository.GetTotalRecordsAsync(pagination);
+
+    public async Task<IEnumerable<MedicineStock>> GetComboAsync() => await _medicinesStockRepository.GetComboAsync();
 }

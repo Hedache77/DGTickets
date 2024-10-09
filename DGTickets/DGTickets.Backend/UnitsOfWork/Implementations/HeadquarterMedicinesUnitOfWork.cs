@@ -15,6 +15,8 @@ public class HeadquarterMedicinesUnitOfWork : GenericUnitOfWork<HeadquarterMedic
         _headquarterMedicinesRepository = headquarterMedicinesRepository;
     }
 
+    public async Task<ActionResponse<HeadquarterMedicine>> AddAsync(HeadquarterMedicineDTO headquarterMedicineDTO) => await _headquarterMedicinesRepository.AddAsync(headquarterMedicineDTO);
+
     public async Task<IEnumerable<HeadquarterMedicine>> GetComboAsync(int headquarterId) => await _headquarterMedicinesRepository.GetComboAsync(headquarterId);
 
     public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _headquarterMedicinesRepository.GetTotalRecordsAsync(pagination);

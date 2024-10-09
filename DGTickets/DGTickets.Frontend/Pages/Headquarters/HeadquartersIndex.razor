@@ -16,7 +16,7 @@ else
               FixedFooter="true">
         <ToolBarContent>
             <div class="d-flex justify-content-between">
-                <MudText Typo="Typo.h6" Class="me-4"> @Localizer["Headquarter"]</MudText>
+                <MudText Typo="Typo.h6" Class="me-4"> @Localizer["Headquarters"]</MudText>
                 <MudButton Variant="Variant.Outlined"
                            EndIcon="@Icons.Material.Filled.Add"
                            Color="Color.Info" OnClick="@(() => ShowModalAsync())">
@@ -41,6 +41,15 @@ else
             <MudTd>@context.PhoneNumber</MudTd>
             <MudTd>@context.Email</MudTd>
             <MudTd>
+                <MudTooltip Text="@Localizer["MedicineStock"]">
+                    <MudButton Variant="Variant.Filled"
+                               EndIcon="@Icons.Material.Filled.Medication"
+                               Color="Color.Primary"
+                               OnClick="@(() => MedicinesAction(@context))" style="width: 100px;">
+                        @context.MedicinesCount
+                    </MudButton>
+                </MudTooltip>
+
                 <MudTooltip Text="@Localizer["Edit"]">
                     <MudButton Variant="Variant.Filled"
                                Color="Color.Warning"
