@@ -313,7 +313,7 @@
     <value>El código del módulo no es válido.</value>
   </data>
   <data name="SelectAHeadquarter" xml:space="preserve">
-    <value>-- Selecciona un Módulo ---</value>
+    <value>-- Selecciona una Sede ---</value>
   </data>
   <data name="SelectACountry" xml:space="preserve">
     <value>-- Seleccione un país --</value>
@@ -443,5 +443,14 @@
   </data>
   <data name="SendEmailConfirmationMessage" xml:space="preserve">
     <value>Su cuenta ha sido creada con exito. Se te ha enviado un correo electrónico con las instrucciones para activar tu usuario.</value>
+  </data>
+  <data name="AddMedicineToHeadquarter" xml:space="preserve">
+    <value>Agregar Medicamento a la Sede</value>
+  </data>
+  <data name="AddMedicine" xml:space="preserve">
+    <value>Agregar Medicamento</value>
+  </data>
+  <data name="SelectAMedicine" xml:space="preserve">
+    <value>-- Selecciona un Medicamento ---</value>
   </data>
 </root>

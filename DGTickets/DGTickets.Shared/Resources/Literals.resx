@@ -444,4 +444,13 @@
   <data name="EmailAlreadyExists" xml:space="preserve">
     <value>The email you entered already exists.</value>
   </data>
+  <data name="AddMedicineToHeadquarter" xml:space="preserve">
+    <value>Add Medicine to Headquarter</value>
+  </data>
+  <data name="AddMedicine" xml:space="preserve">
+    <value>Add Medicine</value>
+  </data>
+  <data name="SelectAMedicine" xml:space="preserve">
+    <value>-- Select a Medicine ---</value>
+  </data>
 </root>

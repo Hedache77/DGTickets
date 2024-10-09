@@ -6,6 +6,8 @@ namespace DGTickets.Backend.Repositories.Interfaces;
 
 public interface IMedicinesStockRepository
 {
+    Task<IEnumerable<MedicineStock>> GetComboAsync();
+
     Task<ActionResponse<MedicineStock>> AddAsync(MedicineStock medicineStock);
 
     Task<ActionResponse<MedicineStock>> UpdateAsync(MedicineStock medicineStock);

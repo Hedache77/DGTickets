@@ -1,0 +1,12 @@
+﻿@if (headquarterMedicineDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <AddMedicineForm @ref="addMedicineForm" HeadquarterMedicineDTO="headquarterMedicineDTO" OnValidSubmit="AddAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

@@ -1,4 +1,5 @@
-﻿using DGTickets.Backend.UnitsOfWork.Interfaces;
+﻿using DGTickets.Backend.UnitsOfWork.Implementations;
+using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -61,5 +62,11 @@ public class MedicinesStockController : GenericController<MedicineStock>
             return Ok(action.Result);
         }
         return BadRequest();
+    }
+
+    [HttpGet("combo")]
+    public async Task<IActionResult> GetComboAsync()
+    {
+        return Ok(await _medicinesStockUnitOfWork.GetComboAsync());
     }
 }

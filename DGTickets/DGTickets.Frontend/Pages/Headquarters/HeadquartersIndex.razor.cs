@@ -35,6 +35,11 @@ public partial class HeadquartersIndex
         await LoadTotalRecordsAsync();
     }
 
+    private void MedicinesAction(Headquarter headquarter)
+    {
+        NavigationManager.NavigateTo($"/headquarter/medicines/{headquarter.Id}");
+    }
+
     private async Task LoadTotalRecordsAsync()
     {
         loading = true;
@@ -118,11 +123,11 @@ public partial class HeadquartersIndex
         }
     }
 
-    private async Task DeleteAsync(Headquarter headquarter)
+    private async Task DeleteAsync(Headquarter medicine)
     {
         var parameters = new DialogParameters
             {
-                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Headquarter"], headquarter.Name) }
+                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Headquarter"], medicine.Name) }
             };
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
         var dialog = DialogService.Show<ConfirmDialog>(Localizer["Confirmation"], parameters, options);
@@ -132,7 +137,7 @@ public partial class HeadquartersIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{headquarter.Id}");
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{medicine.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)

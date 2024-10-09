@@ -6,6 +6,8 @@ namespace DGTickets.Backend.UnitsOfWork.Interfaces;
 
 public interface IMedicinesStockUnitOfWork
 {
+    Task<IEnumerable<MedicineStock>> GetComboAsync();
+
     Task<ActionResponse<MedicineStock>> AddAsync(MedicineStock medicineStock);
 
     Task<ActionResponse<MedicineStock>> UpdateAsync(MedicineStock medicineStock);

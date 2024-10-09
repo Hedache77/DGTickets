@@ -91,7 +91,7 @@ public class SeedDb
             var minoxidil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Minoxidil");
             var advil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Advil");
 
-            var centro = new Headquarter
+            var center = new Headquarter
             {
                 Name = "Centro",
                 Address = "Avenida Princial",
@@ -112,7 +112,7 @@ public class SeedDb
                 ]
             };
 
-            var plaza = new Headquarter
+            var pub = new Headquarter
             {
                 Name = "Plaza",
                 Address = "Plaza Mayor",
@@ -133,8 +133,167 @@ public class SeedDb
                 ]
             };
 
-            _context.Headquarters.Add(centro);
-            _context.Headquarters.Add(plaza);
+            var park = new Headquarter
+            {
+                Name = "Parque Mayor",
+                Address = "Avenida Parque",
+                PhoneNumber = "3200000000",
+                Email = "parque@yopmail.com",
+                CityId = 3,
+                HeadquarterMedicines =
+               [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = advil! },
+                    new HeadquarterMedicine { Medicine = electrolit! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                ]
+            };
+
+            var mall = new Headquarter
+            {
+                Name = "Mall",
+                Address = "Mall principal",
+                PhoneNumber = "3300000000",
+                Email = "mall@yopmail.com",
+                CityId = 2,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = naproxeno! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = advil! },
+                ]
+            };
+
+            var coffe = new Headquarter
+            {
+                Name = "Café",
+                Address = "Avenida Café",
+                PhoneNumber = "3400000000",
+                Email = "cafe@yopmail.com",
+                CityId = 4,
+                HeadquarterMedicines =
+               [
+                   new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = sevedol! },
+                    new HeadquarterMedicine { Medicine = electrolit! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = minoxidil! },
+                ]
+            };
+
+            var building = new Headquarter
+            {
+                Name = "Edificio principal",
+                Address = "Avenida principal",
+                PhoneNumber = "3180000000",
+                Email = "edificio@yopmail.com",
+                CityId = 5,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = ibuprofeno! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = advil! },
+                ]
+            };
+
+            var river = new Headquarter
+            {
+                Name = "Río",
+                Address = "Avenida del río",
+                PhoneNumber = "3160000000",
+                Email = "rio@yopmail.com",
+                CityId = 1,
+                HeadquarterMedicines =
+               [
+                    new HeadquarterMedicine { Medicine = electrolit! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = minoxidil! },
+                ]
+            };
+
+            var church = new Headquarter
+            {
+                Name = "Iglesia",
+                Address = "Avenida iglesia",
+                PhoneNumber = "3140000000",
+                Email = "iglesia@yopmail.com",
+                CityId = 7,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = ibuprofeno! },
+                    new HeadquarterMedicine { Medicine = naproxeno! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                ]
+            };
+
+            var hospital = new Headquarter
+            {
+                Name = "Zona hospitalaria",
+                Address = "Avenida Hospital",
+                PhoneNumber = "3120000000",
+                Email = "hospital@yopmail.com",
+                CityId = 6,
+                HeadquarterMedicines =
+               [
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = sevedol! },
+                    new HeadquarterMedicine { Medicine = electrolit! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = minoxidil! },
+                ]
+            };
+
+            var street = new Headquarter
+            {
+                Name = "Calle principal",
+                Address = "Avenida nueva",
+                PhoneNumber = "320000000",
+                Email = "calle@yopmail.com",
+                CityId = 1,
+                HeadquarterMedicines =
+                [
+                    new HeadquarterMedicine { Medicine = acetaminofen! },
+                    new HeadquarterMedicine { Medicine = dolex! },
+                    new HeadquarterMedicine { Medicine = ibuprofeno! },
+                    new HeadquarterMedicine { Medicine = naproxeno! },
+                    new HeadquarterMedicine { Medicine = tramadol! },
+                    new HeadquarterMedicine { Medicine = loratadina! },
+                    new HeadquarterMedicine { Medicine = amoxicilina! },
+                    new HeadquarterMedicine { Medicine = buscapina! },
+                    new HeadquarterMedicine { Medicine = advil! },
+                ]
+            };
+
+            _context.Headquarters.Add(center);
+            _context.Headquarters.Add(pub);
+            _context.Headquarters.Add(park);
+            _context.Headquarters.Add(mall);
+            _context.Headquarters.Add(coffe);
+            _context.Headquarters.Add(building);
+            _context.Headquarters.Add(river);
+            _context.Headquarters.Add(church);
+            _context.Headquarters.Add(hospital);
+            _context.Headquarters.Add(street);
             await _context.SaveChangesAsync();
         }
     }
