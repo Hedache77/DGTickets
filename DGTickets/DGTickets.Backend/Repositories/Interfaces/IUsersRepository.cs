@@ -6,6 +6,14 @@ namespace DGTickets.Backend.Repositories.Interfaces;
 
 public interface IUsersRepository
 {
+    Task<string> GeneratePasswordResetTokenAsync(User user);
+
+    Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+
+    Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword);
+
+    Task<IdentityResult> UpdateUserAsync(User user);
+
     Task<User> GetUserAsync(Guid userId);
 
     Task<string> GenerateEmailConfirmationTokenAsync(User user);

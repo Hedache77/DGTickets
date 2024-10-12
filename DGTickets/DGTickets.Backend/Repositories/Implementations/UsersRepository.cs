@@ -22,6 +22,26 @@ public class UsersRepository : IUsersRepository
         _signInManager = signInManager;
     }
 
+    public async Task<string> GeneratePasswordResetTokenAsync(User user)
+    {
+        return await _userManager.GeneratePasswordResetTokenAsync(user);
+    }
+
+    public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)
+    {
+        return await _userManager.ResetPasswordAsync(user, token, password);
+    }
+
+    public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword)
+    {
+        return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+    }
+
+    public async Task<IdentityResult> UpdateUserAsync(User user)
+    {
+        return await _userManager.UpdateAsync(user);
+    }
+
     public async Task<User> GetUserAsync(Guid userId)
     {
         var user = await _context.Users
