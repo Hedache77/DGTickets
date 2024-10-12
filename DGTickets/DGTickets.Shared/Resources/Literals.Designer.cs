@@ -610,6 +610,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail forwarding.
+        /// </summary>
+        public static string MailForwarding {
+            get {
+                return ResourceManager.GetString("MailForwarding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manufacturer.
         /// </summary>
         public static string Manufacturer {
@@ -889,6 +898,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resend account activation email.
+        /// </summary>
+        public static string ResendAccountActivationEmail {
+            get {
+                return ResourceManager.GetString("ResendAccountActivationEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return.
         /// </summary>
         public static string Return {
@@ -957,6 +975,15 @@ namespace DGTickets.Shared.Resources {
         public static string SelectAState {
             get {
                 return ResourceManager.GetString("SelectAState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         
