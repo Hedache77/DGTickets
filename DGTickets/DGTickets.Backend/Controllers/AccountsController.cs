@@ -4,6 +4,8 @@ using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Responses;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -20,13 +22,120 @@ public class AccountsController : ControllerBase
     private readonly IConfiguration _configuration;
     private readonly IMailHelper _mailHelper;
     private readonly DataContext _context;
+    private readonly IFileStorage _fileStorage;
 
-    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context)
+    public AccountsController(IUsersUnitOfWork usersUnitOfWork, IConfiguration configuration, IMailHelper mailHelper, DataContext context, IFileStorage fileStorage)
     {
         _usersUnitOfWork = usersUnitOfWork;
         _configuration = configuration;
         _mailHelper = mailHelper;
         _context = context;
+        _fileStorage = fileStorage;
+    }
+
+    [HttpPost("RecoverPassword")]
+    public async Task<IActionResult> RecoverPasswordAsync([FromBody] EmailDTO model)
+    {
+        var user = await _usersUnitOfWork.GetUserAsync(model.Email);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var response = await SendRecoverEmailAsync(user, model.Language);
+        if (response.WasSuccess)
+        {
+            return NoContent();
+        }
+
+        return BadRequest(response.Message);
+    }
+
+    [HttpPost("ResetPassword")]
+    public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDTO model)
+    {
+        var user = await _usersUnitOfWork.GetUserAsync(model.Email);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var result = await _usersUnitOfWork.ResetPasswordAsync(user, model.Token, model.NewPassword);
+        if (result.Succeeded)
+        {
+            return NoContent();
+        }
+
+        return BadRequest(result.Errors.FirstOrDefault()!.Description);
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpPut]
+    public async Task<IActionResult> PutAsync(User user)
+    {
+        try
+        {
+            var currentUser = await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!);
+            if (currentUser == null)
+            {
+                return NotFound();
+            }
+
+            if (!string.IsNullOrEmpty(user.Photo))
+            {
+                var photoUser = Convert.FromBase64String(user.Photo);
+                user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+            }
+
+            currentUser.FirstName = user.FirstName;
+            currentUser.LastName = user.LastName;
+            currentUser.PhoneNumber = user.PhoneNumber;
+            currentUser.Photo = !string.IsNullOrEmpty(user.Photo) && user.Photo != currentUser.Photo ? user.Photo : currentUser.Photo;
+            currentUser.CountryId = user.CountryId;
+
+            var result = await _usersUnitOfWork.UpdateUserAsync(currentUser);
+            if (result.Succeeded)
+            {
+                return Ok(BuildToken(currentUser));
+            }
+
+            return BadRequest(result.Errors.FirstOrDefault());
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet]
+    public async Task<IActionResult> GetAsync()
+    {
+        return Ok(await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!));
+    }
+
+    [HttpPost("changePassword")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> ChangePasswordAsync(ChangePasswordDTO model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = await _usersUnitOfWork.GetUserAsync(User.Identity!.Name!);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var result = await _usersUnitOfWork.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Errors.FirstOrDefault()!.Description);
+        }
+
+        return NoContent();
     }
 
     [HttpPost("ResedToken")]
@@ -143,6 +252,22 @@ public class AccountsController : ControllerBase
             Token = new JwtSecurityTokenHandler().WriteToken(token),
             Expiration = expiration
         };
+    }
+
+    private async Task<ActionResponse<string>> SendRecoverEmailAsync(User user, string language)
+    {
+        var myToken = await _usersUnitOfWork.GeneratePasswordResetTokenAsync(user);
+        var tokenLink = Url.Action("ResetPassword", "accounts", new
+        {
+            userid = user.Id,
+            token = myToken
+        }, HttpContext.Request.Scheme, _configuration["Url Frontend"]);
+
+        if (language == "es")
+        {
+            return _mailHelper.SendMail(user.FullName, user.Email!, _configuration["Mail:SubjectRecoveryEs"]!, string.Format(_configuration["Mail:BodyRecoveryEs"]!, tokenLink), language);
+        }
+        return _mailHelper.SendMail(user.FullName, user.Email!, _configuration["Mail:SubjectRecoveryEn"]!, string.Format(_configuration["Mail:BodyRecoveryEn"]!, tokenLink), language);
     }
 
     private async Task<ActionResponse<string>> SendConfirmationEmailAsync(User user, string language)
