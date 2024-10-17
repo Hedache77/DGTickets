@@ -166,6 +166,13 @@ public class AccountsController : ControllerBase
         }
 
         User user = model;
+
+        if (!string.IsNullOrEmpty(model.Photo))
+        {
+            var photoUser = Convert.FromBase64String(model.Photo);
+            user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
+        }
+
         user.Country = country;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
         if (result.Succeeded)
