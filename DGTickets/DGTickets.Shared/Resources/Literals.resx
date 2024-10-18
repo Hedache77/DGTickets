@@ -486,4 +486,12 @@
   <data name="ForgottenYourPassword" xml:space="preserve">
     <value>Have you forgotten your password?</value>
   </data>
+  <data name="AboutText" xml:space="preserve">
+    <value>&lt;p&gt;Virtual queue system for the delivery of medications at pharmacies affiliated with Health Promoting Entities (EPS) in Colombia, allowing users to request a real-time queue from any device with internet access, even from the comfort of their homes.&lt;/p&gt;
+&lt;p&gt;Users can track and visualize the approximate flow of service. Additionally, when requesting a ticket, users will be able to check if the medications they wish to claim are available through a query interface that the system will provide when selecting the pharmacy location.&lt;/p&gt;
+&lt;p&gt;The system significantly reduces waiting times, improves organization at delivery points, and offers better service quality. It optimizes the user experience and supports pharmaceutical entities in the efficient management of service, contributing to a modern, accessible, and user-centered service model.&lt;/p&gt;</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Authors</value>
+  </data>
 </root>

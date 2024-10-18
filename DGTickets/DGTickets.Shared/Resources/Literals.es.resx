@@ -486,4 +486,12 @@
   <data name="ForgottenYourPassword" xml:space="preserve">
     <value>¿Has olvidado tu contraseña?</value>
   </data>
+  <data name="AboutText" xml:space="preserve">
+    <value>&lt;p&gt;Sistema de turnos virtuales para la entrega de medicamentos en farmacias aliadas a las Entidades Promotoras de Salud (EPS) en Colombia que permite a los usuarios solicitar un turno en tiempo real desde cualquier dispositivo con acceso a internet, incluso en la comodidad de sus hogares.&lt;/p&gt;
+&lt;p&gt;Los usuarios pueden hacer seguimiento y visualizar el flujo de atención aproximado, adicionalmente al momento de solicitar el ticket los usuarios podrán consultar si hay disponibilidad de los medicamentos que desean reclamar a través de una interfaz de consulta que tendrá el sistema al momento de seleccionar la sede.&lt;/p&gt;
+&lt;p&gt;El sistema reduce significativamente los tiempos de espera, mejora la organización en los puntos de entrega y ofrece una mejor calidad en la atención.  Optimiza la experiencia del usuario y apoya a las entidades farmacéuticas en la gestión eficiente de atención, contribuyendo a un modelo de servicio moderno, accesible y centrado en el usuario.&lt;/p&gt;</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Autores</value>
+  </data>
 </root>

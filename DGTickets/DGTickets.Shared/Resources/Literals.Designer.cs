@@ -70,6 +70,16 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Virtual queue system for the delivery of medications at pharmacies affiliated with Health Promoting Entities (EPS) in Colombia, allowing users to request a real-time queue from any device with internet access, even from the comfort of their homes.&lt;/p&gt;
+        ///&lt;p&gt;Users can track and visualize the approximate flow of service. Additionally, when requesting a ticket, users will be able to check if the medications they wish to claim are available through a query interface that the system will provide when selecting  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AboutText {
+            get {
+                return ResourceManager.GetString("AboutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
         public static string Actions {
@@ -138,6 +148,15 @@ namespace DGTickets.Shared.Resources {
         public static string Authorizing {
             get {
                 return ResourceManager.GetString("Authorizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authors.
+        /// </summary>
+        public static string Authors {
+            get {
+                return ResourceManager.GetString("Authors", resourceCulture);
             }
         }
         
