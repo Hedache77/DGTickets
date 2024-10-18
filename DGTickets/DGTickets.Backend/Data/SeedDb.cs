@@ -31,7 +31,8 @@ public class SeedDb
         await CheckRatingsAsync();
         await CheckModulesAsync();
         await CheckRolesAsync();
-        await CheckUserAsync("DG", "Tickets", "dgtickets@yopmail.com", "322 311 4620", UserType.Admin);
+        await CheckUserAsync("DG", "Tickets", "admin@yopmail.com", "322 311 4620", UserType.Admin);
+        await CheckUserAsync("DG", "Tickets", "asesor@yopmail.com", "322 310 4620", UserType.Adviser);
     }
 
     private async Task CheckCountriesAsync()
