@@ -494,4 +494,22 @@
   <data name="Authors" xml:space="preserve">
     <value>Authors</value>
   </data>
+  <data name="HomeMessage1" xml:space="preserve">
+    <value>Out of stock of acceptaminofen 500mg</value>
+  </data>
+  <data name="LastShiftCalledAtTheCashier" xml:space="preserve">
+    <value>Last shift called at the cashier</value>
+  </data>
+  <data name="NextTurn" xml:space="preserve">
+    <value>Next turn</value>
+  </data>
+  <data name="NumberShifts" xml:space="preserve">
+    <value>Number of shifts</value>
+  </data>
+  <data name="AverageAttentionPerShift" xml:space="preserve">
+    <value>Average attention per shift 5 minutes</value>
+  </data>
+  <data name="NumberActiveBoxes" xml:space="preserve">
+    <value>Number of active boxes</value>
+  </data>
 </root>

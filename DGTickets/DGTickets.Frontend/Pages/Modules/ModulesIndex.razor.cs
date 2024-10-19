@@ -11,7 +11,7 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.Modules;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin, Adviser")]
 public partial class ModulesIndex
 {
     private List<Module>? Modules { get; set; }

@@ -161,6 +161,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average attention per shift 5 minutes.
+        /// </summary>
+        public static string AverageAttentionPerShift {
+            get {
+                return ResourceManager.GetString("AverageAttentionPerShift", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -539,6 +548,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Out of stock of acceptaminofen 500mg.
+        /// </summary>
+        public static string HomeMessage1 {
+            get {
+                return ResourceManager.GetString("HomeMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -598,6 +616,15 @@ namespace DGTickets.Shared.Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last shift called at the cashier.
+        /// </summary>
+        public static string LastShiftCalledAtTheCashier {
+            get {
+                return ResourceManager.GetString("LastShiftCalledAtTheCashier", resourceCulture);
             }
         }
         
@@ -746,6 +773,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next turn.
+        /// </summary>
+        public static string NextTurn {
+            get {
+                return ResourceManager.GetString("NextTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string No {
@@ -796,6 +832,24 @@ namespace DGTickets.Shared.Resources {
         public static string NotUserYet {
             get {
                 return ResourceManager.GetString("NotUserYet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of active boxes.
+        /// </summary>
+        public static string NumberActiveBoxes {
+            get {
+                return ResourceManager.GetString("NumberActiveBoxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of shifts.
+        /// </summary>
+        public static string NumberShifts {
+            get {
+                return ResourceManager.GetString("NumberShifts", resourceCulture);
             }
         }
         
