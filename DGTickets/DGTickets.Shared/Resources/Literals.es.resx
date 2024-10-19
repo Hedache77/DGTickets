@@ -494,4 +494,22 @@
   <data name="Authors" xml:space="preserve">
     <value>Autores</value>
   </data>
+  <data name="HomeMessage1" xml:space="preserve">
+    <value>Sin existencias de aceptaminofén de 500mg</value>
+  </data>
+  <data name="LastShiftCalledAtTheCashier" xml:space="preserve">
+    <value>Último turno llamado en caja</value>
+  </data>
+  <data name="NextTurn" xml:space="preserve">
+    <value>Próximo turno</value>
+  </data>
+  <data name="NumberShifts" xml:space="preserve">
+    <value>Cantidad de turnos</value>
+  </data>
+  <data name="AverageAttentionPerShift" xml:space="preserve">
+    <value>Atención promedio por turno 5 minutos</value>
+  </data>
+  <data name="NumberActiveBoxes" xml:space="preserve">
+    <value>Cantidad de cajas activas</value>
+  </data>
 </root>

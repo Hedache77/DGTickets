@@ -10,7 +10,7 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.MedicinesStock;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin, Adviser")]
 public partial class MedicinesStockIndex
 {
     private List<MedicineStock>? MedicinesStock { get; set; }

@@ -1,19 +1,70 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Localizer["LastShiftCalledAtTheCashier"]</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText>A43</MudText>
+        <MudText Typo="Typo.body2">johndae@gmail.com</MudText>
+    </MudCardContent>
+</MudCard>
+<br />
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Localizer["NextTurn"]</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText>A43</MudText>
+        <MudText Typo="Typo.body2">johndae@gmail.com</MudText>
+    </MudCardContent>
+</MudCard>
+<br />
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Localizer["NumberShifts"]</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText>280 en cola</MudText>
+        <MudText Typo="Typo.body2">@Localizer["AverageAttentionPerShift"]</MudText>
+    </MudCardContent>
+</MudCard>
+<br />
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Localizer["NumberActiveBoxes"]</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText>5</MudText>
+    </MudCardContent>
+</MudCard>
+<br />
 
-<AuthorizeView Roles="Admin">
-    <Authorized>
-        <p>Estas autenticado y autorizado, @context.User.Identity?.Name</p>
-    </Authorized>
-    <NotAuthorized>
-        <p>@Localizer["NotAuthorized"]</p>
-    </NotAuthorized>
-
-</AuthorizeView>
 
 
-
-<h1>@Localizer["Title"]</h1>
-<h2>@Localizer["Subtitle"]</h2>
+<MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+    <MudCarouselItem Transition="transition" Color="@Color.Primary">
+        <div class="d-flex" style="height:100%">
+            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage1"]</MudText>
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition" Color="@Color.Secondary">
+        <div class="d-flex" style="height:100%">
+            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage1"]</MudText>
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition">
+        <div class="d-flex" style="height:100%">
+            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage1"]</MudText>
+        </div>
+    </MudCarouselItem>
+</MudCarousel>
 
