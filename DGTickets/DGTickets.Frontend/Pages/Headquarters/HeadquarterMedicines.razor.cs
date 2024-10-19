@@ -10,7 +10,6 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.Headquarters;
 
-[Authorize(Roles = "Admin, Adviser, User")]
 public partial class HeadquarterMedicines
 {
     private Headquarter? headquarter;

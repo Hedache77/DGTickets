@@ -11,7 +11,7 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.Ratings;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin, User")]
 public partial class RatingsIndex
 {
     private List<Rating>? Ratings { get; set; }
