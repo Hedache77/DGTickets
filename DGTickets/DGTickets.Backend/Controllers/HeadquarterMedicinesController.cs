@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DGTickets.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class HeadquarterMedicinesController : GenericController<HeadquarterMedicine>
 {
@@ -25,6 +24,7 @@ public class HeadquarterMedicinesController : GenericController<HeadquarterMedic
         return Ok(await _headquarterMedicinesUnitOfWork.GetComboAsync(headquarterId));
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpPost("full")]
     public async Task<IActionResult> PostAsync(HeadquarterMedicineDTO headquarterMedicineDTO)
     {

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DGTickets.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class HeadquartersController : GenericController<Headquarter>
 {
@@ -76,6 +75,7 @@ public class HeadquartersController : GenericController<Headquarter>
         return Ok(await _headquartersUnitOfWork.GetComboAsync());
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpPost("full")]
     public async Task<IActionResult> PostAsync(HeadquarterDTO headquarterDTO)
     {
@@ -87,6 +87,7 @@ public class HeadquartersController : GenericController<Headquarter>
         return BadRequest(action.Message);
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpPut("full")]
     public async Task<IActionResult> PutAsync(HeadquarterDTO headquarterDTO)
     {
