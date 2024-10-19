@@ -11,7 +11,6 @@ using System.Net;
 
 namespace DGTickets.Frontend.Pages.Headquarters;
 
-[Authorize(Roles = "Admin, Adviser, User")]
 public partial class HeadquartersIndex
 {
     private List<Headquarter>? Headquarters { get; set; }
