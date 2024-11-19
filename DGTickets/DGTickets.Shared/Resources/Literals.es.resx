@@ -512,4 +512,10 @@
   <data name="NumberActiveBoxes" xml:space="preserve">
     <value>Cantidad de cajas activas</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmado</value>
+  </data>
 </root>

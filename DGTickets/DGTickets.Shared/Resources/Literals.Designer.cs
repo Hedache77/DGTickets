@@ -233,6 +233,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        public static string Confirmed {
+            get {
+                return ResourceManager.GetString("Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thank you for confirming your email, you can now log in to the system..
         /// </summary>
         public static string ConfirmedEmailMessage {
@@ -1210,6 +1219,15 @@ namespace DGTickets.Shared.Resources {
         public static string UserRegister {
             get {
                 return ResourceManager.GetString("UserRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         
