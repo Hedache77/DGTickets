@@ -512,4 +512,10 @@
   <data name="NumberActiveBoxes" xml:space="preserve">
     <value>Number of active boxes</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
 </root>

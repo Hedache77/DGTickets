@@ -32,4 +32,6 @@ public class User : IdentityUser
 
     [Display(Name = "User", ResourceType = typeof(Literals))]
     public string FullName => $"{FirstName} {LastName}";
+
+    public string PhotoFull => string.IsNullOrEmpty(Photo) ? "/images/NoImage.png" : Photo;
 }

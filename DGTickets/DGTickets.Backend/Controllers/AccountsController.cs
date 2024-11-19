@@ -15,7 +15,7 @@ using System.Text;
 namespace DGTickets.Backend.Controllers;
 
 [ApiController]
-[Route("/api/[controller]")]
+[Route("api/[controller]")]
 public class AccountsController : ControllerBase
 {
     private readonly IUsersUnitOfWork _usersUnitOfWork;
@@ -31,6 +31,30 @@ public class AccountsController : ControllerBase
         _mailHelper = mailHelper;
         _context = context;
         _fileStorage = fileStorage;
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("paginated")]
+    public async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+    {
+        var response = await _usersUnitOfWork.GetAsync(pagination);
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return BadRequest();
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("totalRecordsPaginated")]
+    public async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+    {
+        var action = await _usersUnitOfWork.GetTotalRecordsAsync(pagination);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest();
     }
 
     [HttpPost("RecoverPassword")]
@@ -162,7 +186,7 @@ public class AccountsController : ControllerBase
         var country = await _context.Countries.FindAsync(model.CountryId);
         if (country == null)
         {
-            return BadRequest("ERR013");
+            return BadRequest("ERR004");
         }
 
         User user = model;
@@ -172,7 +196,6 @@ public class AccountsController : ControllerBase
             var photoUser = Convert.FromBase64String(model.Photo);
             user.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", "users");
         }
-
         user.Country = country;
         var result = await _usersUnitOfWork.AddUserAsync(user, model.Password);
         if (result.Succeeded)
@@ -221,44 +244,15 @@ public class AccountsController : ControllerBase
 
         if (result.IsLockedOut)
         {
-            return BadRequest("ERR011");
+            return BadRequest("ERR007");
         }
 
         if (result.IsNotAllowed)
         {
-            return BadRequest("ERR012");
+            return BadRequest("ERR008");
         }
 
-        return BadRequest("ERR010");
-    }
-
-    private TokenDTO BuildToken(User user)
-    {
-        var claims = new List<Claim>
-            {
-                new(ClaimTypes.Name, user.Email!),
-                new(ClaimTypes.Role, user.UserType.ToString()),
-                new("FirstName", user.FirstName),
-                new("LastName", user.LastName),
-                new("Photo", user.Photo ?? string.Empty),
-                new("CountryId", user.Country.Id.ToString())
-            };
-
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["jwtKey"]!));
-        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var expiration = DateTime.UtcNow.AddDays(30);
-        var token = new JwtSecurityToken(
-            issuer: null,
-            audience: null,
-            claims: claims,
-            expires: expiration,
-            signingCredentials: credentials);
-
-        return new TokenDTO
-        {
-            Token = new JwtSecurityTokenHandler().WriteToken(token),
-            Expiration = expiration
-        };
+        return BadRequest("ERR006");
     }
 
     private async Task<ActionResponse<string>> SendRecoverEmailAsync(User user, string language)
@@ -285,11 +279,40 @@ public class AccountsController : ControllerBase
             userid = user.Id,
             token = myToken
         }, HttpContext.Request.Scheme, _configuration["Url Frontend"]);
-
+        //}, "https", _configuration["Url Frontend"]);
         if (language == "es")
         {
             return _mailHelper.SendMail(user.FullName, user.Email!, _configuration["Mail:SubjectConfirmationEs"]!, string.Format(_configuration["Mail:BodyConfirmationEs"]!, tokenLink), language);
         }
         return _mailHelper.SendMail(user.FullName, user.Email!, _configuration["Mail:SubjectConfirmationEn"]!, string.Format(_configuration["Mail:BodyConfirmationEn"]!, tokenLink), language);
+    }
+
+    private TokenDTO BuildToken(User user)
+    {
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.Name, user.Email!),
+            new(ClaimTypes.Role, user.UserType.ToString()),
+            new("FirstName", user.FirstName),
+            new("LastName", user.LastName),
+            new("Photo", user.Photo ?? string.Empty),
+            new("CountryId", user.Country.Id.ToString())
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["jwtKey"]!));
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiration = DateTime.UtcNow.AddDays(30);
+        var token = new JwtSecurityToken(
+            issuer: null,
+            audience: null,
+            claims: claims,
+            expires: expiration,
+            signingCredentials: credentials);
+
+        return new TokenDTO
+        {
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            Expiration = expiration
+        };
     }
 }

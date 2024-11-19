@@ -1,11 +1,16 @@
 ﻿using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
+using DGTickets.Shared.Responses;
 using Microsoft.AspNetCore.Identity;
 
 namespace DGTickets.Backend.UnitsOfWork.Interfaces;
 
 public interface IUsersUnitOfWork
 {
+    Task<ActionResponse<IEnumerable<User>>> GetAsync(PaginationDTO pagination);
+
+    Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
+
     Task<string> GeneratePasswordResetTokenAsync(User user);
 
     Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
