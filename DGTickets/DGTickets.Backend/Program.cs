@@ -89,6 +89,9 @@ builder.Services.AddScoped<IRatingsUnitOfWork, RatingsUnitOfWork>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersUnitOfWork, UsersUnitOfWork>();
 
+builder.Services.AddScoped<IPQRsRepository, PQRsRepository>();
+builder.Services.AddScoped<IPQRsUnitOfWork, PQRsUnitOfWork>();
+
 builder.Services.AddIdentity<User, IdentityRole>(x =>
 {
     x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;

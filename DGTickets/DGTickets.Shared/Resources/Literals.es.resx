@@ -524,4 +524,7 @@
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmado</value>
   </data>
+  <data name="ERR014" xml:space="preserve">
+    <value>El código de la PQR no es válido.</value>
+  </data>
 </root>
