@@ -34,6 +34,7 @@ public class SeedDb
         await CheckUserAsync("DG", "Tickets", "admin@yopmail.com", "322 311 4620", UserType.Admin);
         await CheckUserAsync("DG", "Tickets", "asesor@yopmail.com", "322 310 4620", UserType.Adviser);
         await CheckUserAsync("DG", "Tickets", "usuario@yopmail.com", "322 310 4620", UserType.User);
+        await CheckPQRsAsync();
     }
 
     private async Task CheckCountriesAsync()
@@ -426,5 +427,95 @@ public class SeedDb
         }
 
         return user;
+    }
+
+    private async Task CheckPQRsAsync()
+    {
+        if (!_context.PQRs.Any())
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == "usuario@yopmail.com");
+
+            var pqr1 = new PQR
+            {
+                Code = "PQR-0001",
+                Description = "Problema con el medicamento 1",
+                User = user!,
+            };
+            _context.Add(pqr1);
+
+            var pqr2 = new PQR
+            {
+                Code = "PQR-0002",
+                Description = "Problema con el medicamento 2",
+                User = user!,
+            };
+            _context.Add(pqr2);
+
+            var pqr3 = new PQR
+            {
+                Code = "PQR-0003",
+                Description = "Problema con el medicamento 3",
+                User = user!,
+            };
+            _context.Add(pqr3);
+
+            var pqr4 = new PQR
+            {
+                Code = "PQR-0004",
+                Description = "Problema con el medicamento 4",
+                User = user!,
+            };
+            _context.Add(pqr4);
+
+            var pqr5 = new PQR
+            {
+                Code = "PQR-0005",
+                Description = "Problema con el medicamento 5",
+                User = user!,
+            };
+            _context.Add(pqr5);
+
+            var pqr6 = new PQR
+            {
+                Code = "PQR-0006",
+                Description = "Problema con el medicamento 6",
+                User = user!,
+            };
+            _context.Add(pqr6);
+
+            var pqr7 = new PQR
+            {
+                Code = "PQR-0007",
+                Description = "Problema con el medicamento 7",
+                User = user!,
+            };
+            _context.Add(pqr7);
+
+            var pqr8 = new PQR
+            {
+                Code = "PQR-0008",
+                Description = "Problema con el medicamento 8",
+                User = user!,
+            };
+            _context.Add(pqr8);
+
+            var pqr9 = new PQR
+            {
+                Code = "PQR-0009",
+                Description = "Problema con el medicamento 9",
+                User = user!,
+            };
+            _context.Add(pqr9);
+
+            var pqr10 = new PQR
+            {
+                Code = "PQR-0010",
+                Description = "Problema con el medicamento 10",
+                User = user!,
+            };
+            _context.Add(pqr10);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

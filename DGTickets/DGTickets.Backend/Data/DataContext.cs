@@ -21,6 +21,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<MedicineStock> MedicinesStock { get; set; }
     public DbSet<Rating> Ratings { get; set; }
     public DbSet<HeadquarterMedicine> HeadquarterMedicines { get; set; }
+    public DbSet<PQR> PQRs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -33,6 +34,7 @@ public class DataContext : IdentityDbContext<User>
         modelBuilder.Entity<Module>().HasIndex(x => new { x.HeadquarterId, x.Name }).IsUnique();
         modelBuilder.Entity<Rating>().HasIndex(x => x.Code).IsUnique();
         modelBuilder.Entity<HeadquarterMedicine>().HasIndex(x => new { x.HeadquarterId, x.MedicineId }).IsUnique();
+        modelBuilder.Entity<PQR>().HasIndex(x => x.Code).IsUnique();
 
         DisableCascadingDelete(modelBuilder);
     }

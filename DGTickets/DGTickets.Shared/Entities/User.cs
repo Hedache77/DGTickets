@@ -34,4 +34,8 @@ public class User : IdentityUser
     public string FullName => $"{FirstName} {LastName}";
 
     public string PhotoFull => string.IsNullOrEmpty(Photo) ? "/images/NoImage.png" : Photo;
+
+    public ICollection<PQR>? PQRs { get; set; }
+
+    public int PQRsCount => PQRs == null ? 0 : PQRs.Count;
 }
