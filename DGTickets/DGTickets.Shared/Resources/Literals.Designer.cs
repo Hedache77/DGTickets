@@ -557,11 +557,29 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Out of stock of acceptaminofen 500mg.
+        ///   Looks up a localized string similar to Aspirina 100mg Available.
         /// </summary>
         public static string HomeMessage1 {
             get {
                 return ResourceManager.GetString("HomeMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acetaminofen 500mg Out of Stock.
+        /// </summary>
+        public static string HomeMessage2 {
+            get {
+                return ResourceManager.GetString("HomeMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naproxeno 500mg Last 10 Units.
+        /// </summary>
+        public static string HomeMessage3 {
+            get {
+                return ResourceManager.GetString("HomeMessage3", resourceCulture);
             }
         }
         
