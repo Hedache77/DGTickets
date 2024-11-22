@@ -527,4 +527,16 @@
   <data name="ERR014" xml:space="preserve">
     <value>The PQR Id is not valid.</value>
   </data>
+  <data name="PQR" xml:space="preserve">
+    <value>PQR</value>
+  </data>
+  <data name="PQRs" xml:space="preserve">
+    <value>PQRs</value>
+  </data>
+  <data name="ERR015" xml:space="preserve">
+    <value>The user Id is not valid.</value>
+  </data>
+  <data name="PQRCreated" xml:space="preserve">
+    <value>PQR has been created with code: {0}</value>
+  </data>
 </root>

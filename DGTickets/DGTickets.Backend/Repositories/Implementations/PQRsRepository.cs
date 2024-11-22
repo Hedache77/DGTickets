@@ -11,10 +11,12 @@ namespace DGTickets.Backend.Repositories.Implementations;
 public class PQRsRepository : GenericRepository<PQR>, IPQRsRepository
 {
     private readonly DataContext _context;
+    private readonly IUsersRepository _usersRepository;
 
-    public PQRsRepository(DataContext context) : base(context)
+    public PQRsRepository(DataContext context, IUsersRepository usersRepository) : base(context)
     {
         _context = context;
+        _usersRepository = usersRepository;
     }
 
     public override async Task<ActionResponse<IEnumerable<PQR>>> GetAsync()
@@ -92,11 +94,30 @@ public class PQRsRepository : GenericRepository<PQR>, IPQRsRepository
 
     public async Task<ActionResponse<PQR>> AddAsync(PQRDTO pqrDTO)
     {
+        var user = await _usersRepository.GetUserAsync(pqrDTO.UserId);
+        if (user == null)
+        {
+            return new ActionResponse<PQR>
+            {
+                WasSuccess = false,
+                Message = "ERR015"
+            };
+        }
+
+        var code = string.Empty;
+        var exists = true;
+        do
+        {
+            code = Guid.NewGuid().ToString().Substring(0, 4).ToUpper();
+            var currentPQR = await _context.PQRs.FirstOrDefaultAsync(x => x.Code == code);
+            exists = currentPQR != null;
+        } while (exists);
+
         var pqr = new PQR
         {
-            Code = pqrDTO.Code,
+            Code = code,
             Description = pqrDTO.Description,
-            UserId = pqrDTO.UserId,
+            User = user
         };
 
         _context.Add(pqr);

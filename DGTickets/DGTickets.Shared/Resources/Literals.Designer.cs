@@ -494,6 +494,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The user Id is not valid..
+        /// </summary>
+        public static string ERR015 {
+            get {
+                return ResourceManager.GetString("ERR015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -958,6 +967,33 @@ namespace DGTickets.Shared.Resources {
         public static string PleaseWait {
             get {
                 return ResourceManager.GetString("PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQR.
+        /// </summary>
+        public static string PQR {
+            get {
+                return ResourceManager.GetString("PQR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQR has been created with code: {0}.
+        /// </summary>
+        public static string PQRCreated {
+            get {
+                return ResourceManager.GetString("PQRCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQRs.
+        /// </summary>
+        public static string PQRs {
+            get {
+                return ResourceManager.GetString("PQRs", resourceCulture);
             }
         }
         

@@ -78,6 +78,7 @@ public class PQRsController : GenericController<PQR>
     [HttpPost("full")]
     public async Task<IActionResult> PostAsync(PQRDTO pqrDTO)
     {
+        pqrDTO.UserId = User.Identity!.Name!;
         var action = await _pqrsUnitOfWork.AddAsync(pqrDTO);
         if (action.WasSuccess)
         {

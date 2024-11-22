@@ -527,4 +527,16 @@
   <data name="ERR014" xml:space="preserve">
     <value>El código de la PQR no es válido.</value>
   </data>
+  <data name="PQR" xml:space="preserve">
+    <value>PQR</value>
+  </data>
+  <data name="PQRs" xml:space="preserve">
+    <value>PQRs</value>
+  </data>
+  <data name="ERR015" xml:space="preserve">
+    <value>El código de usuario no es válido.</value>
+  </data>
+  <data name="PQRCreated" xml:space="preserve">
+    <value>Se ha creado la PQR con el código: {0}</value>
+  </data>
 </root>
