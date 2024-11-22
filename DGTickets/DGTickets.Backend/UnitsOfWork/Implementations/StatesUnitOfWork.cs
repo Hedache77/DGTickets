@@ -1,5 +1,4 @@
-﻿using DGTickets.Backend.Repositories.Implementations;
-using DGTickets.Backend.Repositories.Interfaces;
+﻿using DGTickets.Backend.Repositories.Interfaces;
 using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;

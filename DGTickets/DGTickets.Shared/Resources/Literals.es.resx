@@ -494,8 +494,8 @@
   <data name="Authors" xml:space="preserve">
     <value>Autores</value>
   </data>
-  <data name="HomeMessage1" xml:space="preserve">
-    <value>Sin existencias de aceptaminofén de 500mg</value>
+  <data name="HomeMessage2" xml:space="preserve">
+    <value>Sin existencias de Acetaminofen de 500mg</value>
   </data>
   <data name="LastShiftCalledAtTheCashier" xml:space="preserve">
     <value>Último turno llamado en caja</value>
@@ -512,10 +512,31 @@
   <data name="NumberActiveBoxes" xml:space="preserve">
     <value>Cantidad de cajas activas</value>
   </data>
+  <data name="HomeMessage1" xml:space="preserve">
+    <value>Disponible Aspirina 100mg</value>
+  </data>
+  <data name="HomeMessage3" xml:space="preserve">
+    <value>Últimas 10 Unidades de Naproxeno 500mg</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Usuarios</value>
   </data>
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmado</value>
+  </data>
+  <data name="ERR014" xml:space="preserve">
+    <value>El código de la PQR no es válido.</value>
+  </data>
+  <data name="PQR" xml:space="preserve">
+    <value>PQR</value>
+  </data>
+  <data name="PQRs" xml:space="preserve">
+    <value>PQRs</value>
+  </data>
+  <data name="ERR015" xml:space="preserve">
+    <value>El código de usuario no es válido.</value>
+  </data>
+  <data name="PQRCreated" xml:space="preserve">
+    <value>Se ha creado la PQR con el código: {0}</value>
   </data>
 </root>
