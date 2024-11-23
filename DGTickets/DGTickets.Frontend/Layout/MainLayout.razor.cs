@@ -13,6 +13,23 @@ public partial class MainLayout
 
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
 
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            AppbarBackground = Colors.DeepOrange.Lighten2,
+            DrawerBackground = Colors.Brown.Lighten3,
+            Background = Colors.Gray.Lighten4
+            
+        },
+        PaletteDark = new PaletteDark()
+        {
+            AppbarBackground = Colors.Blue.Darken4,
+            DrawerBackground = Colors.BlueGray.Darken2,
+            Background = Colors.Indigo.Lighten1
+        },
+    };
+
     private void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
