@@ -18,8 +18,4 @@ public class Rating
 
     [Display(Name = "Description", ResourceType = typeof(Literals))]
     public string Description { get; set; } = null!;
-
-    public ICollection<Ticket>? Tickets { get; set; }
-
-    public int TicketsCount => Tickets == null ? 0 : Tickets.Count;
 }

@@ -4,6 +4,7 @@ using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using Microsoft.JSInterop;
 using MudBlazor;
 
 namespace DGTickets.Frontend.Pages.Auth;
@@ -19,6 +20,7 @@ public partial class Login
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private ILoginService LoginService { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+    [Inject] private IJSRuntime JSRuntime { get; set; } = null!;
 
     [CascadingParameter] private MudDialogInstance MudDialog { get; set; } = null!;
 
@@ -47,7 +49,6 @@ public partial class Login
             NavigationManager.NavigateTo("/");
             return;
         }
-
         var responseHttp = await Repository.PostAsync<LoginDTO, TokenDTO>("/api/accounts/Login", loginDTO);
         if (responseHttp.Error)
         {
@@ -55,7 +56,11 @@ public partial class Login
             Snackbar.Add(Localizer[message!], Severity.Error);
             return;
         }
+        else
+        {
+        }
 
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "emailUser", loginDTO.Email);
         await LoginService.LoginAsync(responseHttp.Response!.Token);
         NavigationManager.NavigateTo("/");
     }

@@ -1,0 +1,51 @@
+﻿@using DGTickets.Shared.Enums
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudAutocomplete T="Headquarter"
+                     Label=@Localizer["Headquarter"]
+                     Placeholder=@Localizer["SelectAHeadquarter"]
+                     SearchFunc="SearchHeadquarter"
+                     Value="selectedHeadquarter"
+                     ValueChanged="HeadquarterChanged"
+                     ToStringFunc="@(e=> e==null?null : $"{e.Name}")">
+        <ItemTemplate Context="itemContext">
+            @itemContext.Name
+        </ItemTemplate>
+    </MudAutocomplete>
+
+@*     <MudSelect T="TicketType" Label="Estado" @bind-Value="ticketType" Disabled="true">
+        @foreach (var state in Enum.GetValues<TicketType>())
+        {
+            <MudSelectItem Value="@state">@state</MudSelectItem>
+        }
+    </MudSelect> *@
+
+    <MudTextField Label="state"
+                  @bind-Value="@TicketDTO.TicketType"
+                  For="@(() => TicketDTO.TicketType)"
+                  Class="mb-4" 
+                  Disabled="true" />
+
+    <MudTextField Label="user"
+                  @bind-Value="@TicketDTO.User"
+                  For="@(() => TicketDTO.User)"
+                  Class="mb-4" 
+                  Disabled="true" />
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>

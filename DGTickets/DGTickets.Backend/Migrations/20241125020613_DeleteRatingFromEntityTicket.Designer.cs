@@ -4,6 +4,7 @@ using DGTickets.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DGTickets.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241125020613_DeleteRatingFromEntityTicket")]
+    partial class DeleteRatingFromEntityTicket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -264,16 +267,14 @@ namespace DGTickets.Backend.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
 
                     b.Property<int>("HeadquarterId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ServiceDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("RatingId")
+                        .HasColumnType("int");
 
                     b.Property<int>("TicketType")
                         .HasColumnType("int");
@@ -287,6 +288,8 @@ namespace DGTickets.Backend.Migrations
                         .IsUnique();
 
                     b.HasIndex("HeadquarterId");
+
+                    b.HasIndex("RatingId");
 
                     b.HasIndex("UserId");
 
@@ -583,6 +586,11 @@ namespace DGTickets.Backend.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DGTickets.Shared.Entities.Rating", null)
+                        .WithMany("Tickets")
+                        .HasForeignKey("RatingId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("DGTickets.Shared.Entities.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserId")
@@ -679,6 +687,11 @@ namespace DGTickets.Backend.Migrations
             modelBuilder.Entity("DGTickets.Shared.Entities.MedicineStock", b =>
                 {
                     b.Navigation("HeadquarterMedicines");
+                });
+
+            modelBuilder.Entity("DGTickets.Shared.Entities.Rating", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.State", b =>

@@ -1,4 +1,5 @@
 ﻿using DGTickets.Shared.DTOs;
+using DGTickets.Shared.Entities;
 using DGTickets.Shared.Responses;
 
 namespace DGTickets.Backend.Repositories.Interfaces;
