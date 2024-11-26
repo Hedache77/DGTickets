@@ -4,6 +4,7 @@ using DGTickets.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DGTickets.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241125143053_AdjustmentEntityTicketWithDateOrderDateAttention")]
+    partial class AdjustmentEntityTicketWithDateOrderDateAttention
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,38 +203,6 @@ namespace DGTickets.Backend.Migrations
                     b.ToTable("Modules");
                 });
 
-            modelBuilder.Entity("DGTickets.Shared.Entities.PQR", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PQRs");
-                    b.ToTable("Modules");
-                });
-
             modelBuilder.Entity("DGTickets.Shared.Entities.Rating", b =>
                 {
                     b.Property<int>("Id")
@@ -318,7 +289,6 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("Code")
                         .IsUnique();
 
-                    b.ToTable("States");
                     b.HasIndex("HeadquarterId");
 
                     b.HasIndex("UserId");
@@ -597,17 +567,6 @@ namespace DGTickets.Backend.Migrations
                     b.Navigation("Headquarter");
                 });
 
-            modelBuilder.Entity("DGTickets.Shared.Entities.PQR", b =>
-                {
-                    b.HasOne("DGTickets.Shared.Entities.User", "User")
-                        .WithMany("PQRs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DGTickets.Shared.Entities.State", b =>
                 {
                     b.HasOne("DGTickets.Shared.Entities.Country", "Country")
@@ -728,11 +687,6 @@ namespace DGTickets.Backend.Migrations
             modelBuilder.Entity("DGTickets.Shared.Entities.State", b =>
                 {
                     b.Navigation("Cities");
-                });
-
-            modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>
-                {
-                    b.Navigation("PQRs");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>

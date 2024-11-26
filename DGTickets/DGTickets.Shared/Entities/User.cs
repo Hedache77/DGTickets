@@ -35,6 +35,10 @@ public class User : IdentityUser
 
     public string PhotoFull => string.IsNullOrEmpty(Photo) ? "/images/NoImage.png" : Photo;
 
+    public ICollection<Ticket>? Tickets { get; set; }
+
+    public int TicketsCount => Tickets == null ? 0 : Tickets.Count;
+
     public ICollection<PQR>? PQRs { get; set; }
 
     public int PQRsCount => PQRs == null ? 0 : PQRs.Count;

@@ -524,6 +524,18 @@
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmado</value>
   </data>
+  <data name="Ticket" xml:space="preserve">
+    <value>Turno</value>
+  </data>
+  <data name="Tickets" xml:space="preserve">
+    <value>Turnos</value>
+  </data>
+  <data name="TicketType" xml:space="preserve">
+    <value>Estado de ticket</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
   <data name="ERR014" xml:space="preserve">
     <value>El código de la PQR no es válido.</value>
   </data>

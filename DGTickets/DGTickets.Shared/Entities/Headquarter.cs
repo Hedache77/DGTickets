@@ -38,4 +38,8 @@ public class Headquarter
     public ICollection<HeadquarterMedicine>? HeadquarterMedicines { get; set; }
 
     public int MedicinesCount => HeadquarterMedicines == null ? 0 : HeadquarterMedicines.Count;
+
+    public ICollection<Ticket>? Tickets { get; set; }
+
+    public int TicketsCount => Tickets == null ? 0 : Tickets.Count;
 }
