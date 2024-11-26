@@ -494,6 +494,24 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The PQR Id is not valid..
+        /// </summary>
+        public static string ERR014 {
+            get {
+                return ResourceManager.GetString("ERR014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user Id is not valid..
+        /// </summary>
+        public static string ERR015 {
+            get {
+                return ResourceManager.GetString("ERR015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -566,11 +584,29 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Out of stock of acceptaminofen 500mg.
+        ///   Looks up a localized string similar to Aspirina 100mg Available.
         /// </summary>
         public static string HomeMessage1 {
             get {
                 return ResourceManager.GetString("HomeMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acetaminofen 500mg Out of Stock.
+        /// </summary>
+        public static string HomeMessage2 {
+            get {
+                return ResourceManager.GetString("HomeMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naproxeno 500mg Last 10 Units.
+        /// </summary>
+        public static string HomeMessage3 {
+            get {
+                return ResourceManager.GetString("HomeMessage3", resourceCulture);
             }
         }
         
@@ -940,6 +976,33 @@ namespace DGTickets.Shared.Resources {
         public static string PleaseWait {
             get {
                 return ResourceManager.GetString("PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQR.
+        /// </summary>
+        public static string PQR {
+            get {
+                return ResourceManager.GetString("PQR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQR has been created with code: {0}.
+        /// </summary>
+        public static string PQRCreated {
+            get {
+                return ResourceManager.GetString("PQRCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PQRs.
+        /// </summary>
+        public static string PQRs {
+            get {
+                return ResourceManager.GetString("PQRs", resourceCulture);
             }
         }
         

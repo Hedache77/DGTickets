@@ -494,8 +494,8 @@
   <data name="Authors" xml:space="preserve">
     <value>Authors</value>
   </data>
-  <data name="HomeMessage1" xml:space="preserve">
-    <value>Out of stock of acceptaminofen 500mg</value>
+  <data name="HomeMessage2" xml:space="preserve">
+    <value>Acetaminofen 500mg Out of Stock</value>
   </data>
   <data name="LastShiftCalledAtTheCashier" xml:space="preserve">
     <value>Last shift called at the cashier</value>
@@ -511,6 +511,12 @@
   </data>
   <data name="NumberActiveBoxes" xml:space="preserve">
     <value>Number of active boxes</value>
+  </data>
+  <data name="HomeMessage1" xml:space="preserve">
+    <value>Aspirina 100mg Available</value>
+  </data>
+  <data name="HomeMessage3" xml:space="preserve">
+    <value>Naproxeno 500mg Last 10 Units</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>
@@ -529,5 +535,20 @@
   </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="ERR014" xml:space="preserve">
+    <value>The PQR Id is not valid.</value>
+  </data>
+  <data name="PQR" xml:space="preserve">
+    <value>PQR</value>
+  </data>
+  <data name="PQRs" xml:space="preserve">
+    <value>PQRs</value>
+  </data>
+  <data name="ERR015" xml:space="preserve">
+    <value>The user Id is not valid.</value>
+  </data>
+  <data name="PQRCreated" xml:space="preserve">
+    <value>PQR has been created with code: {0}</value>
   </data>
 </root>

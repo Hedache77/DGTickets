@@ -4,6 +4,7 @@ using DGTickets.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DGTickets.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241121164111_PQREntity")]
+    partial class PQREntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,7 +232,6 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("PQRs");
-                    b.ToTable("Modules");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Rating", b =>
@@ -284,46 +286,6 @@ namespace DGTickets.Backend.Migrations
                         .IsUnique();
 
                     b.ToTable("States");
-                });
-
-            modelBuilder.Entity("DGTickets.Shared.Entities.Ticket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("HeadquarterId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ServiceDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TicketType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("States");
-                    b.HasIndex("HeadquarterId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>
@@ -619,24 +581,6 @@ namespace DGTickets.Backend.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("DGTickets.Shared.Entities.Ticket", b =>
-                {
-                    b.HasOne("DGTickets.Shared.Entities.Headquarter", "Headquarter")
-                        .WithMany("Tickets")
-                        .HasForeignKey("HeadquarterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("DGTickets.Shared.Entities.User", "User")
-                        .WithMany("Tickets")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Headquarter");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>
                 {
                     b.HasOne("DGTickets.Shared.Entities.Country", "Country")
@@ -716,8 +660,6 @@ namespace DGTickets.Backend.Migrations
                     b.Navigation("HeadquarterMedicines");
 
                     b.Navigation("Modules");
-
-                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.MedicineStock", b =>
@@ -733,11 +675,6 @@ namespace DGTickets.Backend.Migrations
             modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>
                 {
                     b.Navigation("PQRs");
-                });
-
-            modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>
-                {
-                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

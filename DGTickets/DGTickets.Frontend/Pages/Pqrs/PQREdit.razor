@@ -1,0 +1,16 @@
+﻿@if (pqrDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <PQRForm 
+                @ref="pqrForm" 
+                PQRDTO="pqrDTO" 
+                OnValidSubmit="EditAsync" 
+                ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

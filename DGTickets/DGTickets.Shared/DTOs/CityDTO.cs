@@ -13,7 +13,7 @@ public class CityDTO
     public string Name { get; set; } = null!;
 
     [Display(Name = "Image", ResourceType = typeof(Literals))]
-    public string? Image { get; set; } // signo de ? quiere decir nullable, puede estar vacio
+    public string? Image { get; set; }
 
     [Display(Name = "State", ResourceType = typeof(Literals))]
     public int StateId { get; set; }
