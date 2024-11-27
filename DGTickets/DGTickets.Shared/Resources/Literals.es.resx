@@ -551,4 +551,7 @@
   <data name="PQRCreated" xml:space="preserve">
     <value>Se ha creado la PQR con el código: {0}</value>
   </data>
+  <data name="ERR016" xml:space="preserve">
+    <value>EL código del ticket no es válido.</value>
+  </data>
 </root>

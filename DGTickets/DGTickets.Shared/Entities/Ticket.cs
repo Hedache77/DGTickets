@@ -33,4 +33,8 @@ public class Ticket
     [Display(Name = "Date", ResourceType = typeof(Literals))]
     [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm:ss tt}")]
     public DateTime? ServiceDate { get; set; }
+
+    public ICollection<TicketMedicine>? TicketMedicines { get; set; }
+
+    public int MedicinesCount => TicketMedicines == null ? 0 : TicketMedicines.Count;
 }

@@ -4,6 +4,7 @@ using DGTickets.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DGTickets.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241127171600_TicketMedicineEntity")]
+    partial class TicketMedicineEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("StateId", "Name")
                         .IsUnique();
 
-                    b.ToTable("Cities", (string)null);
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Country", b =>
@@ -70,7 +73,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Countries", (string)null);
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Headquarter", b =>
@@ -107,7 +110,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("CityId", "Name")
                         .IsUnique();
 
-                    b.ToTable("Headquarters", (string)null);
+                    b.ToTable("Headquarters");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.HeadquarterMedicine", b =>
@@ -131,7 +134,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("HeadquarterId", "MedicineId")
                         .IsUnique();
 
-                    b.ToTable("HeadquarterMedicines", (string)null);
+                    b.ToTable("HeadquarterMedicines");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.MedicineStock", b =>
@@ -173,7 +176,7 @@ namespace DGTickets.Backend.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("MedicinesStock", (string)null);
+                    b.ToTable("MedicinesStock");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Module", b =>
@@ -197,7 +200,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("HeadquarterId", "Name")
                         .IsUnique();
 
-                    b.ToTable("Modules", (string)null);
+                    b.ToTable("Modules");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.PQR", b =>
@@ -228,7 +231,7 @@ namespace DGTickets.Backend.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PQRs", (string)null);
+                    b.ToTable("PQRs");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Rating", b =>
@@ -255,7 +258,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("Code")
                         .IsUnique();
 
-                    b.ToTable("Ratings", (string)null);
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.State", b =>
@@ -282,7 +285,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("CountryId", "Name")
                         .IsUnique();
 
-                    b.ToTable("States", (string)null);
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.Ticket", b =>
@@ -321,7 +324,7 @@ namespace DGTickets.Backend.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.TicketMedicine", b =>
@@ -345,7 +348,7 @@ namespace DGTickets.Backend.Migrations
                     b.HasIndex("TicketId", "MedicineId")
                         .IsUnique();
 
-                    b.ToTable("TicketMedicines", (string)null);
+                    b.ToTable("TicketMedicines");
                 });
 
             modelBuilder.Entity("DGTickets.Shared.Entities.User", b =>

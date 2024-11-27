@@ -35,6 +35,7 @@ public class SeedDb
         await CheckUserAsync("DG", "Tickets", "asesor@yopmail.com", "322 310 4620", UserType.Adviser);
         await CheckUserAsync("DG", "Tickets", "usuario@yopmail.com", "322 310 4620", UserType.User);
         await CheckPQRsAsync();
+        await CheckTicketsAsync();
     }
 
     private async Task CheckCountriesAsync()
@@ -515,6 +516,261 @@ public class SeedDb
             };
             _context.Add(pqr10);
 
+            await _context.SaveChangesAsync();
+        }
+    }
+
+    private async Task CheckTicketsAsync()
+    {
+        if (!_context.TicketMedicines.Any())
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == "usuario@yopmail.com");
+
+            var headquarter = await _context.Headquarters.FirstOrDefaultAsync(x => x.Name == "Centro");
+
+            var acetaminofen = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "ACETAMINOFEN")!;
+            var dolex = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Dolex");
+            var ibuprofeno = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Ibuprofeno");
+            var sevedol = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Sevedol");
+            var electrolit = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Electrolit");
+            var tramadol = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Tramadol");
+            var naproxeno = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Naproxeno");
+            var loratadina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Loratadina");
+            var amoxicilina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Amoxicilina");
+            var buscapina = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Buscapina");
+            var minoxidil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Minoxidil");
+            var advil = await _context.MedicinesStock.FirstOrDefaultAsync(x => x.Name == "Advil");
+
+            var ticket1 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(10),
+                TicketMedicines =
+                [
+                    new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = sevedol! },
+                    new TicketMedicine { Medicine = electrolit! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = minoxidil! },
+                ]
+            };
+
+            var ticket2 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(20),
+                TicketMedicines =
+                [
+                    new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket3 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(30),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket4 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(40),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket5 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(50),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket6 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(60),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket7 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(70),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket8 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(80),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket9 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(90),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            var ticket10 = new Ticket
+            {
+                Code = Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                TicketType = TicketType.Resolved,
+                Headquarter = headquarter,
+                User = user!,
+                OrderDate = DateTime.Now,
+                ServiceDate = DateTime.Now + TimeSpan.FromMinutes(100),
+                TicketMedicines =
+               [
+                   new TicketMedicine { Medicine = acetaminofen! },
+                    new TicketMedicine { Medicine = dolex! },
+                    new TicketMedicine { Medicine = ibuprofeno! },
+                    new TicketMedicine { Medicine = naproxeno! },
+                    new TicketMedicine { Medicine = tramadol! },
+                    new TicketMedicine { Medicine = loratadina! },
+                    new TicketMedicine { Medicine = amoxicilina! },
+                    new TicketMedicine { Medicine = buscapina! },
+                    new TicketMedicine { Medicine = advil! },
+                ]
+            };
+
+            _context.Tickets.Add(ticket1);
+            _context.Tickets.Add(ticket2);
+            _context.Tickets.Add(ticket3);
+            _context.Tickets.Add(ticket4);
+            _context.Tickets.Add(ticket5);
+            _context.Tickets.Add(ticket6);
+            _context.Tickets.Add(ticket7);
+            _context.Tickets.Add(ticket8);
+            _context.Tickets.Add(ticket9);
+            _context.Tickets.Add(ticket10);
             await _context.SaveChangesAsync();
         }
     }

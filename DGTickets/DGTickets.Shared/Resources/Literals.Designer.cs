@@ -512,6 +512,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The ticket id is not valid..
+        /// </summary>
+        public static string ERR016 {
+            get {
+                return ResourceManager.GetString("ERR016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
