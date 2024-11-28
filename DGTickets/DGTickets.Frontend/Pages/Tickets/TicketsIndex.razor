@@ -36,18 +36,28 @@ else
             <MudTh>@Localizer["Headquarter"]</MudTh>
             <MudTh>@Localizer["User"]</MudTh>
             <MudTh>@Localizer["Date"]</MudTh>
-
+            <MudTh>@Localizer["Actions"]</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Code</MudTd>
             <MudTd>@context.TicketType</MudTd>
-            <MudTd>@context.Headquarter.Name</MudTd>
+            <MudTd>@context.Headquarter!.Name</MudTd>
             <MudTd>@context.User!.Email</MudTd>
             <MudTd>
 
                 @(context.OrderDate.HasValue
                 ? context.OrderDate.Value.ToString("yyyy/MM/dd hh:mm:ss tt")
                 : "No date available")
+            </MudTd>
+            <MudTd>
+                <MudTooltip Text="@Localizer["MedicineStock"]">
+                    <MudButton Variant="Variant.Filled"
+                               EndIcon="@Icons.Material.Filled.Medication"
+                               Color="Color.Primary"
+                               OnClick="@(() => MedicinesAction(@context))" style="width: 100px;">
+                        @context.MedicinesCount
+                    </MudButton>
+                 </MudTooltip>
             </MudTd>
             <AuthorizeView Roles="Admin">
                 <Authorized Context="authContext">

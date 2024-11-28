@@ -5,7 +5,6 @@ using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
-using static MudBlazor.Colors;
 
 namespace DGTickets.Frontend.Pages.Headquarters;
 

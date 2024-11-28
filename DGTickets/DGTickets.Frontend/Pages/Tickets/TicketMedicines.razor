@@ -1,0 +1,80 @@
+﻿@page "/ticket/medicines/{TicketId:int}"
+
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    <MudTable Items="@ticketMedicines"
+              @ref="table"
+              ServerData="LoadListAsync"
+              Dense="true"
+              Hover="true"
+              Striped="true"
+              FixedHeader="true"
+              FixedFooter="true">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6" Class="mr-4">@ticket?.Code</MudText>
+            <MudButton Variant="Variant.Outlined"
+                       Class="mr-4"
+                       StartIcon="@Icons.Material.Filled.ArrowBack"
+                       Color="Color.Tertiary"
+                       OnClick="ReturnAction">
+                @Localizer["Return"]
+            </MudButton>
+            <AuthorizeView Roles="Admin">
+                <Authorized Context="authContext">
+                    <MudButton Variant="Variant.Outlined"
+                               Class="mr-4"
+                               EndIcon="@Icons.Material.Filled.Add"
+                               Color="Color.Info"
+                               OnClick="@(() => ShowModalAsync())">
+                        @Localizer["Medicine"]
+                    </MudButton>
+                </Authorized>
+            </AuthorizeView>
+            <MudSpacer />
+            <FilterComponent ApplyFilter="SetFilterValue" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>@Localizer["Medicine"]</MudTh>
+            <MudTh>@Localizer["Image"]</MudTh>
+            <MudTh>@Localizer["Quantity"]</MudTh>
+            <AuthorizeView Roles="Admin">
+                <Authorized Context="authContext">
+                    <MudTh>@Localizer["Actions"]</MudTh>
+                </Authorized>
+            </AuthorizeView>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Medicine.Name</MudTd>
+            <MudTd>
+                <MudImage Src="@context.Medicine.ImageFull" Width="90" Height="60" />
+            </MudTd>
+            <MudTd>@context.Quantity</MudTd>
+            <AuthorizeView Roles="Admin">
+                <Authorized Context="authContext">
+                    <MudTd>
+                        <MudTooltip Text="@Localizer["Delete"]">
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Error"
+                                       OnClick="@(() => DeleteAsync(@context))">
+                                <MudIcon Icon="@Icons.Material.Filled.Delete" />
+                            </MudButton>
+                        </MudTooltip>
+                    </MudTd>
+                </Authorized>
+            </AuthorizeView>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>@Localizer["NoRecords"]</MudText>
+        </NoRecordsContent>
+        <PagerContent>
+            <MudTablePager RowsPerPageString=@Localizer["RecordsNumber"]
+                           PageSizeOptions="pageSizeOptions"
+                           AllItemsText=@Localizer["All"]
+                           InfoFormat="@infoFormat" />
+        </PagerContent>
+    </MudTable>
+}

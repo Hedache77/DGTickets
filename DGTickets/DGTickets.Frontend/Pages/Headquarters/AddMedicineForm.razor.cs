@@ -1,14 +1,13 @@
 using CurrieTechnologies.Razor.SweetAlert2;
 using DGTickets.Frontend.Repositories;
+using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
-using static MudBlazor.Colors;
-using DGTickets.Shared.DTOs;
 
 namespace DGTickets.Frontend.Pages.Headquarters;
 

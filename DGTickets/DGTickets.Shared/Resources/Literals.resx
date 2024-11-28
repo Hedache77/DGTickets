@@ -551,4 +551,16 @@
   <data name="PQRCreated" xml:space="preserve">
     <value>PQR has been created with code: {0}</value>
   </data>
+  <data name="ERR016" xml:space="preserve">
+    <value>The ticket id is not valid.</value>
+  </data>
+  <data name="AddMedicineToTicket" xml:space="preserve">
+    <value>Add Medicine to Ticket</value>
+  </data>
+  <data name="SelectATicketType" xml:space="preserve">
+    <value>-- Select a Ticket Type ---</value>
+  </data>
+  <data name="ERR017" xml:space="preserve">
+    <value>Insufficient quantity of Medicines in stock</value>
+  </data>
 </root>
