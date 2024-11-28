@@ -30,6 +30,7 @@ public class TicketMedicinesRepository : GenericRepository<TicketMedicine>, ITic
         }
 
         var medicine = await _context.MedicinesStock.FindAsync(ticketMedicineDTO.MedicineId);
+
         if (medicine == null)
         {
             return new ActionResponse<TicketMedicine>
@@ -39,11 +40,23 @@ public class TicketMedicinesRepository : GenericRepository<TicketMedicine>, ITic
             };
         }
 
+        if (medicine.Quantity < ticketMedicineDTO.Quantity)
+        {
+            return new ActionResponse<TicketMedicine>
+            {
+                WasSuccess = false,
+                Message = "ERR017"
+            };
+        }
+
         var ticketMedicine = new TicketMedicine
         {
             Ticket = ticket,
             Medicine = medicine,
+            Quantity = ticketMedicineDTO.Quantity
         };
+
+        medicine.Quantity -= ticketMedicineDTO.Quantity;
 
         _context.Add(ticketMedicine);
         try

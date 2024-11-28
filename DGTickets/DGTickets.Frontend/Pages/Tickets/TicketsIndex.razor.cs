@@ -17,7 +17,7 @@ public partial class TicketsIndex
     private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
-    private const string baseUrl = "api/tickets";
+    private const string baseUrl = "api/Tickets";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
 
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
@@ -31,6 +31,11 @@ public partial class TicketsIndex
     protected override async Task OnInitializedAsync()
     {
         await LoadTotalRecordsAsync();
+    }
+
+    private void MedicinesAction(Ticket ticket)
+    {
+        NavigationManager.NavigateTo($"/ticket/medicines/{ticket.Id}");
     }
 
     private async Task LoadTotalRecordsAsync()
@@ -116,11 +121,11 @@ public partial class TicketsIndex
         }
     }
 
-    private async Task DeleteAsync(Ticket team)
+    private async Task DeleteAsync(Ticket ticket)
     {
         var parameters = new DialogParameters
             {
-                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Ticket"], team.Code) }
+                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Ticket"], ticket.Code) }
             };
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
         var dialog = DialogService.Show<ConfirmDialog>(Localizer["Confirmation"], parameters, options);
@@ -130,7 +135,7 @@ public partial class TicketsIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{team.Id}");
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{ticket.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)

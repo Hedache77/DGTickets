@@ -1,4 +1,3 @@
-using DGTickets.Frontend.Pages.States;
 using DGTickets.Frontend.Repositories;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Resources;
@@ -20,7 +19,7 @@ public partial class TicketCreate
 
     private async Task CreateAsync()
     {
-        var responseHttp = await Repository.PostAsync("/api/tickets/full", ticketDTO);
+        var responseHttp = await Repository.PostAsync("/api/Tickets/full", ticketDTO);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();

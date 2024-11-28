@@ -551,15 +551,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(10),
                 TicketMedicines =
                 [
-                    new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = sevedol! },
-                    new TicketMedicine { Medicine = electrolit! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = minoxidil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -573,15 +573,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(20),
                 TicketMedicines =
                 [
-                    new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                     new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -595,15 +595,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(30),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -617,15 +617,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(40),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -639,15 +639,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(50),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -661,15 +661,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(60),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                   new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -683,15 +683,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(70),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -705,15 +705,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(80),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -727,15 +727,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(90),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
@@ -749,15 +749,15 @@ public class SeedDb
                 ServiceDate = DateTime.Now + TimeSpan.FromMinutes(100),
                 TicketMedicines =
                [
-                   new TicketMedicine { Medicine = acetaminofen! },
-                    new TicketMedicine { Medicine = dolex! },
-                    new TicketMedicine { Medicine = ibuprofeno! },
-                    new TicketMedicine { Medicine = naproxeno! },
-                    new TicketMedicine { Medicine = tramadol! },
-                    new TicketMedicine { Medicine = loratadina! },
-                    new TicketMedicine { Medicine = amoxicilina! },
-                    new TicketMedicine { Medicine = buscapina! },
-                    new TicketMedicine { Medicine = advil! },
+                    new TicketMedicine { Medicine = acetaminofen!, Quantity = 2 },
+                    new TicketMedicine { Medicine = dolex!, Quantity = 3 },
+                    new TicketMedicine { Medicine = sevedol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = electrolit!, Quantity = 6 },
+                    new TicketMedicine { Medicine = tramadol!, Quantity = 1 },
+                    new TicketMedicine { Medicine = loratadina!, Quantity = 4 },
+                    new TicketMedicine { Medicine = amoxicilina!, Quantity = 6 },
+                    new TicketMedicine { Medicine = buscapina!, Quantity = 1 },
+                    new TicketMedicine { Medicine = minoxidil!, Quantity = 2 },
                 ]
             };
 
