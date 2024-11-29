@@ -2,6 +2,7 @@ using DGTickets.Frontend.Pages.States;
 using DGTickets.Frontend.Repositories;
 using DGTickets.Frontend.Shared;
 using DGTickets.Shared.Entities;
+using DGTickets.Shared.Enums;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -20,7 +21,10 @@ public partial class TicketsIndex
     private const string baseUrl = "api/Tickets";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
 
+    private TicketType ticketType { get; set; } = TicketType.Resolved;
+
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private IDialogService DialogService { get; set; } = null!;
     [Inject] private ISnackbar Snackbar { get; set; } = null!;

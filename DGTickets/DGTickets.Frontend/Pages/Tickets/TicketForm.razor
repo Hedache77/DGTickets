@@ -23,11 +23,23 @@
         }
     </MudSelect> *@
 
-    <MudTextField Label="@Localizer["StateTicket"]"
-                  @bind-Value="@TicketDTO.TicketType"
-                  For="@(() => TicketDTO.TicketType)"
-                  Class="mb-4" 
-                  Disabled="true" />
+    @if (esAdmin)
+    {
+        <MudSelect T="TicketType" Label="Estado" @bind-Value="ticketType">
+            @foreach (var state in Enum.GetValues<TicketType>())
+            {
+                <MudSelectItem Value="@state">@state</MudSelectItem>
+            }
+        </MudSelect>
+    }
+    @if (!esAdmin)
+    {
+        <MudTextField Label="@Localizer["StateTicket"]"
+            @bind-Value="@TicketDTO.TicketType"
+            For="@(() => TicketDTO.TicketType)"
+            Class="mb-4"
+            Disabled="true" />
+    }
 
     <MudTextField Label="@Localizer["User"]"
                   @bind-Value="@TicketDTO.User"

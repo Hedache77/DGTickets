@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
 using DGTickets.Shared.Enums;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace DGTickets.Frontend.Pages.Tickets;
 
@@ -18,6 +19,7 @@ public partial class TicketForm
     private Headquarter selectedHeadquarter = new();
     private Rating selectedRating = new();
     private List<Headquarter>? headquarters;
+    private bool esAdmin;
     private TicketType ticketType { get; set; }
 
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
@@ -28,12 +30,15 @@ public partial class TicketForm
     [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
     [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
     [Inject] private IJSRuntime JSRuntime { get; set; } = null!;
+    [Inject] private AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
 
     public bool FormPostedSuccessfully { get; set; } = false;
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         editContext = new(TicketDTO);
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        esAdmin = authState.User.IsInRole("Admin");
     }
 
     protected override async Task OnInitializedAsync()
