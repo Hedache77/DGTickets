@@ -171,7 +171,7 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
             }
             else
             {
-                _mailHelper.SendMail(user.FullName, user.Email!, subjectHtmlEN, emailHtmlEN, ticketDTO.Language);
+                _mailHelper.SendMail(user.FullName, user.Email!, subjectHtmlEN, emailHtmlEN, ticketDTO.Language!);
             }
             return new ActionResponse<Ticket>
             {
@@ -234,6 +234,7 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
             };
         }
 
+        currentTicket.Headquarter = headquarter;
         currentTicket.TicketType = ticketDTO.TicketType;
 
         _context.Update(currentTicket);

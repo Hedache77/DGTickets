@@ -32,11 +32,7 @@
 
     <AuthorizeView Roles="Admin, Adviser, User">
         <Authorized>
-            <MudNavLink Href="/ratings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ThumbsUpDown">@Localizer["Ratings"]</MudNavLink>
-            <MudDivider />
-            <MudNavLink Href="/pqrs" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.SupportAgent">@Localizer["PQRs"]</MudNavLink>
-            <MudDivider />
-            <MudNavLink Href="/tickets" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">@Localizer["Tickets"]</MudNavLink>
+            <MudNavLink Href="/tickets" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ConfirmationNumber">@Localizer["Tickets"]</MudNavLink>
             <MudDivider />
         </Authorized>
     </AuthorizeView>

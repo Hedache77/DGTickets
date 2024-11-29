@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -127,6 +128,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddScoped<IMailHelper, MailHelper>();
+builder.Services.AddAzureClients(clientBuilder =>
+{
+    clientBuilder.AddBlobServiceClient(builder.Configuration["ConnectionStrings:AzureStorage1:blobServiceUri"]!).WithName("ConnectionStrings:AzureStorage1");
+    clientBuilder.AddQueueServiceClient(builder.Configuration["ConnectionStrings:AzureStorage1:queueServiceUri"]!).WithName("ConnectionStrings:AzureStorage1");
+    clientBuilder.AddTableServiceClient(builder.Configuration["ConnectionStrings:AzureStorage1:tableServiceUri"]!).WithName("ConnectionStrings:AzureStorage1");
+});
 
 var app = builder.Build();
 

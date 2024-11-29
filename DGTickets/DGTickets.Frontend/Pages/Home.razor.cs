@@ -40,7 +40,7 @@ public partial class Home
 
         var responseHttp = await Repository.GetAsync<List<MedicineStock>>(url);
 
-        MedicineStock = responseHttp.Response.Where(medicine => medicine.Quantity <= 1).ToList();
+        MedicineStock = responseHttp.Response!.Where(medicine => medicine.Quantity <= 1).ToList();
 
         loading = false;
     }
