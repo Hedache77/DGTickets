@@ -809,6 +809,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no availability of.
+        /// </summary>
+        public static string MessageHome {
+            get {
+                return ResourceManager.GetString("MessageHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} field must have at least {1} characters..
         /// </summary>
         public static string MinLength {
@@ -985,6 +994,15 @@ namespace DGTickets.Shared.Resources {
         public static string PasswordRecovery {
             get {
                 return ResourceManager.GetString("PasswordRecovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to be logged in to request an appointment.
+        /// </summary>
+        public static string PermissionTicket {
+            get {
+                return ResourceManager.GetString("PermissionTicket", resourceCulture);
             }
         }
         
@@ -1282,6 +1300,15 @@ namespace DGTickets.Shared.Resources {
         public static string States {
             get {
                 return ResourceManager.GetString("States", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State Ticket.
+        /// </summary>
+        public static string StateTicket {
+            get {
+                return ResourceManager.GetString("StateTicket", resourceCulture);
             }
         }
         

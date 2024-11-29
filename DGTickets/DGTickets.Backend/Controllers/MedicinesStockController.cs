@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DGTickets.Backend.Controllers;
 
 [ApiController]
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class MedicinesStockController : GenericController<MedicineStock>
 {

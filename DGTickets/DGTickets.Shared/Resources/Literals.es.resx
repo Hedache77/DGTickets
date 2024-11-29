@@ -563,4 +563,13 @@
   <data name="ERR017" xml:space="preserve">
     <value>Cantidad insuficiente de Medicamento en Stock</value>
   </data>
+  <data name="MessageHome" xml:space="preserve">
+    <value>No hay disponibilidad de</value>
+  </data>
+  <data name="StateTicket" xml:space="preserve">
+    <value>Estado del turno</value>
+  </data>
+  <data name="PermissionTicket" xml:space="preserve">
+    <value>Necesitas estar logueado para solicitar un turno</value>
+  </data>
 </root>

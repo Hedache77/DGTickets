@@ -11,8 +11,6 @@
             <MudDivider />
             <MudNavLink Href="/users" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">@Localizer["Users"]</MudNavLink>
             <MudDivider />
-            <MudNavLink Href="/tickets" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ConfirmationNumber">@Localizer["Tickets"]</MudNavLink>
-            <MudDivider />
         </Authorized>
     </AuthorizeView>
 
@@ -32,8 +30,19 @@
         </Authorized>
     </AuthorizeView>
 
+    <AuthorizeView Roles="Admin, Adviser, User">
+        <Authorized>
+            <MudNavLink Href="/ratings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ThumbsUpDown">@Localizer["Ratings"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/pqrs" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.SupportAgent">@Localizer["PQRs"]</MudNavLink>
+            <MudDivider />
+            <MudNavLink Href="/tickets" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">@Localizer["Tickets"]</MudNavLink>
+            <MudDivider />
+        </Authorized>
+    </AuthorizeView>
+
     <MudNavLink Href="/headquarters" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.HomeWork">@Localizer["Headquarters"]</MudNavLink>
     <MudDivider />
- 
+
     <MudNavLink Href="/about" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Info">@Localizer["About"]</MudNavLink>
 </MudNavMenu>

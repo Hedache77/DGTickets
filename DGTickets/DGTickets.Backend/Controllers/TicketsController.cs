@@ -80,6 +80,9 @@ public class TicketsController : GenericController<Ticket>
     public async Task<IActionResult> PostAsync(TicketDTO ticketDTO)
     {
         var action = await _ticketsUnitOfWork.AddAsync(ticketDTO);
+
+        //string html = "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Document</title> </head> <body> <header style=\"width: 100%; height: 100px; background-color: #207870; color: white; font-size: 50px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center;\"> DGTICKETS </header> <section style=\"width: 100%; height: 200px; background-color: #f8f9f9; color: black; font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center; margin-top: 50px;\"> <h1>THANK YOU FOR YOUR TICKET</h1> <h2>YOUR ORDER HAS BEEN CONFIRMED</h2> <h6>YOUR TICKET NUMBER IS: 123456</h6> </section> </body> </html>";
+
         if (action.WasSuccess)
         {
             return Ok(action.Result);

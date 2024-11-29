@@ -1,4 +1,5 @@
 ﻿using DGTickets.Shared.Entities;
+using DGTickets.Shared.Enums;
 using DGTickets.Shared.Resources;
 using System.ComponentModel.DataAnnotations;
 

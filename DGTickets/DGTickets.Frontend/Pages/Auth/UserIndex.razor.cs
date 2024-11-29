@@ -1,10 +1,12 @@
 using DGTickets.Frontend.Repositories;
+using DGTickets.Frontend.Shared;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
+using System.Net;
 
 namespace DGTickets.Frontend.Pages.Auth;
 
@@ -23,6 +25,8 @@ public partial class UserIndex
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private ISnackbar Snackbar { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+    [Inject] private IDialogService DialogService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
 
     [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
 

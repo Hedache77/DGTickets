@@ -1,5 +1,18 @@
-﻿@page "/"
-
+﻿@page "/" 
+<AuthorizeView>
+    <Authorized Context="authContext">
+        <MudButton Variant="Variant.Outlined"
+                   EndIcon="@Icons.Material.Filled.Add"
+                   Color="Color.Info" OnClick="@(() => ShowModalAsync())">
+            @Localizer["New"] @Localizer["Ticket"]
+        </MudButton>
+        <br />
+    </Authorized>
+    <NotAuthorized>
+        <MudAlert Severity="Severity.Warning">@Localizer["PermissionTicket"]</MudAlert>
+    </NotAuthorized>
+</AuthorizeView>
+<br />
 <MudCard Style="height: 100%; display: flex; justify-content: center; align-items: center;">
     <MudCardHeader>
         <CardHeaderContent>
@@ -35,7 +48,7 @@
         <MudText Align="Align.Center" Typo="Typo.body2">@Localizer["AverageAttentionPerShift"]</MudText>
     </MudCardContent>
 </MudCard>
-<br />
+@* <br />
 <MudCard Style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
     <MudCardHeader>
         <CardHeaderContent>
@@ -45,24 +58,38 @@
     <MudCardContent>
         <MudText Align="Align.Center">5</MudText>
     </MudCardContent>
-</MudCard>
+</MudCard> *@
 <br />
 
-<MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
-    <MudCarouselItem Transition="transition" Color="@Color.Primary">
-        <div class="d-flex" style="height:100%">
-            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage1"]</MudText>
-        </div>
-    </MudCarouselItem>
-    <MudCarouselItem Transition="transition" Color="@Color.Secondary">
-        <div class="d-flex" style="height:100%">
-            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage2"]</MudText>
-        </div>
-    </MudCarouselItem>
-    <MudCarouselItem Transition="transition">
-        <div class="d-flex" style="height:100%">
-            <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["HomeMessage3"]</MudText>
-        </div>
-    </MudCarouselItem>
-</MudCarousel>
+@if (loading)
+{
+    <Loading />
+}
+else
+{
+    @if (MedicineStock == null || !MedicineStock.Any())
+    {
+    }
+    else
+    {
+        <MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+
+            @foreach (var medicine in MedicineStock)
+            {
+                <MudCarouselItem Transition="transition" Color="@Color.Secondary">
+                    <div class="d-flex" style="height:100%">
+                        <MudText Typo="Typo.body2" Style="font-size:30px; margin:auto;">@Localizer["MessageHome"] @medicine.Name</MudText>
+                    </div>
+                </MudCarouselItem>
+
+
+            }
+        </MudCarousel>
+    }
+
+
+}
+
+
+
 

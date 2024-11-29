@@ -20,6 +20,8 @@ public partial class TicketCreate
     private async Task CreateAsync()
     {
         var responseHttp = await Repository.PostAsync("/api/Tickets/full", ticketDTO);
+        ticketDTO.Language = System.Globalization.CultureInfo.CurrentCulture.Name.Substring(0, 2);
+        var responseHttp = await Repository.PostAsync("/api/tickets/full", ticketDTO);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();
