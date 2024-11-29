@@ -36,7 +36,11 @@ else
             <MudTh>@Localizer["Headquarter"]</MudTh>
             <MudTh>@Localizer["User"]</MudTh>
             <MudTh>@Localizer["Date"]</MudTh>
-            <MudTh>@Localizer["Actions"]</MudTh>
+            <MudTh>@Localizer["Medicine"]</MudTh>
+            @if (@context.TicketType != ticketType)
+            { 
+                <MudTh>@Localizer["Actions"]</MudTh>
+            }
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Code</MudTd>
@@ -61,6 +65,8 @@ else
             </MudTd>
             <AuthorizeView Roles="Admin, Adviser">
                 <Authorized Context="authContext">
+                @if (@context.TicketType != ticketType)
+                {
                     <MudTd>
                         <MudTooltip Text="@Localizer["Edit"]">
                             <MudButton Variant="Variant.Filled"
@@ -77,6 +83,8 @@ else
                             </MudButton>
                         </MudTooltip>
                     </MudTd>
+                }
+
                 </Authorized>
             </AuthorizeView>
         </RowTemplate>

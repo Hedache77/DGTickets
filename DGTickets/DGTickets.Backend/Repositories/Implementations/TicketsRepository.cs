@@ -14,7 +14,6 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
     private readonly IUsersRepository _usersRepository;
     private readonly IMailHelper _mailHelper;
 
-    public TicketsRepository(DataContext context) : base(context)
     public TicketsRepository(DataContext context, IUsersRepository usersRepository, IMailHelper mailHelper) : base(context)
     {
         _context = context;
