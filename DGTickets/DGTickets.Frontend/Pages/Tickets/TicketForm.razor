@@ -23,13 +23,13 @@
         }
     </MudSelect> *@
 
-    <MudTextField Label="state"
+    <MudTextField Label="@Localizer["StateTicket"]"
                   @bind-Value="@TicketDTO.TicketType"
                   For="@(() => TicketDTO.TicketType)"
                   Class="mb-4" 
                   Disabled="true" />
 
-    <MudTextField Label="user"
+    <MudTextField Label="@Localizer["User"]"
                   @bind-Value="@TicketDTO.User"
                   For="@(() => TicketDTO.User)"
                   Class="mb-4" 

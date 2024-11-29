@@ -551,4 +551,13 @@
   <data name="PQRCreated" xml:space="preserve">
     <value>PQR has been created with code: {0}</value>
   </data>
+  <data name="MessageHome" xml:space="preserve">
+    <value>There is no availability of</value>
+  </data>
+  <data name="StateTicket" xml:space="preserve">
+    <value>State Ticket</value>
+  </data>
+  <data name="PermissionTicket" xml:space="preserve">
+    <value>You need to be logged in to request an appointment</value>
+  </data>
 </root>

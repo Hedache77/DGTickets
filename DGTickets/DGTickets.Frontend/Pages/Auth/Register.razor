@@ -1,4 +1,5 @@
 ﻿@page "/Register"
+@using DGTickets.Shared.Enums
 
 @if (loading)
 {
@@ -56,6 +57,25 @@ else
                     <MudItem xs="12" sm="6">
                         <InputImg Label=@Localizer["Image"] ImageSelected="ImageSelected" ImageURL="@imageUrl" />
                     </MudItem>
+
+                    @if (esAdmin)
+                    {
+                        <p>Este contenido no lo pueden ver los administradores.</p>
+                        <MudSelect T="UserType" Label="Type" @bind-Value="userType">
+                            @foreach (var type in Enum.GetValues<UserType>())
+                            {
+                                <MudSelectItem Value="@type">@type</MudSelectItem>
+                            }
+                        </MudSelect>
+                    }
+                    @if (!esAdmin)
+                    {
+                        <MudTextField Label="state"
+                            @bind-Value="@userDTO.UserType"
+                            For="@(() => userDTO.UserType)"
+                            Class="mb-4"
+                            Disabled="true" />
+                    }
                 </MudItem>
                 <MudStack Class="m-2" Row="true">
                     <MudButton Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.ArrowBack" Color="Color.Info" OnClick="ReturnAction" Class="ms-8">

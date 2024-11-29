@@ -36,6 +36,7 @@ else
             <MudTh>@Localizer["Headquarter"]</MudTh>
             <MudTh>@Localizer["User"]</MudTh>
             <MudTh>@Localizer["Date"]</MudTh>
+            <MudTh>@Localizer["Actions"]</MudTh>
 
         </HeaderContent>
         <RowTemplate>
@@ -49,7 +50,7 @@ else
                 ? context.OrderDate.Value.ToString("yyyy/MM/dd hh:mm:ss tt")
                 : "No date available")
             </MudTd>
-            <AuthorizeView Roles="Admin">
+            <AuthorizeView Roles="Admin, Adviser">
                 <Authorized Context="authContext">
                     <MudTd>
                         <MudTooltip Text="@Localizer["Edit"]">

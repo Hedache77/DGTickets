@@ -37,4 +37,6 @@ public class TicketDTO
     [Display(Name = "Date", ResourceType = typeof(Literals))]
     [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm:ss tt}")]
     public DateTime? ServiceDate { get; set; }
+
+    public string? Language { get; set; } = null!;
 }

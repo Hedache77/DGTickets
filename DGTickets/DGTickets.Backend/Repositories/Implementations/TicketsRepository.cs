@@ -13,11 +13,13 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
 {
     private readonly DataContext _context;
     private readonly IUsersRepository _usersRepository;
+    private readonly IMailHelper _mailHelper;
 
-    public TicketsRepository(DataContext context, IUsersRepository usersRepository) : base(context)
+    public TicketsRepository(DataContext context, IUsersRepository usersRepository, IMailHelper mailHelper) : base(context)
     {
         _context = context;
         _usersRepository = usersRepository;
+        _mailHelper = mailHelper;
     }
 
     public override async Task<ActionResponse<IEnumerable<Ticket>>> GetAsync(PaginationDTO pagination)
@@ -102,10 +104,61 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
             ServiceDate = DateTime.Now
         };
 
+        string emailHtmlEN = $@"
+        <!DOCTYPE html>
+        <html lang=""en"">
+        <head>
+            <meta charset=""UTF-8"">
+            <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+            <title>Document</title>
+        </head>
+        <body>
+            <header style=""width: 100%; height: 100px; background-color: #207870; color: white; font-size: 50px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center;"">
+                DGTICKETS
+            </header>
+            <section style=""width: 100%; height: 200px; background-color: #f8f9f9; color: black; font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center; margin-top: 50px;"">
+                <h1>THANK YOU FOR YOUR TICKET</h1>
+                <h2>YOUR ORDER HAS BEEN CONFIRMED</h2>
+                <h6>YOUR TICKET NUMBER IS: {code}</h6>
+            </section>
+        </body>
+        </html>";
+
+        string subjectHtmlEN = "📣 ¡Your ticket has been processed successfully!📣";
+        string subjectHtmlES = "📣 ¡Su turno ha sido creado con éxito!📣";
+
+        string emailHtmlES = $@"
+        <!DOCTYPE html>
+        <html lang=""en"">
+        <head>
+            <meta charset=""UTF-8"">
+            <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+            <title>Document</title>
+        </head>
+        <body>
+            <header style=""width: 100%; height: 100px; background-color: #207870; color: white; font-size: 50px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center;"">
+                DGTICKETS
+            </header>
+            <section style=""width: 100%; height: 200px; background-color: #f8f9f9; color: black; font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; text-align: center; margin-top: 50px;"">
+                <h1>GRACIAS POR SOLICITAR SU TURNO</h1>
+                <h2>SU TURNO HA SIDO CONFIRMADO</h2>
+                <h6>SU NÚMERO DE TICKET ES: {code}</h6>
+            </section>
+        </body>
+        </html>";
+
         _context.Add(ticket);
         try
         {
             await _context.SaveChangesAsync();
+            if (ticketDTO.Language == "es")
+            {
+                _mailHelper.SendMail(user.FullName, user.Email!, subjectHtmlES, emailHtmlES, ticketDTO.Language);
+            }
+            else
+            {
+                _mailHelper.SendMail(user.FullName, user.Email!, subjectHtmlEN, emailHtmlEN, ticketDTO.Language);
+            }
             return new ActionResponse<Ticket>
             {
                 WasSuccess = true,

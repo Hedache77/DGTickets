@@ -551,4 +551,13 @@
   <data name="PQRCreated" xml:space="preserve">
     <value>Se ha creado la PQR con el código: {0}</value>
   </data>
+  <data name="MessageHome" xml:space="preserve">
+    <value>No hay disponibilidad de</value>
+  </data>
+  <data name="StateTicket" xml:space="preserve">
+    <value>Estado del turno</value>
+  </data>
+  <data name="PermissionTicket" xml:space="preserve">
+    <value>Necesitas estar logueado para solicitar un turno</value>
+  </data>
 </root>

@@ -1,13 +1,28 @@
 using CurrieTechnologies.Razor.SweetAlert2;
 using DGTickets.Frontend.Repositories;
 using DGTickets.Frontend.Services;
+using DGTickets.Frontend.Shared;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Enums;
 using DGTickets.Shared.Resources;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
+
+using DGTickets.Frontend.Repositories;
+using DGTickets.Frontend.Shared;
+using DGTickets.Shared.Entities;
+using DGTickets.Shared.Resources;
+
+using Microsoft.AspNetCore.Authorization;
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
+using MudBlazor;
+
+using System.Net;
 
 namespace DGTickets.Frontend.Pages.Auth;
 
@@ -18,8 +33,13 @@ public partial class Register
     private bool loading;
     private string? imageUrl;
     private string? titleLabel;
+    private bool esAdmin;
 
+    private const string baseUrl = "api/users";
+    private MudTable<User> table = new();
     private Country selectedCountry = new();
+
+    private UserType userType { get; set; }
 
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
     [Inject] private ILoginService LogInService { get; set; } = null!;
@@ -28,10 +48,15 @@ public partial class Register
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
+
+    [Inject] private AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
     [Parameter, SupplyParameterFromQuery] public bool IsAdmin { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        userDTO.UserType = UserType.User;
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        esAdmin = authState.User.IsInRole("Admin");
         await LoadCountriesAsync();
     }
 
@@ -89,7 +114,13 @@ public partial class Register
             return;
         }
 
-        userDTO.UserType = UserType.User;
+        if (userDTO.UserType == null)
+        {
+            userDTO.UserType = UserType.User;
+        }
+
+        userDTO.UserType = userType;
+
         userDTO.UserName = userDTO.Email;
         userDTO.Country = selectedCountry;
         userDTO.CountryId = selectedCountry.Id;
@@ -164,5 +195,63 @@ public partial class Register
         }
 
         return !hasErrors;
+    }
+
+    private async Task ShowModalAsync(int id = 0, bool isEdit = false)
+    {
+        var options = new DialogOptions() { CloseOnEscapeKey = true, CloseButton = true };
+        IDialogReference? dialog;
+        if (isEdit)
+        {
+            var parameters = new DialogParameters
+                {
+                    { "Id", id }
+                };
+            dialog = DialogService.Show<EditUser>($"{Localizer["Edit"]} {Localizer["Country"]}", parameters, options);
+        }
+        else
+        {
+            dialog = DialogService.Show<Register>($"{Localizer["New"]} {Localizer["Country"]}", options);
+        }
+
+        var result = await dialog.Result;
+        if (result!.Canceled)
+        {
+            await LoadCountriesAsync();
+            await table.ReloadServerData();
+        }
+    }
+
+    private async Task DeleteAsync(Country country)
+    {
+        var parameters = new DialogParameters
+            {
+                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Country"], country.Name) }
+            };
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
+        var dialog = DialogService.Show<ConfirmDialog>(Localizer["Confirmation"], parameters, options);
+        var result = await dialog.Result;
+        if (result!.Canceled)
+        {
+            return;
+        }
+
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{country.Id}");
+        if (responseHttp.Error)
+        {
+            if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                NavigationManager.NavigateTo("/countries");
+            }
+            else
+            {
+                var message = await responseHttp.GetErrorMessageAsync();
+                Snackbar.Add(Localizer[message!], Severity.Error);
+            }
+            return;
+        }
+        //await LoadTotalRecordsAsync();
+        await table.ReloadServerData();
+        Snackbar.Add(Localizer["RecordDeletedOk"], Severity.Success);
     }
 }
