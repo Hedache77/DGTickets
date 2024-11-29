@@ -61,7 +61,7 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://localhost:7228/.
+        ///   Looks up a localized string similar to https://dgtickets.azurewebsites.net/.
         /// </summary>
         internal static string URLFront {
             get {

@@ -25,7 +25,7 @@
 
     @if (esAdmin)
     {
-        <MudSelect T="TicketType" Label="Estado" @bind-Value="ticketType">
+        <MudSelect T="TicketType" Label="Estado" @bind-Value="@TicketDTO.TicketType">
             @foreach (var state in Enum.GetValues<TicketType>())
             {
                 <MudSelectItem Value="@state">@state</MudSelectItem>

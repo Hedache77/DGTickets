@@ -12,7 +12,9 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7037") });
+var urlProd = "https://dgticketsbackend.azurewebsites.net";
+var urlDev = "https://localhost:7037";
+builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri(urlProd) });
 
 builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddLocalization();

@@ -41,6 +41,7 @@ public partial class TicketEdit
             var ticket = responseHttp.Response;
             ticketDTO = new TicketDTO()
             {
+                Id = ticket!.Id,
                 TicketType = ticket!.TicketType,
             };
         }
