@@ -5,7 +5,6 @@ using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
 
 namespace DGTickets.Backend.Repositories.Implementations;
 
@@ -15,6 +14,7 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
     private readonly IUsersRepository _usersRepository;
     private readonly IMailHelper _mailHelper;
 
+    public TicketsRepository(DataContext context) : base(context)
     public TicketsRepository(DataContext context, IUsersRepository usersRepository, IMailHelper mailHelper) : base(context)
     {
         _context = context;
@@ -22,26 +22,29 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
         _mailHelper = mailHelper;
     }
 
-    public override async Task<ActionResponse<IEnumerable<Ticket>>> GetAsync(PaginationDTO pagination)
+    public override async Task<ActionResponse<IEnumerable<Ticket>>> GetAsync()
     {
-        var queryable = _context.Tickets;
-
+        var tickets = await _context.Tickets
+            .Include(x => x.Headquarter)
+            .Include(x => x.User)
+            .Include(x => x.TicketMedicines!)
+            .ThenInclude(x => x.Medicine)
+            .OrderByDescending(x => x.OrderDate)
+            .ToListAsync();
         return new ActionResponse<IEnumerable<Ticket>>
         {
             WasSuccess = true,
-            Result = await queryable
-                .Include(x => x.Headquarter)
-                .Include(x => x.User)
-                .OrderBy(x => x.Code)
-                .Paginate(pagination)
-                .ToListAsync()
+            Result = tickets
         };
     }
 
     public override async Task<ActionResponse<Ticket>> GetAsync(int id)
     {
         var ticket = await _context.Tickets
-            .Include(x => x.User!)
+            .Include(x => x.Headquarter)
+            .Include(x => x.User)
+            .Include(x => x.TicketMedicines!)
+            .ThenInclude(x => x.Medicine)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (ticket == null)
@@ -60,30 +63,41 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
         };
     }
 
-    //public override async Task<ActionResponse<Ticket>> GetAsync(int id)
-    //{
-    //    var ticket = await _context.Tickets
-    //        .Include(x => x.User!)
-    //        .FirstOrDefaultAsync(c => c.Id == id);
+    public override async Task<ActionResponse<IEnumerable<Ticket>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _context.Tickets
+           .Include(x => x.Headquarter)
+           .Include(x => x.User)
+           .Include(x => x.TicketMedicines)
+           .AsQueryable();
 
-    //    if (ticket == null)
-    //    {
-    //        return new ActionResponse<Ticket>
-    //        {
-    //            WasSuccess = false,
-    //            Message = "ERR001"
-    //        };
-    //    }
+        if (!string.IsNullOrWhiteSpace(pagination.Filter))
+        {
+            queryable = queryable.Where(x => x.Code.ToLower().Contains(pagination.Filter.ToLower()));
+        }
 
-    //    return new ActionResponse<Ticket>
-    //    {
-    //        WasSuccess = true,
-    //        Result = ticket
-    //    };
-    //}
+        return new ActionResponse<IEnumerable<Ticket>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .OrderByDescending(x => x.OrderDate)
+                .Paginate(pagination)
+                .ToListAsync()
+        };
+    }
 
     public async Task<ActionResponse<Ticket>> AddAsync(TicketDTO ticketDTO)
     {
+        var headquarter = await _context.Headquarters.FindAsync(ticketDTO.HeadquarterId);
+        if (headquarter == null)
+        {
+            return new ActionResponse<Ticket>
+            {
+                WasSuccess = false,
+                Message = "ERR006"
+            };
+        }
+
         var code = string.Empty;
         var exists = true;
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == ticketDTO.User);
@@ -97,11 +111,12 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
         var ticket = new Ticket
         {
             Code = code,
-            HeadquarterId = ticketDTO.HeadquarterId,
+            Headquarter = headquarter,
             TicketType = ticketDTO.TicketType,
-            UserId = user.Id,
+            UserId = user!.Id,
             OrderDate = DateTime.Now,
-            ServiceDate = DateTime.Now
+            ServiceDate = DateTime.Now,
+            TicketMedicines = new List<TicketMedicine>()
         };
 
         string emailHtmlEN = $@"
@@ -183,16 +198,19 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
         }
     }
 
-    public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination)
+    public async Task<IEnumerable<Ticket>> GetComboAsync(int headquarterId)
     {
-        var queryable = _context.Tickets.AsQueryable();
+        return await _context.Tickets
+            .Where(x => x.HeadquarterId == headquarterId)
+            .OrderByDescending(x => x.OrderDate)
+            .ToListAsync();
+    }
 
-        double count = await queryable.CountAsync();
-        return new ActionResponse<int>
-        {
-            WasSuccess = true,
-            Result = (int)count
-        };
+    public async Task<IEnumerable<Ticket>> GetComboAsync()
+    {
+        return await _context.Tickets
+            .OrderByDescending(x => x.OrderDate)
+            .ToListAsync();
     }
 
     public async Task<ActionResponse<Ticket>> UpdateAsync(TicketDTO ticketDTO)
@@ -203,9 +221,21 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
             return new ActionResponse<Ticket>
             {
                 WasSuccess = false,
-                Message = "ERR014"
+                Message = "ERR016"
             };
         }
+
+        var headquarter = await _context.Headquarters.FindAsync(ticketDTO.HeadquarterId);
+        if (headquarter == null)
+        {
+            return new ActionResponse<Ticket>
+            {
+                WasSuccess = false,
+                Message = "ERR006"
+            };
+        }
+
+        currentTicket.TicketType = ticketDTO.TicketType;
 
         _context.Update(currentTicket);
         try
@@ -233,6 +263,23 @@ public class TicketsRepository : GenericRepository<Ticket>, ITicketsRepository
                 Message = exception.Message
             };
         }
+    }
+
+    public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination)
+    {
+        var queryable = _context.Tickets.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(pagination.Filter))
+        {
+            queryable = queryable.Where(x => x.Code.ToLower().Contains(pagination.Filter.ToLower()));
+        }
+
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
+        };
     }
 
     public async Task<ActionResponse<Ticket>> GetAsync(string code)

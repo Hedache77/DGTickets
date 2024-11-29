@@ -1,9 +1,7 @@
-using DGTickets.Frontend.Pages.MedicinesStock;
 using DGTickets.Frontend.Repositories;
 using DGTickets.Frontend.Shared;
 using DGTickets.Shared.Entities;
 using DGTickets.Shared.Resources;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
@@ -122,11 +120,11 @@ public partial class HeadquartersIndex
         }
     }
 
-    private async Task DeleteAsync(Headquarter medicine)
+    private async Task DeleteAsync(Headquarter headquarter)
     {
         var parameters = new DialogParameters
             {
-                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Headquarter"], medicine.Name) }
+                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Headquarter"], headquarter.Name) }
             };
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
         var dialog = DialogService.Show<ConfirmDialog>(Localizer["Confirmation"], parameters, options);
@@ -136,7 +134,7 @@ public partial class HeadquartersIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{medicine.Id}");
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{headquarter.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)

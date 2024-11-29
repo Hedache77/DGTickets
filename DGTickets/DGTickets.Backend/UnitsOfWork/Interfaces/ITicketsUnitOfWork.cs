@@ -6,11 +6,17 @@ namespace DGTickets.Backend.UnitsOfWork.Interfaces;
 
 public interface ITicketsUnitOfWork
 {
+    Task<IEnumerable<Ticket>> GetComboAsync();
+
+    Task<IEnumerable<Ticket>> GetComboAsync(int headquarterId);
+
     Task<ActionResponse<Ticket>> AddAsync(TicketDTO ticketDTO);
 
     Task<ActionResponse<Ticket>> UpdateAsync(TicketDTO ticketDTO);
 
     Task<ActionResponse<Ticket>> GetAsync(int id);
+
+    Task<ActionResponse<IEnumerable<Ticket>>> GetAsync();
 
     Task<ActionResponse<IEnumerable<Ticket>>> GetAsync(PaginationDTO pagination);
 

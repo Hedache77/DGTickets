@@ -42,4 +42,8 @@ public class MedicineStock
     public ICollection<HeadquarterMedicine>? HeadquarterMedicines { get; set; }
 
     public int HeadquartersCount => HeadquarterMedicines == null ? 0 : HeadquarterMedicines.Count;
+
+    public ICollection<TicketMedicine>? TicketMedicines { get; set; }
+
+    public int TicketsCount => TicketMedicines == null ? 0 : TicketMedicines.Count;
 }

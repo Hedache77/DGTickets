@@ -1,10 +1,10 @@
-﻿using DGTickets.Backend.UnitsOfWork.Interfaces;
+﻿using DGTickets.Backend.UnitsOfWork.Implementations;
+using DGTickets.Backend.UnitsOfWork.Interfaces;
 using DGTickets.Shared.DTOs;
 using DGTickets.Shared.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
 
 namespace DGTickets.Backend.Controllers;
 
@@ -18,6 +18,17 @@ public class TicketsController : GenericController<Ticket>
     public TicketsController(IGenericUnitOfWork<Ticket> unitOfWork, ITicketsUnitOfWork ticketsUnitOfWork) : base(unitOfWork)
     {
         _ticketsUnitOfWork = ticketsUnitOfWork;
+    }
+
+    [HttpGet]
+    public override async Task<IActionResult> GetAsync()
+    {
+        var response = await _ticketsUnitOfWork.GetAsync();
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return BadRequest();
     }
 
     [HttpGet("paginated")]
@@ -51,6 +62,18 @@ public class TicketsController : GenericController<Ticket>
             return Ok(response.Result);
         }
         return NotFound(response.Message);
+    }
+
+    [HttpGet("combo/{headquarterId:int}")]
+    public async Task<IActionResult> GetComboAsync(int headquarterId)
+    {
+        return Ok(await _ticketsUnitOfWork.GetComboAsync(headquarterId));
+    }
+
+    [HttpGet("combo")]
+    public async Task<IActionResult> GetComboAsync()
+    {
+        return Ok(await _ticketsUnitOfWork.GetComboAsync());
     }
 
     [HttpPost("full")]

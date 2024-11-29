@@ -107,6 +107,15 @@ namespace DGTickets.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Medicine to Ticket.
+        /// </summary>
+        public static string AddMedicineToTicket {
+            get {
+                return ResourceManager.GetString("AddMedicineToTicket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string Address {
@@ -508,6 +517,24 @@ namespace DGTickets.Shared.Resources {
         public static string ERR015 {
             get {
                 return ResourceManager.GetString("ERR015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ticket id is not valid..
+        /// </summary>
+        public static string ERR016 {
+            get {
+                return ResourceManager.GetString("ERR016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insufficient quantity of Medicines in stock.
+        /// </summary>
+        public static string ERR017 {
+            get {
+                return ResourceManager.GetString("ERR017", resourceCulture);
             }
         }
         
@@ -1219,6 +1246,15 @@ namespace DGTickets.Shared.Resources {
         public static string SelectAState {
             get {
                 return ResourceManager.GetString("SelectAState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Select a Ticket Type ---.
+        /// </summary>
+        public static string SelectATicketType {
+            get {
+                return ResourceManager.GetString("SelectATicketType", resourceCulture);
             }
         }
         
